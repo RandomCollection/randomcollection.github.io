@@ -1,0 +1,130 @@
+html {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+header {
+  background: url(../img/background.jpg);
+  background-size: cover;
+  height: 100px;
+  width: 100%;
+}
+
+.nav {
+  background-color: #292c2f;
+  border-top: 5px solid #ffffff;
+  border-bottom: 5px solid #ffffff;
+  overflow: hidden;
+  padding: 20px 30px 20px 30px;
+}
+.nav a {
+  color: #ffffff;
+  float: left;
+  font-family: "Verdana";
+  font-size: 15px;
+  padding: 0 30px 0 0;
+  text-align: center;
+  text-decoration: none;
+}
+.nav_dropdown {
+  float: left;
+  overflow: hidden;
+}
+.nav_dropdown .nav_dropdown_button {
+  background-color: inherit;
+  border: none;
+  color: #ffffff;
+  font-family: "Verdana";
+  font-size: 15px;
+  margin: 0 0 0 0;
+  outline: none;
+  padding: 0 30px 0 0;
+}
+.nav_dropdown_content {
+  background-color: #292c2f;
+  box-shadow: 5px 5px 10px #000000;
+  display: none;
+  min-width: 160px;
+  position: absolute;
+  z-index: 1;
+}
+.nav_dropdown_content a {
+  color: #ffffff;
+  display: block;
+  float: none;
+  padding: 15px 15px 15px 15px;
+  text-align: left;
+  text-decoration: none;
+}
+.nav a:hover, .nav_dropdown:hover .nav_dropdown_button {
+  color: #000000
+}
+.nav_dropdown_content a:hover {
+  color: #000000
+}
+.nav_dropdown:hover .nav_dropdown_content {
+  display: block;
+}
+
+body {
+  background-color: #8f9296;
+  color: #000000;
+  font-family: "Verdana";
+  font-size: 13px;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+h1 {
+  color: #000000;
+  font-family: "Verdana";
+  font-size: 15px;
+  margin: 0 0 0 0;
+  padding: 20px 0 20px 0;
+  text-align: left;
+}
+
+p {
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+
+.section {
+  padding: 0 30px 0 30px;
+  margin: 0 0 0 0;
+}
+
+.footer {
+  background-color: #292c2f;
+  border-top: 5px solid #ffffff;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 20px 30px 20px 30px;
+  position: fixed;
+  text-align: left;
+  width: 100%;
+}
+.footer .footer-left .footer-left-top {
+  color: #ffffff;
+  font-size: 15px;
+  padding: 0 0 10px 0;
+}
+.footer .footer-left .footer-left-bottom {
+  color: #8f9296;
+  float: left;
+  font-size: 10px;
+}
+.footer .footer-left .footer-left-bottom a:hover {
+  opacity: 0.5;
+}
+.footer .footer-right {
+  float: right;
+}
+.footer .footer-right img {
+  height: 25px;
+  padding: 0 0 0 5px;
+  width: 25px;
+}
+.footer .footer-right img:hover {
+  opacity: 0.5;
+}
