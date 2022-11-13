@@ -1,66 +1,81 @@
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+
 <!DOCTYPE html>
 
 <html lang="en-DE">
 
-  <head>
-    <link rel="stylesheet" href="css/index.css"/>
+	<head>
+		<link rel="stylesheet" href="/css/index.css"/>
+		
+		<link rel="stylesheet" href="/highlight/styles/stackoverflow-light.min.css"/>
+		<script src="/highlight/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
+		
+		<meta charset="UTF-8">
+		<meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
+		
+		<link rel="icon" href="/img/icon.svg">
+		<link rel="icon" sizes="any" type="image/svg+xml" href="/img/icon.svg">
 
-    <link rel="stylesheet" href="highlight/styles/github-dark.min.css"/>
-    <script src="highlight/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+		<title>RandomCollection</title>
 
-    <meta charset="UTF-8">
-    <meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script> 
+			$(function(){
+				$("#nav").load("/nav.html");
+				$("#footer").load("/footer.html"); 
+			});
+		</script>
+	</head>
 
-    <title>RandomCollection</title>
+	<body>
 
-    <link rel="icon" href="img/icon.svg"
-  </head>
-    
-  <body>
+		<header></header>
 
-    <header></header>
+		<div id="nav"></div>
 
-    <nav class="nav">
-      <a href="index.html">Home</a>
-	  <a href="index.html">Economics</a>
-	  <a href="index.html">Finance</a>
-	  <a href="index.html">Statistics</a>
-      <div class="nav_dropdown">
-        <button class="nav_dropdown_button">Coding</button>
-        <div class="nav_dropdown_content">
-		  <a href="pages/coding/html.html">HTML</a>
-          <a href="pages/coding/cheatsheet.html">Python Cheatsheet</a>
-        </div>
-      </div>
-	  <a href="pages/resources/resources.html">Resources</a>
-    </nav>
+		<div class="section">
+			<h1><span>RandomCollection</span></h1>
+			<p>
+				<strong>RandomCollection</strong> offers curated articles about economics, finance, statistics, and coding.
+			</p>
+		</div>
 
-    <div class="section">
-    <h1><span>RandomCollection</span></h1>
-      <p>
-      <strong>RandomCollection</strong> offers curated articles about economics, finance, statistics, and coding.
-      </p>
-    </div>
+		<div class="section">
+			<h1><span>Why?</span></h1>
+			<p>
+				The idea of creating a website such as <strong>RandomCollection</strong> emerged when I was thinking
+				about a way to maintain and organise small private projects as well as save loosely related notes
+				about various topics which would otherwise be lost in the depth of the computer. In addition, I was
+				always interested in the creation of a website in general and started to accumulate some basic knowledge
+				about HTML and CSS. After building a first local offline version of this website I immediately sort of
+				wanted to have it live. Not necessarily to reach a bigger audience but more like to own a live website
+				myself. Due to lack of content I could put on the website I decided to use it as a notebook for all kind
+				of random notes. Very naturally, this created an additional need to put the website live which would
+				guarantee immediate access to the notes. After a quick Google search, it became clear that GitHub Pages
+				offers the possibility to maintain a website for free. It was an easy choice.	  
+			</p>
+		</div>
 
-    <footer class="footer">
-      <div class="footer-left">
-	    <p class="footer-left-top">
-		RandomCollection
-		</p>
-        <p class="footer-left-bottom">
-        &copy; 2022. All Rights Reserved.
-        <br>Made with &hearts; by <a href="mailto:jugendzeitung@aol.com">RandomCollection</a>
-	    </p>
-      </div>
-      <div class="footer-right">
-        <a href="https://www.facebook.com/" target="_blank"><img alt="Facebook" src="img/facebook.png"/></a>
-        <a href="https://twitter.com/" target="_blank"><img alt="Twitter" src="img/twitter.png"/></a>
-        <a href="https://github.com/" target="_blank"><img alt="GitHub" src="img/github.png"/></a>
-      </div>
-    </footer>
-        
-  </body>
-	
+		<div class="section">
+			<h1><span>Who?</span></h1>
+				<p>
+				I myself am a economist and econometrician by training and I am currently employed in the financial
+				industry working as a risk analytics and modelling manager. It was also only in current role that I
+				really got my hands into coding where I especially fell in love with Python.
+				<br>The picture below shows myself as Travelling Salesperson Problem (TSP) rendered picture. The
+				methodology and underlying code can be accessed via the
+				<a href="https://github.com/RandomCollection/Travelling-Salesperson-Problem-Art" target="_blank">Travelling-Salesperson-Problem-Art</a>
+				repository.
+				<br><br><img src="img/out.jpg" alt="RandomCollection" style="width:150px;">	  
+			</p>
+		</div>
+		
+		<div id="footer"></div>
+
+	</body>
+
 </html>
+
+<!-- END ----------------------------------------------------------------------------------------------------------- -->
