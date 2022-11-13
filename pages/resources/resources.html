@@ -1,77 +1,140 @@
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+
 <!DOCTYPE html>
 
 <html lang="en-DE">
 
-  <head>
-    <link rel="stylesheet" href="../../css/index.css"/>
+	<head>
+		<link rel="stylesheet" href="/css/index.css"/>
+		
+		<link rel="stylesheet" href="/highlight/styles/stackoverflow-light.min.css"/>
+		<script src="/highlight/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
+		
+		<meta charset="UTF-8">
+		<meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
+		
+		<link rel="icon" href="/img/icon.svg">
+		<link rel="icon" sizes="any" type="image/svg+xml" href="/img/icon.svg">
 
-    <link rel="stylesheet" href="../../highlight/styles/github-dark.min.css"/>
-    <script src="../../highlight/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+		<title>RandomCollection</title>
 
-    <meta charset="UTF-8">
-    <meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script> 
+			$(function(){
+				$("#nav").load("/nav.html");
+				$("#footer").load("/footer.html"); 
+			});
+		</script>
+	</head>
 
-    <title>RandomCollection</title>
+	<body>
 
-    <link rel="icon" href="../../img/icon.svg"
-  </head>
-    
-  <body>
+		<header></header>
 
-    <header></header>
+		<div id="nav"></div>
 
-    <nav class="nav">
-      <a href="../../index.html">Home</a>
-	  <a href="../../index.html">Economics</a>
-	  <a href="../../index.html">Finance</a>
-	  <a href="../../index.html">Statistics</a>
-      <div class="nav_dropdown">
-        <button class="nav_dropdown_button">Coding</button>
-        <div class="nav_dropdown_content">
-		  <a href="../coding/html.html">HTML</a>
-          <a href="../coding/cheatsheet.html">Python Cheatsheet</a>
-        </div>
-      </div>
-	  <a href="resources.html">Resources</a>
-    </nav>
+		<div class="section">
+			<h1><span>Resources</span></h1>
+			
+			<strong>Data Science</strong>
+			<ul>
+				<li><a href="https://store.lerner.co.il/ace-python-interviews" target="_blank">Ace Python Interviews</a></li>
+				<li><a href="https://github.com/eugeneyan/applied-ml" target="_blank">Applied Data Science & Machine Learning</a></li>
+				<li><a href="https://dipranjan.github.io/dsinterviewqns/intro.html/" target="_blank">Data Science Interview Book</a></li>
+				<li><a href="https://www.conordewey.com/blog/the-big-list-of-data-science-interview-resources/" target="_blank">Data Science Interview Resources</a></li>
+				<li><a href="https://github.com/bradleyboehmke/data-science-learning-resources" target="_blank">Data Science Learning Resources</a></li>
+				<li><a href="https://www.interviewquery.com/" target="_blank">Interview Query</a></li>
+				<li><a href="https://mlu-explain.github.io/" target="_blank">Machine Learning University</a></li>
+				<li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/" target="_blank">Python Data Science Handbook</a></li>
+				<li><a href="https://www.informationisbeautifulawards.com/showcase/611-the-graphic-continuum" target="_blank">The Graphic Continuum</a></li>
+				<li><a href="https://towardsdatascience.com/" target="_blank">Towards Data Science</a></li>
+			</ul>
+			
+			<strong>Data Visualisation</strong>
+			<ul>
+				<li><a href="https://eagereyes.org/" target="_blank">eagereyes</a></li>
+				<li><a href="https://blog.datawrapper.de/fonts-for-data-visualization/" target="_blank">Fonts for data visualization</a></li>
+				<li><a href="https://junkcharts.typepad.com/" target="_blank">Junk Charts</a></li>
+				<li><a href="https://github.com/killiansheriff/LovelyPlots/" target="_blank">LovelyPlots</a></li>
+				<li><a href="https://www.storytellingwithdata.com/" target="_blank">Storytelling With Data</a></li>
+				<li><a href="https://blog.datawrapper.de/text-in-data-visualizations/" target="_blank">Text in data visualizations</a></li>		
+				<li><a href="http://www.thefunctionalart.com/" target="_blank">The Functional Art</a></li>
+				<li><a href="https://www.datafantic.com/the-magic-of-matplotlib-stylesheets/" target="_blank">The Magic of Matplotlib Stylesheets</a></li>
+				<li><a href="https://courses.spatialthoughts.com/python-dataviz.html/" target="_blank">Python data visualization</a></li>
+				<li><a href="https://www.visualisingdata.com/" target="_blank">Visualising Data</a></li>
+				<li><a href="https://viz.wtf/" target="_blank">WTF Visualizations</a></li>
+			</ul>
+			
+			<strong>Coding</strong>
+			<ul>
+				<li>
+					Markdown
+					<ul>
+						<li><a href="https://medium.com/analytics-vidhya/the-ultimate-markdown-guide-for-jupyter-notebook-d5e5abf728fd" target="_blank">The Ultimate Markdown Guide (for Jupyter Notebook)</a></li>
+					</ul>
+				</li>
+				<li>
+					Python
+					<ul>
+						<li><a href="https://pandas.pydata.org/docs/development/extending.html" target="_blank">pandas - Extending pandas</a></li>
+						<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank">pandas - DataFrame</a></li>
+						<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/general_functions.html" target="_blank">pandas - General Functions</a></li>
+						<li><a href="https://realpython.com/python-application-layouts/" target="_blank">Python - Application Layouts: A Reference</a></li>
+						<li><a href="https://github.com/prabhupant/python-ds" target="_blank">Python - Data Structures and Algorithms</a></li>		
+						<li><a href="https://docs.python.org/3/" target="_blank">Python - Documentation</a></li>
+						<li><a href="https://docs.python-guide.org/" target="_blank">Python - The Hitchhiker's Guide to Python</a></li>
+						<li><a href="https://py-pkgs.org/" target="_blank">Python - Packages</a></li>
+					</ul>
+				</li>
+				<li>
+					SQL
+					<ul>
+						<li><a href="https://mode.com/blog/most-popular-window-functions-and-how-to-use-them/" target="_blank">Most Popular Window Functions</a></li>
+						<li><a href="https://sqlbolt.com/" target="_blank">SQLBolt</a></li>
+						<li><a href="https://www.sqlservertutorial.net/" target="_blank">SQL Server Tutorial</a></li>
+					
+					</ul>
+				</li>
+				<li>
+					VBA
+					<ul>
+						<li><a href="https://www.functionx.com/vbaccess/index.htm" target="_blank">Microsoft Access with VBA</a></li>
+					</ul>
+				</li>
+				<li>
+					Other
+					<ul>
+						<li><a href="https://codesolid.com/using-latex-in-python/" target="_blank">LaTeX in Python</a></li>
+						<li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank">MathJax Basic Tutorial</a></li>
+						<li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></li>
+					</ul>
+				</li>		
+			</ul>
 
-    <div class="section">
-    <h1><span>Resources</span></h1>
-		<ul>
-		<li><a href="https://www.instagram.com/chartrdaily/?hl=de" target="_blank">chartr</a></li>
-		<li><a href="https://www.reddit.com/r/dataisbeautiful/" target="_blank">DataIsBeautiful</a></li>
-		<li><a href="https://medialab.github.io/iwanthue/" target="_blank">i want hue</a></li>		
-		<li><a href="https://www.kaggle.com" target="_blank">Kaggle</a></li>
-		<li><a href="https://ourworldindata.org/" target="_blank">Our world in data</a></li>
-		<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank">pandas DataFrame</a></li>
-		<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/general_functions.html" target="_blank">pandas general functions</a></li>
-		<li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/" target="_blank">Python Data Science Handbook</a></li>
-		<li><a href="https://docs.python.org/3/" target="_blank">Python documentation</a></li>
-		<li><a href="https://www.shanelynn.ie" target="_blank">Shane Lynn</a></li>
-		<li><a href="https://www.informationisbeautifulawards.com/showcase/611-the-graphic-continuum" target="_blank">The Graphic Continuum</a></li>
-		<li><a href="https://pudding.cool/" target="_blank">The Pudding</a></li>
-		</ul>
-    </div>
+			<strong>Regulation</strong>
+			<ul>
+				<li><a href="https://lexparency.org/" target="_blank">Lexparency</a></li>
+			</ul>
 
-    <footer class="footer">
-      <div class="footer-left">
-	    <p class="footer-left-top">
-		RandomCollection
-		</p>
-        <p class="footer-left-bottom">
-        &copy; 2022. All Rights Reserved.
-        <br>Made with &hearts; by <a href="mailto:jugendzeitung@aol.com">RandomCollection</a>
-	    </p>
-      </div>
-      <div class="footer-right">
-        <a href="https://www.facebook.com/" target="_blank"><img alt="Facebook" src="../../img/facebook.png"/></a>
-        <a href="https://twitter.com/" target="_blank"><img alt="Twitter" src="../../img/twitter.png"/></a>
-        <a href="https://github.com/" target="_blank"><img alt="GitHub" src="../../img/github.png"/></a>
-      </div>
-    </footer>
-        
-  </body>
-	
+			<strong>Other</strong>
+			<ul>
+				<li><a href="https://www.instagram.com/chartrdaily/?hl=de" target="_blank">chartr</a></li>
+				<li><a href="https://www.reddit.com/r/dataisbeautiful/" target="_blank">DataIsBeautiful</a></li>
+				<li><a href="https://fivethirtyeight.com/" target="_blank">FiveThirtyEight</a></li>
+				<li><a href="https://medialab.github.io/iwanthue/" target="_blank">i want hue</a></li>
+				<li><a href="https://www.kaggle.com" target="_blank">Kaggle</a></li>
+				<li><a href="https://ourworldindata.org/" target="_blank">Our World in Data</a></li>
+				<li><a href="https://www.shanelynn.ie" target="_blank">Shane Lynn</a></li>
+				<li><a href="https://pudding.cool/" target="_blank">The Pudding</a></li>
+			</ul>
+		</div>
+
+		<div id="footer"></div>
+
+	</body>
+
 </html>
+
+<!-- END ----------------------------------------------------------------------------------------------------------- -->
