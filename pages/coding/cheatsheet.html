@@ -1,64 +1,49 @@
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+
 <!DOCTYPE html>
 
 <html lang="en-DE">
 
-  <head>
-    <link rel="stylesheet" href="../../css/index.css"/>
+	<head>
+		<link rel="stylesheet" href="/css/index.css"/>
+		
+		<link rel="stylesheet" href="/highlight/styles/stackoverflow-light.min.css"/>
+		<script src="/highlight/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
+		
+		<meta charset="UTF-8">
+		<meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
+		
+		<link rel="icon" href="/img/icon.svg">
+		<link rel="icon" sizes="any" type="image/svg+xml" href="/img/icon.svg">
 
-    <link rel="stylesheet" href="../../highlight/styles/github-dark.min.css"/>
-    <script src="../../highlight/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+		<title>RandomCollection</title>
 
-    <meta charset="UTF-8">
-    <meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script> 
+			$(function(){
+				$("#nav").load("/nav.html");
+				$("#footer").load("/footer.html"); 
+			});
+		</script>
+	</head>
 
-    <title>RandomCollection</title>
+	<body>
 
-    <link rel="icon" href="../../img/icon.svg"
-  </head>
-    
-  <body>
+		<header></header>
 
-    <header></header>
+		<div id="nav"></div>
 
-    <nav class="nav">
-      <a href="../../index.html">Home</a>
-	  <a href="../../index.html">Economics</a>
-	  <a href="../../index.html">Finance</a>
-	  <a href="../../index.html">Statistics</a>
-      <div class="nav_dropdown">
-        <button class="nav_dropdown_button">Coding</button>
-        <div class="nav_dropdown_content">
-          <a href="html.html">HTML</a>
-		  <a href="cheatsheet.html">Python Cheatsheet</a>
-        </div>
-      </div>
-	  <a href="../resources/resources.html">Resources</a>
-    </nav>
+		<div class="section">
+			<h1><span>Python Cheatsheet Jupyter Notebook</span></h1>
+			<iframe style="border: 1px solid #292c2f; height: 60%; position: absolute; width: 95%" src="cheatsheet_jupyter.html"></iframe>
+		</div>
 
-    <div class="section">
-    <h1><span>Python Cheatsheet Jupyter Notebook</span></h1>
-		<iframe style="border: 1px solid #292c2f; height: 60%; position: absolute; width: 95%" src="cheatsheet_jupyter.html"></iframe>
-    </div>
+		<div id="footer"></div>
 
-    <footer class="footer">
-      <div class="footer-left">
-	    <p class="footer-left-top">
-		RandomCollection
-		</p>
-        <p class="footer-left-bottom">
-        &copy; 2022. All Rights Reserved.
-        <br>Made with &hearts; by <a href="mailto:jugendzeitung@aol.com">RandomCollection</a>
-	    </p>
-      </div>
-      <div class="footer-right">
-        <a href="https://www.facebook.com/" target="_blank"><img alt="Facebook" src="../../img/facebook.png"/></a>
-        <a href="https://twitter.com/" target="_blank"><img alt="Twitter" src="../../img/twitter.png"/></a>
-        <a href="https://github.com/" target="_blank"><img alt="GitHub" src="../../img/github.png"/></a>
-      </div>
-    </footer>
-        
-  </body>
-	
+	</body>
+
 </html>
+
+<!-- END ----------------------------------------------------------------------------------------------------------- -->
