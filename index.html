@@ -1,31 +1,11 @@
-<!-- --------------------------------------------------------------------------------------------------------------- -->
-
 <!DOCTYPE html>
 
 <html lang="en-DE">
 
 	<head>
-		<link rel="stylesheet" href="/css/index.css"/>
-		
-		<link rel="stylesheet" href="/highlight/styles/stackoverflow-light.min.css"/>
-		<script src="/highlight/highlight.min.js"></script>
-		<script>hljs.highlightAll();</script>
-		
-		<meta charset="UTF-8">
-		<meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
-		
-		<link rel="icon" href="/img/icon.svg">
-		<link rel="icon" sizes="any" type="image/svg+xml" href="/img/icon.svg">
-
-		<title>RandomCollection</title>
-
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		<script> 
-			$(function(){
-				$("#nav").load("/nav.html");
-				$("#footer").load("/footer.html"); 
-			});
+		<script>
+			$(function(){$("head").load("/head.html")});
 		</script>
 	</head>
 
@@ -35,32 +15,46 @@
 
 		<div id="nav"></div>
 
-		<div class="section">
-			<h1><span>RandomCollection</span></h1>
-			<p>
-				<strong>RandomCollection</strong> offers curated articles about economics, finance, statistics, and coding.
-			</p>
-		</div>
-
-		<div class="section">
-			<h1><span>Why?</span></h1>
-			<p>
-				lorem ipsum	  
-			</p>
-		</div>
-
-		<div class="section">
-			<h1><span>Who?</span></h1>
+		<article class="section">
+			<h1>Home</h1>
+			<section>
+				<h2>RandomCollection</h2>
 				<p>
-				lorem ipsum
-				<br><br><img src="img/profile.jpg" alt="RandomCollection" style="width:150px;">	  
-			</p>
-		</div>
+					<strong>RandomCollection</strong> offers curated articles about economics, finance, statistics, and
+					coding.
+				</p>
+			</section>
+			<section>
+				<h2>Why?</h2>
+				<p>
+					The idea of creating <strong>RandomCollection</strong> emerged when I was thinking about a way to
+					<strong>collect</strong> and organise small private coding projects. In addition, I was looking for
+					a way to centrally preserve <strong>random</strong> notes about various topics that would otherwise
+					get lost in the depth of my computer. The requirement of having this <strong>random
+					collection</strong> available at all times, device-independent, and without the need of any login,
+					combined with my general interest in building a website, lead to the creation of
+					<strong>RandomCollection</strong>. 
+				</p>
+			</section>
+			<section>
+				<h2>Who?</h2>
+				<p>
+					I am an economist and econometrician with a passion for providing actionable insights of the highest
+					quality for a wide range of business problems within the credit risk context. I utilise
+					state-of-the-art analytics and technology to enable sound data-driven decision making. Currently, I
+					am working as a risk analytics and modelling manager for a Fortune Global 500 company in the
+					financial industry. It was only in my current role that I really got my hands into coding, and I
+					especially fell in love with Python.
+					<br><br><img src="/img/profile.jpg" class="img_center" alt="RandomCollection" style="max-width:10%;">	  
+					<br>Above is a Travelling Salesperson Problem (TSP) rendered image of myself. More information can
+					be found via
+					<a href="https://github.com/RandomCollection/Travelling-Salesperson-Problem-Art" target="_blank">Travelling-Salesperson-Problem-Art</a>.
+				</p>
+			</section>	
+		</article>
 		
 		<div id="footer"></div>
 
 	</body>
 
 </html>
-
-<!-- END ----------------------------------------------------------------------------------------------------------- -->

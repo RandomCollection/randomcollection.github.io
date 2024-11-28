@@ -13996,30 +13996,51 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>A Python package can generally be described by means of the following directory tree:</p>
 
-<pre><code>ExamplePackage/
-    LICENSE.txt
-    README.md
-    setup.py
-    examplepackage/
-        __init__.py
-        module_1.py
-        module_2.py</code></pre>
-<p>where <code>examplepackage</code> is the package name and <code>module_1.py</code> and <code>module_2.py</code> are modules, repsectively, which can include functions and classes with methods. To be more precise, any Python file <code>*.py</code> is a module and a bunch of modules in a directory is a package.</p>
-<p>A Python package contains several other key files:</p>
+<pre><code>example-package/
+  | -- .venv
+  |
+  | -- docs/
+  |  | -- ...  
+  |
+  | -- src/
+  |  | -- example_package/
+  |     | -- __init__.py
+  |     | -- module.py
+  |     | -- ...
+  |
+  | -- tests/
+  |  | -- ...
+  |
+  | -- .gitignore
+  | -- LICENSE
+  | -- pyproject.toml
+  | -- README.md</code></pre>
+<p>The above directory tree utilises the so-called "src"-layout in contrast to the "flat"-layout. See <a href="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/" title="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/">src layout vs flat layout</a> for more information. <code>example_package</code> is the package name and <code>module.py</code> is a module, which can include functions and classes with methods. To be more precise, any Python file <code>*.py</code> is a module and a bunch of modules in a directory is a package. A Python package contains several other key files:</p>
 <ul>
-<li><code>LICENSE.txt</code>: it is important for every package to include a license, which tells users who install the package the terms under which they can use it</li>
-<li><code>README.md</code>: contains a description of the package</li>
-<li><code>setup.py</code>: contains information necessary to assemble the package so it can be installed via general package installation processes</li>
-<li><code>__init__.py</code>: it is important to include a file called <code>__init__.py</code> to every directory level. The file <code>__init__.py</code> can be left blank</li>
+<li><code>.venv</code>: This is the virtual environment the Python project.</li>
+<li><code>docs/</code>: This directory contains the documentation for the Python project.</li>
+<li><code>src/</code>: This directory is where the project's source code is stored. The structure inside <code>src/</code> represents the package's structure, allowing for clean and organised code.</li>
+<li><code>__init__.py</code>: It is important to include a file called <code>__init__.py</code> to every directory level. The file <code>__init__.py</code> can be left blank.</li>
+<li><code>tests/</code>: This directory contains tests for the code. Every high-quality Python project should contain tests that make sure that the code works as intended.</li>
+<li><code>.gitignore</code>: This is a file specifying which files should be ignored by the version control system <strong>Git</strong>.</li>
+<li><code>LICENSE</code>: Every project should include a license file that specifies the terms under which the code can be used, modified, and distributed.</li>
+<li><code>pyproject.toml</code>: This file contains almost all configurations required to work on the project. Many tools like linters, build backends, and test runners can be configured in a <code>pyproject.toml</code> file.</li>
+<li><code>README.md</code>: This is what many people will see first when looking at the project. A well-written README provides essential information about the project, such as installation instructions, usage examples, and contributions guidelines.</li>
 </ul>
-<p>A <code>setup.py</code> file might look like this:</p>
+<p>More information about creating a Python package can be found here:</p>
+<ul>
+<li><a href="https://packaging.python.org/tutorials/packaging-projects/" title="https://packaging.python.org/tutorials/packaging-projects/">The Python Software Foundation</a></li>
+<li><a href="https://about.readthedocs.com/" title="https://python-packaging-tutorial.readthedocs.io/en/latest/setup_py.html">Read the Docs</a></li>
+<li><a href="https://realpython.com/pypi-publish-python-package/" title="https://realpython.com/pypi-publish-python-package/">Real Python</a></li>
+</ul>
+<p>A deprecated way of creating a Python package is via a so-called <code>setup.py</code> file. A <code>setup.py</code> contains information necessary to assemble the package so it can be installed via general package installation processes. A <code>setup.py</code> file might look like this:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">setuptools</span>
 
 <span class="n">setuptools</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;examplepackage&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;example-package&quot;</span><span class="p">,</span>
     <span class="n">version</span><span class="o">=</span><span class="s2">&quot;0.1&quot;</span><span class="p">,</span>
     <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Alice and Bob&quot;</span><span class="p">,</span>
-    <span class="n">license</span><span class="o">=</span><span class="s2">&quot;LICENSE.txt&quot;</span><span class="p">,</span>
+    <span class="n">license</span><span class="o">=</span><span class="s2">&quot;LICENSE&quot;</span><span class="p">,</span>
     <span class="n">packages</span><span class="o">=</span><span class="n">setuptools</span><span class="o">.</span><span class="n">find_packages</span><span class="p">(),</span>
     <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
         <span class="s2">&quot;numpy&gt;=1.19.5&quot;</span><span class="p">,</span>
@@ -14028,16 +14049,10 @@ a.anchor-link {
     <span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
-<p>Finally, a Python package can be created by using the command line. Simply navigate to the directory containing the <code>setup.py</code> file and run one of the following commands:</p>
+<p>In order to actually create the package, navigate to the directory containing the <code>setup.py</code> file by using the command line and run one of the following commands:</p>
 <ul>
-<li>Binary distribution: a binary distribution, i.e. an executable installer, can be created by <code>python setup.py bdist_wininst</code></li>
-<li>Source distribution: a source distribution can be created by <code>python setup.py sdist bdist_wheel</code></li>
-</ul>
-<p>More information about creating a Python package can be found here:</p>
-<ul>
-<li><a href="https://packaging.python.org/tutorials/packaging-projects/" title="https://packaging.python.org/tutorials/packaging-projects/">The Python Software Foundation</a></li>
-<li><a href="https://python-packaging-tutorial.readthedocs.io/en/latest/setup_py.html" title="https://python-packaging-tutorial.readthedocs.io/en/latest/setup_py.html">Read the Docs</a></li>
-<li><a href="https://realpython.com/pypi-publish-python-package/" title="https://realpython.com/pypi-publish-python-package/">Real Python</a></li>
+<li>Binary distribution: A binary distribution, i.e. an executable installer, can be created via <code>python setup.py bdist_wininst</code>.</li>
+<li>Source distribution: A source distribution can be created via <code>python setup.py sdist bdist_wheel</code>.</li>
 </ul>
 
 </div>
@@ -14170,17 +14185,6 @@ red
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>A decorator is a function that accepts another function as an argument. The decorator will usually modify or enhance the function it accepted and return the modified function. Python comes with several built-in decorators. The big three are:</p>
-<ul>
-<li><code>@classmethod</code>,</li>
-<li><code>@staticmethod</code>, and</li>
-<li><code>@property</code>.</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Function">Function<a class="anchor-link" href="#Function">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -14305,10 +14309,10 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 <p>The parameter *args collects arbitrary positional arguments like this</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">make_pizza</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="o">*</span><span class="n">toppings</span><span class="p">):</span>
@@ -14324,16 +14328,40 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Making a 12-inch pizza with the following toppings:
+- mushrooms
+- green peppers
+- extra cheese
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>The parameter **kwargs collects non-specific keyword arguments like this</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">build_profile</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="o">**</span><span class="n">user_info</span><span class="p">):</span>
@@ -14347,6 +14375,27 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>{&#39;location&#39;: &#39;princeton&#39;, &#39;field&#39;: &#39;physics&#39;, &#39;first_name&#39;: &#39;albert&#39;, &#39;last_name&#39;: &#39;einstein&#39;}
+</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -14399,18 +14448,18 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Generators">Generators<a class="anchor-link" href="#Generators">&#182;</a></h3>
+<h3 id="Generator">Generator<a class="anchor-link" href="#Generator">&#182;</a></h3>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Generators are a type of iterable like lists or tuples. Unlike lists they do not allow indexing with arbitrary indices, but they can still be iterared through with for loops. They can be created using functions and the yield statement. The yield statement is used to define a generator, replacing the return of a function to provide a result to its caller without destroying local variables. In short, generators allow you to declare a function that behaves like an interator, i.e. it can be used in a for loop.</p>
+<p>Generators are a type of iterable like lists or tuples. Unlike lists they do not allow indexing with arbitrary indices, but they can still be iterared through with for loops. They can be created using functions and the yield statement. The yield statement is used to define a generator, replacing the return of a function to provide a result to its caller without destroying local variables. In short, generators allow you to declare a function that behaves like an iterator, i.e. it can be used in a for loop.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">numbers</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -14449,6 +14498,73 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Decorator">Decorator<a class="anchor-link" href="#Decorator">&#182;</a></h3>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>A decorator is a function that accepts another function as an argument. The decorator will usually modify or enhance the function it accepted and return the modified function. Python comes with several built-in decorators. The big three are:</p>
+<ul>
+<li><code>@classmethod</code>,</li>
+<li><code>@staticmethod</code>, and</li>
+<li><code>@property</code>.</li>
+</ul>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">handle_exception</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>  <span class="c1"># *args</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">func</span><span class="p">()</span>  <span class="c1"># *args</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There was a type error&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There was a zero division error&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There was some sort of error&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@handle_exception</span>
+<span class="k">def</span> <span class="nf">cause_error</span><span class="p">():</span>  <span class="c1"># *args</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+
+<span class="n">cause_error</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>There was a zero division error
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Virtual-environment">Virtual environment<a class="anchor-link" href="#Virtual-environment">&#182;</a></h2>
 </div>
 </div>
@@ -14456,12 +14572,12 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>A virtual environment is a self-contained directory tree that contains a Python installation for a particular version of Python plus a number of additional packages. To resolve the issue of conflicting requirements, application A can have its own virtual environment with version 1.0 installed while application B has another virtual environment with version 2.0. If application B requires a library be upgraded to version 3.0, this will not affect application A's environment. A virtual environment can be created using "virtualenv" and the Windows shell (WINDOWS + R, "cmd") according to the following steps:</p>
 <ol>
-<li>Install "virtualenv": <code>pip install virtualenv</code></li>
-<li>Navigate to the directory where to install the virtual environment: <code>cd /d "&lt;path&gt;"</code></li>
-<li>Create virtual environment: <code>virtualenv venv</code></li>
-<li>Activate virtual environment: <code>.\venv\Scripts\activate</code></li>
-<li>Install packages: e.g. <code>pip install pandas</code> or <code>pip install -r requirements.txt</code> ("requirements.txt" can be created via <code>pip freeze &gt; requirements.txt</code>)</li>
-<li>Assign virtual environment in PyCharm: <code>File -&gt; Settings... -&gt; Project: &lt;name&gt; -&gt; Python Interpreter -&gt; Settings (gear wheel) -&gt; Add Local -&gt; &lt;path&gt;\venv\Scripts\python.exe</code></li>
+<li>Install "virtualenv": <code>pip install virtualenv</code>.</li>
+<li>Navigate to the directory where to install the virtual environment: <code>cd /d "&lt;path&gt;"</code>.</li>
+<li>Create virtual environment: <code>virtualenv venv</code>.</li>
+<li>Activate virtual environment: <code>.\venv\Scripts\activate</code>.</li>
+<li>Install packages: e.g. <code>pip install pandas</code> or <code>pip install -r requirements.txt</code> ("requirements.txt" can be created via <code>pip freeze &gt; requirements.txt</code>).</li>
+<li>Assign virtual environment in PyCharm: <code>File -&gt; Settings... -&gt; Project: &lt;name&gt; -&gt; Python Interpreter -&gt; Settings (gear wheel) -&gt; Add Local -&gt; &lt;path&gt;\venv\Scripts\python.exe</code>.</li>
 </ol>
 
 </div>
@@ -14475,11 +14591,11 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>Python Enhancement Proposals (PEPs)</strong> are suggestions for improvements to the language made by experienced Python developers. <strong>PEP 8</strong> is a style guide on the subject of writing readable code. It also contains a number of guidelines in reference to names, which are summarised below:</p>
 <ul>
-<li>Modules should have lowercase names e.g. <code>examplemodule.py</code></li>
-<li>Classes should have CamelCase names e.g. <code>ExampleClass()</code></li>
-<li>Functions and variables should have lowercase with underscore names e.g. <code>example_function()</code></li>
-<li>Constants should have uppercase with underscore names e.g. <code>EXAMPLE_CONSTANT</code></li>
-<li>Names that would clash with Python keywords such as <code>class</code> or <code>if</code> should have a trailing underscore e.g. <code>example_keyword</code></li>
+<li>Modules should have lowercase names e.g. <code>examplemodule.py</code>.</li>
+<li>Classes should have CamelCase names e.g. <code>ExampleClass()</code>.</li>
+<li>Functions and variables should have lowercase with underscore names e.g. <code>example_function()</code>.</li>
+<li>Constants should have uppercase with underscore names e.g. <code>EXAMPLE_CONSTANT</code>.</li>
+<li>Names that would clash with Python keywords such as <code>class</code> or <code>if</code> should have a trailing underscore e.g. <code>example_keyword</code>.</li>
 </ul>
 
 </div>
@@ -14508,7 +14624,7 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 <td style="text-align:center">Yes</td>
 <td style="text-align:center">Yes</td>
 <td style="text-align:center">{\&lt;key&gt;: \&lt;value&gt;}</td>
-<td style="text-align:left">When a logical association between a key and a value pair is needed</td>
+<td style="text-align:left">When a logical association between a key and a value pair is needed.</td>
 </tr>
 <tr>
 <td style="text-align:left">List</td>
@@ -14516,7 +14632,7 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 <td style="text-align:center">Yes</td>
 <td style="text-align:center">Yes</td>
 <td style="text-align:center">[\&lt;value&gt;]</td>
-<td style="text-align:left">When a simple, iterable collection of data that is modified frequently is needed</td>
+<td style="text-align:left">When a simple, iterable collection of data that is modified frequently is needed.</td>
 </tr>
 <tr>
 <td style="text-align:left">Set</td>
@@ -14524,7 +14640,7 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 <td style="text-align:center">Yes</td>
 <td style="text-align:center">No</td>
 <td style="text-align:center">{\&lt;value&gt;}</td>
-<td style="text-align:left">When uniqueness for the elements is needed</td>
+<td style="text-align:left">When uniqueness for the elements is needed.</td>
 </tr>
 <tr>
 <td style="text-align:left">Tuple</td>
@@ -14532,7 +14648,7 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 <td style="text-align:center">No</td>
 <td style="text-align:center">Yes</td>
 <td style="text-align:center">(\&lt;value&gt;)</td>
-<td style="text-align:left">When data cannot change</td>
+<td style="text-align:left">When data cannot change.</td>
 </tr>
 </tbody>
 </table>
@@ -14563,7 +14679,7 @@ least_difference(a: float, b: float, c: float = 0) -&gt; float
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">alphabet</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]</span>
@@ -14633,7 +14749,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)]</span>
@@ -14652,7 +14768,7 @@ d
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 
 
 
@@ -14676,7 +14792,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
@@ -14731,7 +14847,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)))</span>
@@ -14750,7 +14866,7 @@ d
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
@@ -14779,7 +14895,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
@@ -14799,7 +14915,7 @@ d
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
 
 
@@ -14828,7 +14944,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span> <span class="s2">&quot;carol&quot;</span><span class="p">]</span>
@@ -14878,7 +14994,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
@@ -14898,107 +15014,11 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">date_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">date_str</span> <span class="o">=</span> <span class="n">date_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %b %y&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">date_str</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>01 Jan 20
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>String to date object via <code>strptime</code> (string-parsed-time):</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">date_str</span> <span class="o">=</span> <span class="s2">&quot;2020-01-01 18:00:00&quot;</span>
-<span class="n">date_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Class-Timestamp-from-package-pandas">Class <code>Timestamp</code> from package <code>pandas</code><a class="anchor-link" href="#Class-Timestamp-from-package-pandas">&#182;</a></h3>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Date object to string via <code>strftime</code>:</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">date_timestamp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">date_str</span> <span class="o">=</span> <span class="n">date_timestamp</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %b %y&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15044,13 +15064,109 @@ d
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>String to date object via <code>strptime</code> (string-parsed-time):</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">date_str</span> <span class="o">=</span> <span class="s2">&quot;2020-01-01 18:00:00&quot;</span>
+<span class="n">date_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Class-Timestamp-from-package-pandas">Class <code>Timestamp</code> from package <code>pandas</code><a class="anchor-link" href="#Class-Timestamp-from-package-pandas">&#182;</a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Date object to string via <code>strftime</code>:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">date_timestamp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">date_str</span> <span class="o">=</span> <span class="n">date_timestamp</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %b %y&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">date_str</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>01 Jan 20
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>String to date object via <code>strptime</code>:</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">date_str</span> <span class="o">=</span> <span class="s2">&quot;2020-01-01 18:00:00&quot;</span>
@@ -15076,7 +15192,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -15095,7 +15211,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -15217,7 +15333,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
@@ -15236,7 +15352,7 @@ d
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 
 
 
@@ -15329,7 +15445,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dict_1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span> <span class="s2">&quot;carol&quot;</span><span class="p">]}</span>
@@ -15370,7 +15486,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>  <span class="c1"># option: include=&quot;all&quot;</span>
@@ -15389,7 +15505,7 @@ d
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 
 
 
@@ -15700,10 +15816,10 @@ d
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Show duplicates</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>  <span class="c1"># option: subset=[&quot;&lt;column_name_1&quot;&gt;, ..., &quot;&lt;column_name_n&gt;&quot;]</span>
 
 <span class="c1"># Delete duplicates</span>
-<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># option: subset=[&quot;&lt;column_name_1&quot;&gt;, ..., &quot;&lt;column_name_n&gt;&quot;]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15795,7 +15911,7 @@ d
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;sex&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
@@ -15879,6 +15995,16 @@ male    53.25  168.25   70.25
 
 <span class="p">(</span>
     <span class="n">df</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;&lt;column_to_group&gt;&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">COL_SET</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;&lt;column_name&gt;&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="nb">set</span><span class="p">),</span>
+        <span class="n">COL_SET_ORDERED</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;&lt;column_name&gt;&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df</span>
     <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;&lt;column_name_1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;column_name_2&gt;&quot;</span><span class="p">])</span>
     <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="o">&lt;</span><span class="n">new_column_name</span><span class="o">&gt;=</span><span class="n">pd</span><span class="o">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;&lt;column_name&gt;&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="nb">set</span><span class="p">))</span>
     <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">&lt;</span><span class="n">new_column_name</span><span class="o">&gt;=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;&lt;new_column_name&gt;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)))</span>
@@ -15886,7 +16012,7 @@ male    53.25  168.25   70.25
 <span class="p">)</span>
 
 <span class="c1"># Find the whole data for the row with some maximum value in a column per some group identifier</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;column_to_group_1&quot;</span><span class="p">,</span> <span class="s2">&quot;column_to_group_2&quot;</span><span class="p">])[</span><span class="s2">&quot;column_to_maximise&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;&lt;column_to_group_1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;column_to_group_2&gt;&quot;</span><span class="p">])[</span><span class="s2">&quot;&lt;column_to_maximise&gt;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
 </pre></div>
 
      </div>
@@ -15951,6 +16077,8 @@ male    53.25  168.25   70.25
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;Total&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;&lt;index&gt;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Total&quot;</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -16007,70 +16135,6 @@ male    53.25  168.25   70.25
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-import">Data import<a class="anchor-link" href="#Data-import">&#182;</a></h2>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;path&gt;\&lt;filename&gt;.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;&lt;column_name&gt;&quot;</span><span class="p">])</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;path&gt;\&lt;filename&gt;.xlsx&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;&lt;column_name&gt;&quot;</span><span class="p">])</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;path&gt;\&lt;filename&gt;.parquet&quot;</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;&lt;path&gt;\&lt;filename&gt;.sql&quot;</span><span class="p">,</span> <span class="n">con</span><span class="o">=&lt;</span><span class="n">con</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;&lt;column_name&gt;&quot;</span><span class="p">])</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-export">Data export<a class="anchor-link" href="#Data-export">&#182;</a></h2>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">date_format</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-
-<span class="n">pd</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">()</span>
-
-<span class="c1"># pip install xlsxwriter</span>
-<span class="n">writer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span>
-    <span class="n">path</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;&lt;path&gt;\&lt;filename&gt;.xlsx&quot;</span><span class="p">,</span>
-    <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;xlsxwriter&quot;</span><span class="p">,</span>
-    <span class="n">date_format</span><span class="o">=</span><span class="s2">&quot;yyyy-mm-dd&quot;</span><span class="p">,</span>
-    <span class="n">datetime_format</span><span class="o">=</span><span class="s2">&quot;yyyy-mm-dd&quot;</span>
-<span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;&lt;sheet_name_1&gt;&quot;</span><span class="p">)</span>  <span class="c1"># empty DataFrame to write text on sheet</span>
-<span class="n">writer</span><span class="o">.</span><span class="n">sheets</span><span class="p">[</span><span class="s2">&quot;&lt;sheet_name&gt;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&lt;text&gt;&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;&lt;sheet_name_2&gt;&quot;</span><span class="p">)</span>
-<span class="n">writer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-
-<span class="n">workbook</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">book</span>
-<span class="n">format_num</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_format</span><span class="p">({</span><span class="s2">&quot;num_format&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">})</span>
-<span class="n">defaults</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;defaults&quot;</span><span class="p">)</span>
-<span class="n">writer</span><span class="o">.</span><span class="n">sheets</span><span class="p">[</span><span class="s2">&quot;defaults&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">freeze_panes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">writer</span><span class="o">.</span><span class="n">sheets</span><span class="p">[</span><span class="s2">&quot;defaults&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">autofilter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">defaults</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">defaults</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">ws_defaults</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">sheets</span><span class="p">[</span><span class="s2">&quot;defaults&quot;</span><span class="p">]</span>
-<span class="n">ws_defaults</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="s2">&quot;E:F&quot;</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="n">format_num</span><span class="p">)</span>
-<span class="n">writer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Method-chaining">Method chaining<a class="anchor-link" href="#Method-chaining">&#182;</a></h2>
 </div>
 </div>
@@ -16108,7 +16172,7 @@ male    53.25  168.25   70.25
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">newfile&quot;</span><span class="p">)</span>
@@ -16206,8 +16270,7 @@ The answer is 5.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>A relative path is the path to the file from the current working directory. An absolute path is the complete path from the base of the file system to the file. It is recommended and preferred to use relative paths where possible in applications, because absolute paths are unlikely to work on different computers due to different directory structures.</p>
-<p>A path, or any other string, can be either provided as a plain string <code>"\\\\&lt;file_path&gt;\&lt;file_name&gt;.docx"</code> including special characters which need escaping or as a raw string <code>r"\\&lt;file_path&gt;\&lt;file_name&gt;.docx"</code>.</p>
+<p>A <strong>relative path</strong> is the path to the file from the current working directory. An <strong>absolute path</strong> is the complete path from the base of the file system to the file. It is recommended and preferred to use relative paths where possible in applications, because absolute paths are unlikely to work on different computers due to different directory structures. A path, or any other string, can be either provided as a plain string <code>"\\\\&lt;file_path&gt;\&lt;file_name&gt;.docx"</code> including special characters which need escaping or as a raw string <code>r"\\&lt;file_path&gt;\&lt;file_name&gt;.docx"</code>.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -16315,24 +16378,6 @@ The answer is 5.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Batch">Batch<a class="anchor-link" href="#Batch">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Batch scripts are stored in simple text files containing lines with commands that get executed in sequence, one after the other. These files have the special extension BAT or CMD. Files
-of this type are recognised and executed through an interface (sometimes called a shell) provided by a system file called the command interpreter. On Windows systems, the interpreter is known as cmd.exe. Running a batch file is a simple matter of just clicking on it. Batch files can also be run in a command prompt or the Start-Run line. In such case, the full path name must be used unless the file's path is in the path environment.</p>
-<ul>
-<li>ECHO: This batch command displays messages or turns command echoing on or off (The "at" sign "@" in front makes the command apply to itself as well).</li>
-<li>PAUSE: This batch command prompts the user and waits for a line of input to be entered.</li>
-<li>REM: This batch command is used for remarks in batch files, preventing the content of the remark from being executed.</li>
-<li>SET: Displays the list of environment variables on the current system.</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Other">Other<a class="anchor-link" href="#Other">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -16341,13 +16386,13 @@ of this type are recognised and executed through an interface (sometimes called 
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># NaN = Not a Number</span>
-<span class="c1"># NaT = Not a Time</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># NaN = Not a Number.</span>
+<span class="c1"># NaT = Not a Time.</span>
 
-<span class="c1"># To counter &quot;SettingWithCopyWarning&quot;:</span>
+<span class="c1"># To counter &quot;SettingWithCopyWarning&quot;.</span>
 <span class="n">df_copy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-<span class="c1"># The &quot;inplace=True&quot; option will modify the DataFrame object in place</span>
+<span class="c1"># The &quot;inplace=True&quot; option will modify the DataFrame object in place.</span>
 
 <span class="c1"># When writing long numbers, one can group digits using underscores to make large numbers more readable.</span>
 <span class="n">number</span> <span class="o">=</span> <span class="mi">1_000_000</span>
@@ -16358,6 +16403,23 @@ of this type are recognised and executed through an interface (sometimes called 
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Batch">Batch<a class="anchor-link" href="#Batch">&#182;</a></h3>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Batch scripts are stored in simple text files containing lines with commands that get executed in sequence, one after the other. These files have the special extension <strong>BAT</strong> or <strong>CMD</strong>. Files of this type are recognised and executed through an interface (sometimes called a shell) provided by a system file called the command interpreter. On Windows systems, the interpreter is known as <code>cmd.exe</code>. Running a batch file is a simple matter of just clicking on it. Batch files can also be run in a command prompt or the Start-Run line. In such case, the full path name must be used unless the file's path is in the path environment.</p>
+<ul>
+<li><code>ECHO</code>: This batch command displays messages or turns command echoing on or off (the "at" sign "@" in front makes the command apply to itself as well).</li>
+<li><code>PAUSE</code>: This batch command prompts the user and waits for a line of input to be entered.</li>
+<li><code>REM</code>: This batch command is used for remarks in batch files, preventing the content of the remark from being executed.</li>
+<li><code>SET</code>: Displays the list of environment variables on the current system.</li>
+</ul>
+
+</div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -16372,7 +16434,7 @@ of this type are recognised and executed through an interface (sometimes called 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>

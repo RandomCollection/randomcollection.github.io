@@ -1,31 +1,11 @@
-<!-- --------------------------------------------------------------------------------------------------------------- -->
-
 <!DOCTYPE html>
 
 <html lang="en-DE">
 
 	<head>
-		<link rel="stylesheet" href="/css/index.css"/>
-		
-		<link rel="stylesheet" href="/highlight/styles/stackoverflow-light.min.css"/>
-		<script src="/highlight/highlight.min.js"></script>
-		<script>hljs.highlightAll();</script>
-		
-		<meta charset="UTF-8">
-		<meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
-		
-		<link rel="icon" href="/img/icon.svg">
-		<link rel="icon" sizes="any" type="image/svg+xml" href="/img/icon.svg">
-
-		<title>RandomCollection</title>
-
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		<script> 
-			$(function(){
-				$("#nav").load("/nav.html");
-				$("#footer").load("/footer.html"); 
-			});
+		<script>
+			$(function(){$("head").load("/head.html")});
 		</script>
 	</head>
 
@@ -35,30 +15,30 @@
 
 		<div id="nav"></div>
 
-		<div class="section">
-			<h1><span>HTML</span></h1>
-			<p>
-				This website was created using <strong>GitHub Pages</strong>. The corresponding GithHub repository can
-				be found
-				<a href="https://github.com/RandomCollection/randomcollection.github.io" target="_blank">here</a>.
-				In general, modern web design relies on three building blocks:
-				
-				<ul>
-					<li><strong>HTML:</strong> structure</li>
-					<li><strong>CSS:</strong> presentation</li>
-					<li><strong>JavaScript:</strong> behaviour</li>
-				</ul>
-				
-				This website does not incorporate any JavaScript and is static in nature. The usage of responsive web
- 				design is very limited and a correct appearance of the website across different devices cannot be
-				guaranteed.
-			</p>
-		</div>
+		<article class="section">
+			<h1>Hypertext Markup Language</h1>
+			<section>
+				<p>
+					<strong>RandomCollection</strong> is hosted via <strong>GitHub Pages</strong>. The corresponding
+					GithHub repository can be found
+					<a href="https://github.com/RandomCollection/randomcollection.github.io" target="_blank">here</a>.
+					In general, modern web design relies on three building blocks:
+					
+					<ul>
+						<li><strong>Structure:</strong> Hypertext Markup Language (HTML)</li>
+						<li><strong>Style:</strong> Cascading Style Sheets (CSS)</li>
+						<li><strong>Interactivity:</strong> JavaScript</li>
+					</ul>
+	
+					<strong>RandomCollection</strong> does not incorporate any JavaScript and is static in nature. The
+					usage of responsive web design is very limited and a correct appearance of the website across
+					different devices cannot be guaranteed.
+				</p>
+			</section>
+		</article>
 
 		<div id="footer"></div>
 
 	</body>
 
 </html>
-
-<!-- END ----------------------------------------------------------------------------------------------------------- -->

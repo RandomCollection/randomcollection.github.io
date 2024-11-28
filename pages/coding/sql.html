@@ -1,31 +1,11 @@
-<!-- --------------------------------------------------------------------------------------------------------------- -->
-
 <!DOCTYPE html>
 
 <html lang="en-DE">
 
 	<head>
-		<link rel="stylesheet" href="/css/index.css"/>
-		
-		<link rel="stylesheet" href="/highlight/styles/stackoverflow-light.min.css"/>
-		<script src="/highlight/highlight.min.js"></script>
-		<script>hljs.highlightAll();</script>
-		
-		<meta charset="UTF-8">
-		<meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
-		
-		<link rel="icon" href="/img/icon.svg">
-		<link rel="icon" sizes="any" type="image/svg+xml" href="/img/icon.svg">
-
-		<title>RandomCollection</title>
-
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		<script> 
-			$(function(){
-				$("#nav").load("/nav.html");
-				$("#footer").load("/footer.html"); 
-			});
+		<script>
+			$(function(){$("head").load("/head.html")});
 		</script>
 	</head>
 
@@ -35,137 +15,130 @@
 
 		<div id="nav"></div>
 		
-		<div class="section">
-			<h1><span>Structured Query Language</span></h1>
-			<p>
-				The <strong>Structured Query Language (SQL)</strong> is the underlying programming language for
-				<strong>Relational Database Management Systems (RDBMS)</strong> such as IBM Db2, Microsoft SQL Server,
-				MySQL, PostgreSQL, and SQLite. Typically, every RDBMS has its own slightly different <strong>SQL
-				dialect</strong>. Transact-SQL or T-SQL, for example, is the SQL dialect in case of the Microsoft SQL
-				Server while PL/Pg SQL is the SQL dialect that PostgreSQL uses.	The following is a random collection
-				of SQL related topics.
-			</p>
-		</div>
-		
-		<div class="section">
-			<h2><span>SELECT</span></h2>
-			<p>
-				<pre><code class="language-sql">
+		<article class="section">
+			<h1>Structured Query Language</h1>
+			<section>
+				<p>
+					The <strong>Structured Query Language (SQL)</strong> is the underlying programming language for
+					<strong>Relational Database Management Systems (RDBMS)</strong> such as IBM Db2, Microsoft SQL
+					Server, MySQL, PostgreSQL, and SQLite. Typically, every RDBMS has its own slightly different
+					<strong>SQL	dialect</strong>. Transact-SQL or T-SQL, for example, is the SQL dialect in case of the
+					Microsoft SQL Server, while PL/Pg SQL is the SQL dialect used by PostgreSQL. The following is a
+					random collection of SQL related topics.
+				</p>
+			</section>
+				<h2>SELECT</h2>
+				<p>
+					<pre><code class="language-sql">
 SELECT
-    *
+	*
 FROM database.schema.table
-				</code></pre>
-				
-				selects all columns (<strong>*</strong>) from the table <strong>database.schema.table</strong>. A
-				generic query typically takes the following form:
-				
-				<pre><code class="language-sql">
+					</code></pre>
+
+					selects all columns (<strong>*</strong>) from the table <strong>database.schema.table</strong>. A
+					generic query typically takes the following form:
+					
+					<pre><code class="language-sql">
 SELECT [DISTINCT]
-    column_name[s] [[AS] column_alias[es]]
+	column_name[s] [[AS] column_alias[es]]
 FROM database.schema.table [[AS] table_alias]
 [WHERE restriction[s]]
 [GROUP BY column_name[s]]
 [HAVING restriction[s]]
 [ORDER BY column_name[s] [ASC|DESC]]
-				</code></pre>
-				
-				<br>The general order of execution is:
-				
-				<ol>
-					<li><strong>FROM</strong> and <strong>JOIN</strong></li>
-					<li><strong>WHERE</strong> (aliases in the <strong>SELECT</strong> part of the query are not accessible)</li>
-					<ul>
-						<li><strong>=</strong>, <strong>!=</strong>, <strong><</strong>, <strong><=</strong>, <strong>></strong>, and <strong>>=</strong></li>
-						<li><strong>BETWEEN ... AND ...</strong> and <strong>NOT BETWEEN ... AND ...</strong></li>
-						<li><strong>IN (...)</strong> and <strong>NOT IN (...)</strong></li>
-						<li><strong>LIKE ...</strong> and <strong>NOT LIKE ...</strong></li>
-						<li><strong>_</strong> is used anywhere in a string to match a single character</li>
-						<li><strong>%</strong> is used anywhere in a string to match a sequence of zero or more characters</li>
-					</ul>
-					<li><strong>GROUP BY</strong></li>
-					<li><strong>HAVING</strong> (aliases in the <strong>SELECT</strong> part of the query are not accessible)</li>
-					<li><strong>SELECT</strong></li>
-					<li><strong>DISTINCT</strong></li>
-					<li><strong>ORDER BY</strong> (aliases in the <strong>SELECT</strong> part of the query are accessible)</li>
-				</ol>
-		
-				The number of records to be returned can be restricted via
-				
-				<pre><code class="language-sql">
+					</code></pre>
+					
+					The general order of execution is:
+					
+					<ol>
+						<li><strong>FROM</strong> and <strong>JOIN</strong></li>
+						<li><strong>WHERE</strong> (aliases in the <strong>SELECT</strong> part of the query are not accessible)</li>
+						<ul>
+							<li><strong>=</strong>, <strong>!=</strong>, <strong><</strong>, <strong><=</strong>, <strong>></strong>, and <strong>>=</strong></li>
+							<li><strong>BETWEEN ... AND ...</strong> and <strong>NOT BETWEEN ... AND ...</strong></li>
+							<li><strong>IN (...)</strong> and <strong>NOT IN (...)</strong></li>
+							<li><strong>LIKE ...</strong> and <strong>NOT LIKE ...</strong></li>
+							<li><strong>_</strong> is used anywhere in a string to match a single character</li>
+							<li><strong>%</strong> is used anywhere in a string to match a sequence of zero or more characters</li>
+						</ul>
+						<li><strong>GROUP BY</strong></li>
+						<li><strong>HAVING</strong> (aliases in the <strong>SELECT</strong> part of the query are not accessible)</li>
+						<li><strong>SELECT</strong></li>
+						<li><strong>DISTINCT</strong></li>
+						<li><strong>ORDER BY</strong> (aliases in the <strong>SELECT</strong> part of the query are accessible)</li>
+					</ol>
+			
+					The number of records to be returned can be restricted via
+					
+					<pre><code class="language-sql">
 SELECT TOP number
-    column_name[s]
+	column_name[s]
 FROM database.schema.table
-				</code></pre>
-				
-				in case of the Microsoft SQL Server and via
-				
-				<pre><code class="language-sql">
+					</code></pre>
+					
+					in case of the Microsoft SQL Server and via
+					
+					<pre><code class="language-sql">
 SELECT
-    column_name[s]
+	column_name[s]
 FROM database.schema.table
 LIMIT number
-				</code></pre>
-				
-				in case of MySQL.
-			</p>
-		</div>
-
-		<div class="section">
-			<h2><span>CREATE TABLE</span></h2>
-			<p>
-				<pre><code class="language-sql">
+					</code></pre>
+					
+					in case of MySQL.
+				</p>
+			<section>
+				<h2>CREATE TABLE</h2>
+				<p>
+					<pre><code class="language-sql">
 CREATE TABLE database.schema.table (
-    column_1 VARCHAR(255) UNIQUE,
-    column_2 DATE NOT NULL DEFAULT default_value,
-    column_3 DECIMAL
+	column_1 VARCHAR(255) UNIQUE,
+	column_2 DATE NOT NULL DEFAULT default_value,
+	column_3 DECIMAL
 )
-				</code></pre>
-			</p>
-		</div>		
-				
-		<div class="section">
-			<h2><span>INSERT INTO</span></h2>
-			<p>
-				<pre><code class="language-sql">
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>INSERT INTO</h2>
+				<p>
+					<pre><code class="language-sql">
 INSERT INTO database.schema.table (
-    column_1,
-    column_2,
-    column_3
+	column_1,
+	column_2,
+	column_3
 )
 VALUES (
-    'Alice',
-    01.01.2020,
-    1
+	'Alice',
+	01.01.2020,
+	1
 )
-				</code></pre>
-			</p>
-		</div>				
-				
-		<div class="section">
-			<h2><span>UPDATE</span></h2>
-			<p>
-				<pre><code class="language-sql">
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>UPDATE</h2>
+				<p>
+					<pre><code class="language-sql">
 UPDATE database.schema.table
 SET column_1 = value_1
 WHERE restriction[s]
-				</code></pre>
-			</p>
-		</div>
-
-		<div class="section">
-			<h2><span>DELETE</span></h2>
-			<p>
-				<pre><code class="language-sql">
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>DELETE</h2>
+				<p>
+					<pre><code class="language-sql">
 DELETE FROM database.schema.table
 WHERE restriction[s]
-				</code></pre>
-			</p>
-		</div>
-				
-		<div class="section">
-			<h2><span>ALTER TABLE</span></h2>
-			<p>
-				<pre><code class="language-sql">
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>ALTER TABLE</h2>
+				<p>
+					<pre><code class="language-sql">
 ALTER TABLE database.schema.table
 ADD column_4 data_type_4
 
@@ -174,51 +147,48 @@ DROP column_4
 
 ALTER TABLE database.schema.table
 RENAME TO new_table_name
-				</code></pre>
-			</p>
-		</div>
-
-		<div class="section">
-			<h2><span>JOIN</span></h2>
-			<p>
-				<pre><code class="language-sql">
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>JOIN</h2>
+				<p>
+					<pre><code class="language-sql">
 SELECT
-    a.column_1,
-    a.column_2,
-    b.column_3
+	a.column_1,
+	a.column_2,
+	b.column_3
 FROM database.schema.table_1 AS a
 LEFT JOIN database.schema.table_2 AS b
-    ON a.column = b.column
-				</code></pre>
-			</p>
-		</div>
-		
-		<div class="section">
-			<h2><span>UNION</span></h2>
-			<p>
-				<pre><code class="language-sql">
+	ON b.column = a.column
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>UNION</h2>
+				<p>
+					<pre><code class="language-sql">
 SELECT
-    *
+	*
 FROM database.schema.table_1
 UNION
 SELECT
-    *
+	*
 FROM database.schema.table_2
-				</code></pre>
-				
-				where <strong>UNION</strong> removes duplicate rows between the tables and <strong>UNION ALL</strong>
-				will not remove duplicate rows between the tables.
-			</p>
-		</div>
-		
-		<div class="section">
-			<h2><span>Common Table Expression</span></h2>
-			<p>
-				A <strong>Common Table Expression (CTE)</strong> is a powerful construct in SQL that helps simplify a
-				query. This reduction in complexity is achieved by deconstructing ordinarily complex queries into simple
-				blocks to be used, and reused if necessary, in rewriting the query. Much like a derived table, the
-				result of a CTE is not stored and exists only for the duration of the query.
-				<pre><code class="language-sql">
+					</code></pre>
+					
+					where <strong>UNION</strong> removes duplicate rows between the tables and
+					<strong>UNION ALL</strong> 	will not remove duplicate rows between the tables.
+				</p>
+			</section>
+			<section>
+				<h2>Common Table Expression</h2>
+				<p>
+					A <strong>Common Table Expression (CTE)</strong> is a powerful construct in SQL that helps simplify
+					a query. This reduction in complexity is achieved by deconstructing ordinarily complex queries into
+					simple blocks to be used, and reused if necessary, in rewriting the query. Much like a derived
+					table, the result of a CTE is not stored and exists only for the duration of the query.
+					<pre><code class="language-sql">
 WITH
     cte_1 AS (
         SELECT
@@ -234,32 +204,33 @@ SELECT
     *
 FROM cte_1
 [LEFT JOIN cte_2]
-    ON cte_1.column_1 = cte_2.column_1]
-				</code></pre>
-			</p>
-		</div>
-
-		<div class="section">
-			<h2><span>Other</span></h2>
-				<h3><span>Tables Overview</span></h3>
-				<p>
-					<pre><code class="language-sql">
+    ON cte_2.column_1 = cte_1.column_1]
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Other</h2>
+					<h3>Tables Overview</h3>
+					<p>
+						<pre><code class="language-sql">
 SELECT
     *
 FROM sys.tables
-					</code></pre>
-					in case of Microsoft SQL Server and
-					<pre><code class="language-sql">
+						</code></pre>
+
+						in case of Microsoft SQL Server and
+					
+						<pre><code class="language-sql">
 SELECT
     *
 FROM sysibm.systables
-					</code></pre>
-					in case of IBM Db2.
-				</p>
-				
-				<h3><span>Duplicates</span></h3>
-				<p>
-					<pre><code class="language-sql">
+						</code></pre>
+					
+						in case of IBM Db2.
+					</p>
+					<h3>Duplicates</h3>
+					<p>
+						<pre><code class="language-sql">
 SELECT
     column_1,
     column_2,
@@ -269,13 +240,13 @@ GROUP BY
     column_1,
     column_2
 HAVING COUNT(*) > 1
-					</code></pre>
-				</p>
-				
-				<h3><span>Row With Maximum Value</span></h3>
-				<p>
-					Find the whole data for the row with some maximum value in a column per some group identifier.
-					<pre><code class="language-sql">
+						</code></pre>
+					</p>
+					<h3>Row With Maximum Value</h3>
+					<p>
+						Find the whole data for the row with some maximum value in a column per some group identifier:
+
+						<pre><code class="language-sql">
 SELECT
     *
 FROM (
@@ -287,12 +258,11 @@ FROM (
     FROM database.schema.table
 ) AS a
 WHERE a.column_value = a.column_value_max
-					</code></pre>
-				</p>
-
-				<h3><span>PIVOT</span></h3>
-				<p>
-					<pre><code class="language-sql">
+						</code></pre>
+					</p>
+					<h3>PIVOT</h3>
+					<p>
+						<pre><code class="language-sql">
 SELECT
     *
 FROM (
@@ -308,31 +278,29 @@ PIVOT (
         [column_pivoted_first], [column_pivoted_second]
     )
 ) AS b
+						</code></pre>
+					</p>
+			</section>
+			<section>
+				<h2>Housekeeping</h2>
+				<p>
+					Delete temporary tables:
+				
+					<pre><code class="language-sql">
+IF EXISTS (SELECT * FROM tempdb.sys.tables WHERE name LIKE '%#table%') BEGIN DROP TABLE #table END
+					</code></pre>
+				
+					Delete table:
+				
+					<pre><code class="language-sql">
+DROP TABLE IF EXISTS database.schema.table
 					</code></pre>
 				</p>
-		</div>
-				
-		<div class="section">
-			<h2><span>Housekeeping</span></h2>
-			<p>
-				Delete temporary tables.
-				
-				<pre><code class="language-sql">
-IF EXISTS (SELECT * FROM tempdb.sys.tables WHERE name LIKE '%#table%') BEGIN DROP TABLE #table END
-				</code></pre>
-				
-				Delete table.
-				
-				<pre><code class="language-sql">
-DROP TABLE IF EXISTS database.schema.table
-				</code></pre>
-			</p>
-		</div>
+			</section>
+		</article>
 
 		<div id="footer"></div>
 
 	</body>
 
 </html>
-
-<!-- END ----------------------------------------------------------------------------------------------------------- -->

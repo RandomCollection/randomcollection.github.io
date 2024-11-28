@@ -1,8 +1,8 @@
 # RandomCollection
 
-RandomCollection offers curated articles about economics, finance, statistics, and coding.
+**RandomCollection** offers curated articles about economics, finance, statistics, and coding.
 
-## Getting Started
+## Usage
 
 Visit [RandomCollection](https://randomcollection.github.io/) and enjoy.
 

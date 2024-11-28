@@ -1,31 +1,11 @@
-<!-- --------------------------------------------------------------------------------------------------------------- -->
-
 <!DOCTYPE html>
 
 <html lang="en-DE">
 
 	<head>
-		<link rel="stylesheet" href="/css/index.css"/>
-		
-		<link rel="stylesheet" href="/highlight/styles/stackoverflow-light.min.css"/>
-		<script src="/highlight/highlight.min.js"></script>
-		<script>hljs.highlightAll();</script>
-		
-		<meta charset="UTF-8">
-		<meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
-		
-		<link rel="icon" href="/img/icon.svg">
-		<link rel="icon" sizes="any" type="image/svg+xml" href="/img/icon.svg">
-
-		<title>RandomCollection</title>
-
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		<script> 
-			$(function(){
-				$("#nav").load("/nav.html");
-				$("#footer").load("/footer.html"); 
-			});
+		<script>
+			$(function(){$("head").load("/head.html")});
 		</script>
 	</head>
 
@@ -35,123 +15,126 @@
 
 		<div id="nav"></div>
 
-		<div class="section">
-			<h1><span>Resources</span></h1>
-			
-			<strong>Coding</strong>
-			<ul>
-				<li>
-					Markdown
-					<ul>
-						<li><a href="https://medium.com/analytics-vidhya/the-ultimate-markdown-guide-for-jupyter-notebook-d5e5abf728fd" target="_blank">The Ultimate Markdown Guide (for Jupyter Notebook)</a></li>
-					</ul>
-				</li>
-				<li>
-					Python
-					<ul>
-						<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank">pandas - DataFrame</a></li>
-						<li><a href="https://pandas.pydata.org/docs/development/extending.html" target="_blank">pandas - Extending pandas</a></li>
-						<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/general_functions.html" target="_blank">pandas - General Functions</a></li>
-						<li><a href="https://betterprogramming.pub/pandas-illustrated-the-definitive-visual-guide-to-pandas-c31fa921a43" target="_blank">pandas - pandas Illustrated: The Definitive Visual Guide to pandas</a></li>
-						<li><a href="https://realpython.com/python-application-layouts/" target="_blank">Python - Application Layouts: A Reference</a></li>
-						<li><a href="https://github.com/prabhupant/python-ds" target="_blank">Python - Data Structures and Algorithms</a></li>		
-						<li><a href="https://docs.python.org/3/" target="_blank">Python - Documentation</a></li>
-						<li><a href="https://py-pkgs.org/" target="_blank">Python - Packages</a></li>
-						<li><a href="https://docs.python-guide.org/" target="_blank">Python - The Hitchhiker's Guide to Python</a></li>
-					</ul>
-				</li>
-				<li>
-					SQL
-					<ul>
-						<li><a href="https://mode.com/blog/most-popular-window-functions-and-how-to-use-them/" target="_blank">Most Popular Window Functions</a></li>
-						<li><a href="https://sqlbolt.com/" target="_blank">SQLBolt</a></li>
-						<li><a href="https://www.sqlservertutorial.net/" target="_blank">SQL Server Tutorial</a></li>
-					
-					</ul>
-				</li>
-				<li>
-					VBA
-					<ul>
-						<li><a href="https://www.functionx.com/vbaccess/index.htm" target="_blank">Microsoft Access With VBA</a></li>
-					</ul>
-				</li>
-				<li>
-					Other
-					<ul>
-						<li><a href="https://codesolid.com/using-latex-in-python/" target="_blank">LaTeX in Python</a></li>
-						<li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank">MathJax Basic Tutorial</a></li>
-						<li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></li>
-					</ul>
-				</li>		
-			</ul>
-			
-			<strong>Data Science</strong>
-			<ul>
-				<li><a href="https://github.com/eugeneyan/applied-ml" target="_blank">Applied Data Science and Machine Learning</a></li>
-				<li><a href="https://kuleshov-group.github.io/aml-website/" target="_blank">Applied Machine Learning - Cornell University</a></li>
-				<li><a href="https://medium.com/@baluramachandra90/becoming-an-analytics-engineer-in-2023-a-data-analyst-guide-1faf6d1cc89c" target="_blank">Becoming an Analytics Engineer in 2023</a></li>
-				<li><a href="https://github.com/bradleyboehmke/data-science-learning-resources" target="_blank">Data Science Learning Resources</a></li>
-				<li><a href="https://illustrated-machine-learning.github.io/" target="_blank">Illustrated Machine Learning</a></li>
-				<li><a href="https://mlu-explain.github.io/" target="_blank">Machine Learning University</a></li>
-				<li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/" target="_blank">Python Data Science Handbook</a></li>
-				<li><a href="https://read.technically.dev/p/the-beginners-guide-to-databases" target="_blank">The Beginners Guide to Database</a></li>
-				<li><a href="https://www.informationisbeautifulawards.com/showcase/611-the-graphic-continuum" target="_blank">The Graphic Continuum</a></li>
-				<li><a href="https://towardsdatascience.com/" target="_blank">Towards Data Science</a></li>
-				<li><a href="https://shakoist.substack.com/p/why-business-data-science-irritates" target="_blank">Why Business Data Science Irritates</a></li>
-			</ul>
-			
-			<strong>Data Visualisation</strong>
-			<ul>
-				<li><a href="https://data.europa.eu/apps/data-visualisation-guide/the-grid" target="_blank">Data Visualisation Guide</a></li>
-				<li><a href="https://eagereyes.org/" target="_blank">eagereyes</a></li>
-				<li><a href="https://blog.datawrapper.de/fonts-for-data-visualization/" target="_blank">Fonts for Data Visualisation</a></li>
-				<li><a href="https://junkcharts.typepad.com/" target="_blank">Junk Charts</a></li>
-				<li><a href="https://github.com/killiansheriff/LovelyPlots/" target="_blank">LovelyPlots</a></li>
-				<li><a href="https://www.storytellingwithdata.com/" target="_blank">Storytelling With Data</a></li>
-				<li><a href="https://blog.datawrapper.de/text-in-data-visualizations/" target="_blank">Text in Data Visualisations</a></li>		
-				<li><a href="http://www.thefunctionalart.com/" target="_blank">The Functional Art</a></li>
-				<li><a href="https://www.datafantic.com/the-magic-of-matplotlib-stylesheets/" target="_blank">The Magic of Matplotlib Stylesheets</a></li>
-				<li><a href="https://courses.spatialthoughts.com/python-dataviz.html/" target="_blank">Python Data Visualisation</a></li>
-				<li><a href="https://www.visualisingdata.com/" target="_blank">Visualising Data</a></li>
-				<li><a href="https://viz.wtf/" target="_blank">WTF Visualisations</a></li>
-			</ul>
-			
-			<strong>Interview</strong>
-			<ul>
-				<li><a href="https://towardsdatascience.com/20-python-interview-questions-to-challenge-your-knowledge-cddc842297c5" target="_blank">20 Python Interview Questions</a></li>
-				<li><a href="https://store.lerner.co.il/ace-python-interviews" target="_blank">Ace Python Interviews</a></li>
-				<li><a href="https://dipranjan.github.io/dsinterviewqns/intro.html/" target="_blank">Data Science Interview Book</a></li>
-				<li><a href="https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers" target="_blank">Data Science Interview Questions-Answers</a></li>
-				<li><a href="https://www.conordewey.com/blog/the-big-list-of-data-science-interview-resources/" target="_blank">Data Science Interview Resources</a></li>
-				<li><a href="https://www.interviewquery.com/" target="_blank">Interview Query</a></li>
-				<li><a href="https://eugeneyan.com/writing/red-flags/" target="_blank">Red Flags</a></li>
-				<li><a href="https://medium.com/learning-data/red-flags-to-watch-out-for-in-data-analyst-job-interviews-66addea5d3d2" target="_blank">Red Flags to Watch Out in Data Analyst Job Interviews</a></li>
-				<li><a href="https://huyenchip.com/2023/01/24/what-we-look-for-in-a-candidate.html" target="_blank">What We Look For in a Candidate</a></li>
-			</ul>
-
-			<strong>Regulation</strong>
-			<ul>
-				<li><a href="https://lexparency.org/" target="_blank">Lexparency</a></li>
-			</ul>
-
-			<strong>Other</strong>
-			<ul>
-				<li><a href="https://www.instagram.com/chartrdaily/?hl=de" target="_blank">chartr</a></li>
-				<li><a href="https://www.reddit.com/r/dataisbeautiful/" target="_blank">DataIsBeautiful</a></li>
-				<li><a href="https://fivethirtyeight.com/" target="_blank">FiveThirtyEight</a></li>
-				<li><a href="https://medialab.github.io/iwanthue/" target="_blank">i want hue</a></li>
-				<li><a href="https://www.kaggle.com" target="_blank">Kaggle</a></li>
-				<li><a href="https://ourworldindata.org/" target="_blank">Our World in Data</a></li>
-				<li><a href="https://www.shanelynn.ie" target="_blank">Shane Lynn</a></li>
-				<li><a href="https://www.soulmachines.com/" target="_blank">Soul Machines</a></li>
-				<li><a href="https://pudding.cool/" target="_blank">The Pudding</a></li>
-			</ul>
-		</div>
+		<article class="section">
+			<h1>Resources</h1>
+			<section>
+				<h2>Coding</h2>
+				<ul>
+					<li>
+						<strong>Markdown</strong>
+						<ul>
+							<li><a href="https://medium.com/analytics-vidhya/the-ultimate-markdown-guide-for-jupyter-notebook-d5e5abf728fd" target="_blank">The Ultimate Markdown Guide (for Jupyter Notebook)</a></li>
+						</ul>
+					</li>
+					<li>
+						<strong>Python</strong>
+						<ul>
+							<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank">pandas - DataFrame</a></li>
+							<li><a href="https://pandas.pydata.org/docs/development/extending.html" target="_blank">pandas - Extending pandas</a></li>
+							<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/general_functions.html" target="_blank">pandas - General Functions</a></li>
+							<li><a href="https://betterprogramming.pub/pandas-illustrated-the-definitive-visual-guide-to-pandas-c31fa921a43" target="_blank">pandas - pandas Illustrated: The Definitive Visual Guide to pandas</a></li>
+							<li><a href="https://realpython.com/python-application-layouts/" target="_blank">Python - Application Layouts: A Reference</a></li>
+							<li><a href="https://github.com/prabhupant/python-ds" target="_blank">Python - Data Structures and Algorithms</a></li>		
+							<li><a href="https://docs.python.org/3/" target="_blank">Python - Documentation</a></li>
+							<li><a href="https://py-pkgs.org/" target="_blank">Python - Packages</a></li>
+							<li><a href="https://docs.python-guide.org/" target="_blank">Python - The Hitchhiker's Guide to Python</a></li>
+						</ul>
+					</li>
+					<li>
+						<strong>SQL</strong>
+						<ul>
+							<li><a href="https://mode.com/blog/most-popular-window-functions-and-how-to-use-them/" target="_blank">Most Popular Window Functions</a></li>
+							<li><a href="https://sqlbolt.com/" target="_blank">SQLBolt</a></li>
+							<li><a href="https://www.sqlservertutorial.net/" target="_blank">SQL Server Tutorial</a></li>
+						</ul>
+					</li>
+					<li>
+						<strong>VBA</strong>
+						<ul>
+							<li><a href="https://www.functionx.com/vbaccess/index.htm" target="_blank">Microsoft Access With VBA</a></li>
+						</ul>
+					</li>
+					<li>
+						<strong>Other</strong>
+						<ul>
+							<li><a href="https://codesolid.com/using-latex-in-python/" target="_blank">LaTeX in Python</a></li>
+							<li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank">MathJax Basic Tutorial</a></li>
+							<li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></li>
+						</ul>
+					</li>		
+				</ul>
+			</section>
+			<section>
+				<h2>Data Science</h2>
+				<ul>
+					<li><a href="https://github.com/eugeneyan/applied-ml" target="_blank">Applied Data Science and Machine Learning</a></li>
+					<li><a href="https://kuleshov-group.github.io/aml-website/" target="_blank">Applied Machine Learning - Cornell University</a></li>
+					<li><a href="https://medium.com/@baluramachandra90/becoming-an-analytics-engineer-in-2023-a-data-analyst-guide-1faf6d1cc89c" target="_blank">Becoming an Analytics Engineer in 2023</a></li>
+					<li><a href="https://github.com/bradleyboehmke/data-science-learning-resources" target="_blank">Data Science Learning Resources</a></li>
+					<li><a href="https://illustrated-machine-learning.github.io/" target="_blank">Illustrated Machine Learning</a></li>
+					<li><a href="https://mlu-explain.github.io/" target="_blank">Machine Learning University</a></li>
+					<li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/" target="_blank">Python Data Science Handbook</a></li>
+					<li><a href="https://read.technically.dev/p/the-beginners-guide-to-databases" target="_blank">The Beginners Guide to Database</a></li>
+					<li><a href="https://www.informationisbeautifulawards.com/showcase/611-the-graphic-continuum" target="_blank">The Graphic Continuum</a></li>
+					<li><a href="https://towardsdatascience.com/" target="_blank">Towards Data Science</a></li>
+					<li><a href="https://shakoist.substack.com/p/why-business-data-science-irritates" target="_blank">Why Business Data Science Irritates</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Data Visualisation</h2>
+				<ul>
+					<li><a href="https://data.europa.eu/apps/data-visualisation-guide/the-grid" target="_blank">Data Visualisation Guide</a></li>
+					<li><a href="https://eagereyes.org/" target="_blank">eagereyes</a></li>
+					<li><a href="https://blog.datawrapper.de/fonts-for-data-visualization/" target="_blank">Fonts for Data Visualisation</a></li>
+					<li><a href="https://junkcharts.typepad.com/" target="_blank">Junk Charts</a></li>
+					<li><a href="https://github.com/killiansheriff/LovelyPlots/" target="_blank">LovelyPlots</a></li>
+					<li><a href="https://www.storytellingwithdata.com/" target="_blank">Storytelling With Data</a></li>
+					<li><a href="https://blog.datawrapper.de/text-in-data-visualizations/" target="_blank">Text in Data Visualisations</a></li>		
+					<li><a href="http://www.thefunctionalart.com/" target="_blank">The Functional Art</a></li>
+					<li><a href="https://www.datafantic.com/the-magic-of-matplotlib-stylesheets/" target="_blank">The Magic of Matplotlib Stylesheets</a></li>
+					<li><a href="https://courses.spatialthoughts.com/python-dataviz.html/" target="_blank">Python Data Visualisation</a></li>
+					<li><a href="https://www.visualisingdata.com/" target="_blank">Visualising Data</a></li>
+					<li><a href="https://viz.wtf/" target="_blank">WTF Visualisations</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Interview</h2>
+				<ul>
+					<li><a href="https://towardsdatascience.com/20-python-interview-questions-to-challenge-your-knowledge-cddc842297c5" target="_blank">20 Python Interview Questions</a></li>
+					<li><a href="https://store.lerner.co.il/ace-python-interviews" target="_blank">Ace Python Interviews</a></li>
+					<li><a href="https://dipranjan.github.io/dsinterviewqns/intro.html/" target="_blank">Data Science Interview Book</a></li>
+					<li><a href="https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers" target="_blank">Data Science Interview Questions-Answers</a></li>
+					<li><a href="https://www.conordewey.com/blog/the-big-list-of-data-science-interview-resources/" target="_blank">Data Science Interview Resources</a></li>
+					<li><a href="https://www.interviewquery.com/" target="_blank">Interview Query</a></li>
+					<li><a href="https://eugeneyan.com/writing/red-flags/" target="_blank">Red Flags</a></li>
+					<li><a href="https://medium.com/learning-data/red-flags-to-watch-out-for-in-data-analyst-job-interviews-66addea5d3d2" target="_blank">Red Flags to Watch Out in Data Analyst Job Interviews</a></li>
+					<li><a href="https://huyenchip.com/2023/01/24/what-we-look-for-in-a-candidate.html" target="_blank">What We Look For in a Candidate</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Regulation</h2>
+				<ul>
+					<li><a href="https://lexparency.org/" target="_blank">Lexparency</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Other</h2>
+				<ul>
+					<li><a href="https://www.instagram.com/chartrdaily/?hl=de" target="_blank">chartr</a></li>
+					<li><a href="https://www.reddit.com/r/dataisbeautiful/" target="_blank">DataIsBeautiful</a></li>
+					<li><a href="https://fivethirtyeight.com/" target="_blank">FiveThirtyEight</a></li>
+					<li><a href="https://medialab.github.io/iwanthue/" target="_blank">i want hue</a></li>
+					<li><a href="https://www.kaggle.com" target="_blank">Kaggle</a></li>
+					<li><a href="https://ourworldindata.org/" target="_blank">Our World in Data</a></li>
+					<li><a href="https://www.shanelynn.ie" target="_blank">Shane Lynn</a></li>
+					<li><a href="https://www.soulmachines.com/" target="_blank">Soul Machines</a></li>
+					<li><a href="https://pudding.cool/" target="_blank">The Pudding</a></li>
+				</ul>
+			</section>
+		</article>
 
 		<div id="footer"></div>
 
 	</body>
 
 </html>
-
-<!-- END ----------------------------------------------------------------------------------------------------------- -->

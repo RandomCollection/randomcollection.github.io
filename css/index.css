@@ -80,15 +80,19 @@ body {
 	margin: 0 0 0 0;
 	margin-bottom: 100px;
 	padding: 0 0 0 0;
+	text-align: justify;
+	text-justify: inter-word;
 }
 
 h1 {
 	color: #000000;
 	font-family: "Verdana";
-	font-size: 15px;
+	/* font-size: 15px; */
 	margin: 0 0 0 0;
 	padding: 20px 0 20px 0;
 	text-align: left;
+	text-decoration: underline #ff0000;
+	text-shadow: -6px -4px 6px #a8abb0;
 }
 
 p {
@@ -96,6 +100,13 @@ p {
 	margin: 0 0 0 0;
 }
 
+.img_center
+{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	/* width:10%; */
+}
 .section {
 	padding: 0 30px 30px 30px;
 	margin: 0 0 0 0;

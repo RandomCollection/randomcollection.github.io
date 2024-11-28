@@ -1,31 +1,11 @@
-<!-- --------------------------------------------------------------------------------------------------------------- -->
-
 <!DOCTYPE html>
 
 <html lang="en-DE">
 
 	<head>
-		<link rel="stylesheet" href="/css/index.css"/>
-		
-		<link rel="stylesheet" href="/highlight/styles/stackoverflow-light.min.css"/>
-		<script src="/highlight/highlight.min.js"></script>
-		<script>hljs.highlightAll();</script>
-		
-		<meta charset="UTF-8">
-		<meta name="description" content="A random collection of articles about economics, finance, statistics, and coding.">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
-		
-		<link rel="icon" href="/img/icon.svg">
-		<link rel="icon" sizes="any" type="image/svg+xml" href="/img/icon.svg">
-
-		<title>RandomCollection</title>
-
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		<script> 
-			$(function(){
-				$("#nav").load("/nav.html");
-				$("#footer").load("/footer.html"); 
-			});
+		<script>
+			$(function(){$("head").load("/head.html")});
 		</script>
 	</head>
 
@@ -35,17 +15,21 @@
 
 		<div id="nav"></div>
 
-		<div class="section">
-			<h1><span>Economics</span></h1>
-			<p>
-				There is nothing to see here yet.
-			</p>
-		</div>
+		<article class="section">
+			<h1>Economics</h1>
+			<section>
+				<p>
+					<em>Res tantum valet quantum vendi potest</em>.<sup>1</sup>
+				</p>
+			</section>
+			<section>
+				<h5>Footnotes</h5>
+				<sup>1</sup> A thing is worth only what someone else will pay for it.
+			</section>
+		</article>
 
 		<div id="footer"></div>
 
 	</body>
 
 </html>
-
-<!-- END ----------------------------------------------------------------------------------------------------------- -->
