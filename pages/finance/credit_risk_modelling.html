@@ -1,5 +1,3 @@
-<!-- --------------------------------------------------------------------------------------------------------------- -->
-
 <!DOCTYPE html>
 
 <html lang="en-DE">
@@ -17,127 +15,20 @@
 
 		<div id="nav"></div>
 
-		<div class="section">
-			<h1><span>Credit Risk Modelling</span></h1>
-			
-			<h2><span>Introduction</span></h2>
-			<p>
-				In general, there are three main model types within the area of credit risk models:
-				
-				<ul>
-					<li><a>Probability of Default (PD),</a></li>
-					<li><a>Loss Given Default (LGD), and</a></li>
-					<li><a>Exposure at Default (EAD).</a></li>
-				</ul>
-				
-				The models typically follow one of the below methodologies:
-				
-				<ul>
-					<li><a>Statistical estimation technique such as regression analysis, usually based on historical
-					default data,</a></li>
-					<li><a>Expert model approach, or</a></li>
-					<li><a>Shadow rating approach.</a></li>
-				</ul>
-	
-				According to the European Central Bank (ECB)<sup>1</sup>, "[r]egulators and supervisors attribute a
-				crucial role to the assessments conducted by internal validation functions throughout the life cycle of
-				internal models. The term 'internal validation function' encompasses the personnel of a credit
-				institution who are responsible for validating internal models and reporting the results of the internal validation process. In accordance with the requirements
-				set out in Regulation (EU) No 575/20131 (the Capital Requirements Regulation or CRR), credit institutions
-				must ensure that their Pillar I internal models for credit, market, counterparty credit and operational
-				risk are subject to a validation process with the aim of verifying the overall adequacy, robustness and
-				reliability of the internal estimates used to calculate own funds requirements."
-				
-				<br>The aim of any validation/monitoring activity is to assess the performance of a model in the following areas of investigation:
-				
-				<ul>
-					<li><a>Rating process,</a></li>
-					<li><a>Calibration (predictive ability),</a></li>
-					<li><a>Discriminatory power (or rank-ordering performance), and</a></li>
-					<li><a>Stability.</a></li>
-				</ul>	 
-								
-				Validation of rating procedures is generally understood to mean the entire process of checking
-				of an internal rating system, from the validation of its discriminatory power to the process-oriented validation.
-		
-				<img src="../../img/validation.png" alt="Validation Tree Diagram" style="width:800px;"> 
-
-				
-				
-				<h2><span>Backtesting</span></h2>
-				
-				Überprüfung von in der Vergangenheit angestellten Prognosen über zukünftig
-					eintretende Ereignisse anhand von (beobachteten) Realisierungen
-				
-				<h3><span>Discrimination</span></h3>
-				
-				Die Trennschärfe eines Ratingsystems bezeichnet seine Fähigkeit, ex ante
-						zwischen ausgefallenen und nicht ausgefallenenen Kreditnehmern zu diskriminieren. Überprüfung
-						durch Ginikurve (Cumulative Accuracy Profile) und Ginikoeffizient (Accuracy Ratio), Receiver
-						Operating Characteristics (Area under Curve (AUC)) und ROC-Maß, und Entropie-Maße. Fähigkeit
-						eines Ratingsystems, die Schuldner gemäß ihrer Bonität richtig zu sortieren (Rangordnung).
-						
-						Confusion Matrix, Receiver Operating Characteristics (ROC), Area Under the Curve (AUC) are performance measurements
-				
-				Kritische Ausfallrate $PD^* = \Phi^{-1}(\alpha) \sqrt{\frac{PD (1- PD)}{n}} + PD$
-				
-				<h3><span>Calibration</span></h3>
-				
-				Calibration usually refers to the assignment of default probabilities to rating classes. A rating system is well calibrated if the estimated default probabilities deviate only slightly from the actual default rates. Match of predicted default rate with realized default rate per rating class.
-				
-				Test via Binomial test, Chi-Square test, Normal test, and RAG status.
-				
-				Ginikurve: Untersucht wird dabei die Fähigkeit des Verfahrens für einen bestimmten Zeitraum (lead time) eine Prognose über den Risikogehalt des Unternehmens im Vergleich zu den anderen Unternehmen im Portfolio abzugeben.
-				
-				Vorgehensweise: Zunächst werden die Unternehmen nach ihrem Risikogehalt geordnet. Danach wird der Anteil ausgefallener Unternehmen unter den schlechtesten x% der Unternehmen bestimmt.
-				
-				Gini-Koeffizient: Maß für die Trennschärfe eines Modells. Definiert als Quotient aus der Fläche zwischen der Ginikurve des Modells und der zufälligen Ginikurve dividiert durch die Fläche der perfekten Ginikurve und der zufälligen Ginikurve.
-				
-				Konfidenzintervall für Ginikoeffizient: U-Statistik. Anzahl der Inversionen, d.h. Anzahl der Fälle, in denen ein ausgefallener Kreditnehmer einen besseren Risikoscore erhält als ein nicht ausgefallener Kreditnehmer. Mit Hilfe des U-Tests von Mann-Whitney lässt sich ein Konfidenzintervall für den Ginikoeffizienten bestimmen.
-				
-				Binomial-Test: Voraussetzung: Ausfälle pro Ratingklasse sind unabhängig. Unter der Hypothese, dass die geschätzten Ausfallwahrscheinlichkeiten der Ratingklassen korrekt sind, wäre die tatsächlich nach einem Jahr zu beobachtende Zahl von Ausfällen pro Ratingklasse binomialverteilt. In der Praxis sind die Ausfällt aufgrund konjunktureller Einflüsse korreliert.
-				
-				H0: PD der Ratingklasse ist korrekt
-				
-				H1: PD der Ratingklasse wird unterschätzt
-				
-				H0 wird bei einem Konfidenzniveau von $\alpha$ abgelehnt, falls die Anzahl der Ausfällt in einer Ratingklasse mit $n$ Kreditnehmern $k^*$ übersteigt.
-				
-				
-						
-				
-				<h2><span>Stability</span></h2>
-				
-				Ein stabiles Ratingsystem zeichnet sich dadurch aus, dass es die
-						Ursache-Wirkung Beziehung zwischen den Risikofaktoren und der Bonität adäquat modelliert. Im
-						Gegensatz zu stabilen Systemen weisen instabile Systeme häufig eine im Zeitablau stark
-						nachlassende Prognosegüte auf. Adäquate Modellierung von Ursache-Wirkung-Beziehung zwischen
-						Risikofaktoren und Bonität.</a></li>
-
-			
-			<h2><span>Benchmarking</span></h2>
-			
-			<h3><span>Model Design</span></h3>
-			
-			<h3><span>Data Quality</span></h3>
-			
-			<h3><span>Internal Use (Use Test)</span></h3>
-			
-
-			
-			
-			
-			
-			
-			<h3><span>Footnoes</span></h3>
-			<sup>1</sup> Instructions for reporting the validation results of internal models - IRB Pillar I models for
-			credit risk; February 2019; European Central Bank
-		</div>
+		<article class="section">
+			<h1>Credit Risk Modelling</h1>
+			<section>
+				<h2>Credit Risk Modelling</h2>
+				<p>
+					Credit Risk Modelling is a Python library providing a curated selection of modules to perform
+					credit risk modelling analytics. The documentation can be assessed via
+					<a href="https://randomcollection.github.io/Credit-Risk-Modelling" target="_blank">Credit Risk Modelling</a>
+				</p>
+			</section>
+		</article>
 
 		<div id="footer"></div>
 
 	</body>
 
 </html>
-
-<!-- END ----------------------------------------------------------------------------------------------------------- -->
