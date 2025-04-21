@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en-DE">
+
+	<head>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script>
+			$(function(){$("head").load("/head.html")});
+		</script>
+	</head>
+
+	<body>
+
+		<header></header>
+
+		<div id="nav"></div>
+		
+		<article class="section">
+			<h1>Git</h1>
+			<section>
+				<p>
+					<strong>Git</strong> is a software. In particular, Git is an open source, distributed version control system. In contrast, <strong>GitHub</strong> is a service. In particular, GitHub is a centralised source code hosting platform for collaborating on Git repositories.
+				</p>
+			</section>
+			<section>
+				<h2>Commands</h2>
+					<ul>
+						<li><code class="language-shell">git add &lt;file&gt;</code>: add &lt;file&gt; to the staging area</li>
+						<li><code class="language-shell">git add .</code>: add all files to the staging area</li>
+						<li><code class="language-shell">git add -all</code>: add all changes to the staging area including, for example, the deletion of files</li>
+						<li><code class="language-shell">git branch</code>: show local branches</li>
+						<li><code class="language-shell">git branch new &lt;branch&gt;</code>: create a new branch &lt;branch&gt;</li>
+						<li><code class="language-shell">git branch -a</code>: show all local branches</li>
+						<li><code class="language-shell">git branch -D &lt;branch&gt;</code>: delete branch &lt;branch&gt;</li>
+						<li><code class="language-shell">git branch -m &lt;name_old&gt; &lt;name_new&gt;</code>: change the name of branch &lt;name_old&gt; from &lt;name_old&gt; to &lt;name_new&gt;</li>
+						<li><code class="language-shell">git branch -r</code>: show remote branches</li>
+						<li><code class="language-shell">git checkout &lt;branch&gt;</code>: switch to branch &lt;branch&gt;</li>
+						<li><code class="language-shell">git checkout &lt;file&gt;</code>: undo changes to the unstaged file &lt;file&gt;, i.e. pull the file &lt;file&gt; back to the staging area</li>
+						<li><code class="language-shell">git checkout .</code>: undo changes to all unstaged files</li>
+						<li><code class="language-shell">git checkout -b &lt;branch&gt;</code>: create a new branch &lt;branch&gt;</li>
+						<li><code class="language-shell">git clone &lt;name_of_GitHub_repository&gt;.git</code>: clone repository to the local machine</li>
+						<li><code class="language-shell">git commit -m "&lt;message&gt;"</code>: commit changes with message "&lt;message&gt;"</li>
+						<li><code class="language-shell">git config --global user.email 'johndoe@google.com'</code>: set user mail</li>
+						<li><code class="language-shell">git config --global user.name 'John Doe'</code>: set user name</li>
+						<li><code class="language-shell">git init</code>: initialise Git (creates a hidden ".git" file)</li>
+						<li><code class="language-shell">git log</code>: show the log (enter "q" to quit)</li>
+						<li><code class="language-shell">git merge &lt;branch&gt;</code>: merge <branch> with branch &lt;branch&gt;</li>
+						<li><code class="language-shell">git merge &lt;source&gt; &lt;destination&gt;</code>: merge from &lt;source&gt; to &lt;destination&gt;</li>
+						<li><code class="language-shell">git mv &lt;name_file&gt; &lt;name_folder&gt;</code>: move file &lt;name_file&gt; to &lt;name_folder&gt;</li>
+						<li><code class="language-shell">git mv &lt;name_old&gt; &lt;name_new&gt;</code>: rename folder &lt;name_old&gt; from &lt;name_old&gt; to &lt;name_new&gt;</li>
+						<li><code class="language-shell">git rm -r &lt;folder&gt;</code>: delete folder &lt;folder&gt;</li>
+						<li><code class="language-shell">git stash</code>: temporarily save files, for example, to move from one branch to another</li>
+						<li><code class="language-shell">git status</code>: show the status</li>
+						<li><code class="language-shell">git --version</code>: show the Git version</li>
+					</ul>
+			</section>
+			<section>
+				<h2>Other</h2>
+				<p>
+					A <strong>.gitignore</strong> file specifies intentionally untracked files that Git should ignore.
+				</p>
+			</section>
+			<section>
+				<h2>Resources</h2>
+					<ul>
+						<li><a href="https://training.github.com/downloads/github-git-cheat-sheet.pdf" target="_blank">Git Cheat Sheet</a></li>
+						<li><a href="https://learngitbranching.js.org" target="_blank">Learn Git Branching</a></li>
+						<li><a href="https://git-scm.com/book/en/v2" target="_blank">Pro Git Book</a></li>
+						<li><a href="https://git-school.github.io/visualizing-git" target="_blank">Visualising Git</a></li>
+					</ul>
+			</section>
+		</article>
+
+		<div id="footer"></div>
+
+	</body>
+
+</html>
