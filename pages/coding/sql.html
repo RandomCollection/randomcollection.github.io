@@ -210,36 +210,38 @@ FROM cte_1
 			</section>
 			<section>
 				<h2>Other</h2>
-					<h3>Tables Overview</h3>
-					<p>
-						<pre><code class="language-sql">
-SELECT
-    *
-FROM sys.tables
-						</code></pre>
-
-						in case of Microsoft SQL Server and
-					
-						<pre><code class="language-sql">
-SELECT
-    *
-FROM sysibm.systables
-						</code></pre>
-					
-						in case of IBM Db2.
-					</p>
 					<h3>Duplicates</h3>
 					<p>
 						<pre><code class="language-sql">
 SELECT
     column_1,
     column_2,
-    COUNT(*) AS cnt
+COUNT(*) AS cnt
 FROM database.schema.table
 GROUP BY
     column_1,
     column_2
 HAVING COUNT(*) > 1
+						</code></pre>
+					</p>
+					<h3>Pivot</h3>
+					<p>
+						<pre><code class="language-sql">
+SELECT
+    *
+FROM (
+    SELECT
+        column_pivoted_non,
+        column_pivoted_first AS column_1,
+        column_pivoted_second AS column_2
+    FROM database.schema.table
+) AS a
+PIVOT (
+    aggregation_function(column_being_aggregated)
+    FOR column_that_contains_the_values_that_will_become_column_headers IN (
+        [column_pivoted_first], [column_pivoted_second]
+    )
+) AS b
 						</code></pre>
 					</p>
 					<h3>Row With Maximum Value</h3>
@@ -260,25 +262,53 @@ FROM (
 WHERE a.column_value = a.column_value_max
 						</code></pre>
 					</p>
-					<h3>PIVOT</h3>
+					<h3>Schema Routines</h3>
 					<p>
 						<pre><code class="language-sql">
 SELECT
     *
-FROM (
-    SELECT
-        column_pivoted_non,
-        column_pivoted_first AS column_1,
-        column_pivoted_second AS column_2
-    FROM database.schema.table
-) AS a
-PIVOT (
-    aggregation_function(column_being_aggregated)
-    FOR column_that_contains_the_values_that_will_become_column_headers IN (
-        [column_pivoted_first], [column_pivoted_second]
-    )
-) AS b
+FROM database.information_schema.routines
 						</code></pre>
+					</p>
+					<h3>Search String</h3>
+					<p>
+						<pre><code class="language-sql">
+SELECT
+    so.name,
+    text
+FROM sysobjects AS so,
+syscomments AS sc
+WHERE so.id = sc.id
+AND UPPER(text) LIKE '%string_to_search%'
+						</code></pre>
+					</p>
+					<h3>Table Columns</h3>
+					<p>
+						<pre><code class="language-sql">
+SELECT
+    column_name,
+    data_type
+FROM database.information_schema.columns
+WHERE table_name = 'table_name'
+						</code></pre>
+					</p>
+					<h3>Tables Overview</h3>
+					<p>
+						<pre><code class="language-sql">
+SELECT
+    *
+FROM sys.tables
+						</code></pre>
+
+						in case of Microsoft SQL Server and
+					
+						<pre><code class="language-sql">
+SELECT
+    *
+FROM sysibm.systables
+						</code></pre>
+					
+						in case of IBM Db2.
 					</p>
 			</section>
 			<section>
