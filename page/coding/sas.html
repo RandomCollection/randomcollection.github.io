@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en-DE">
+
+	<head>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script>
+			$(function(){$("head").load("/head.html")});
+		</script>
+	</head>
+
+	<body>
+
+		<header></header>
+
+		<div id="nav"></div>
+		
+		<article class="section">
+			<h1>Statistical Analysis System</h1>
+			<section>
+				<p>
+					The <strong>Statistical Analysis System (SAS)</strong> is a statistical software suite developed by
+					the SAS Institute.
+				</p>
+			</section>
+			<section>
+				<h2>Template</h2>
+				<p>
+					<pre><code class="language-sas">
+/**********************************************************************************************************************/
+/*FILE:			&lt;file_name&gt;.sas
+/*VERSION:		0.1
+/*DIRECTORY:		&lt;directory&gt;
+/*DATE:			yyyy-mm-dd
+/*AUTHOR:		&lt;author&gt;
+/*DESCRIPTION:		&lt;description&gt;
+/**********************************************************************************************************************/
+
+/**********************************************************************************************************************/
+/* INITIALISATION *****************************************************************************************************/
+/**********************************************************************************************************************/
+
+/**********************************************************************************************************************/
+/* MAIN BODY **********************************************************************************************************/
+/**********************************************************************************************************************/
+
+/**********************************************************************************************************************/
+/* END ****************************************************************************************************************/
+/**********************************************************************************************************************/
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Path</h2>
+				<p>
+					<pre><code class="language-sas">
+%let &lt;path_name&gt; = C:\&lt;path_1&gt;\&lt;path_2&gt;;
+libname &lt;libname&gt; "&&lt;path_name&gt;.";
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Show All Tables in Libname</h2>
+				<h3>Option 1</h3>
+				<p>
+					<pre><code class="language-sas">
+proc sql;
+	create table tables as
+	select
+		libname,
+		memname,
+		name
+	from dictionary.columns
+	where libname in ('&lt;libname&gt')
+	order by
+		memname;
+quit;
+					</code></pre>
+				</p>
+				<h3>Option 2</h3>
+				<p>
+					<pre><code class="language-sas">
+proc contents data=&lt;libname&gt;._all_ nods; run;
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Show All Columns in Table</h2>
+				<p>
+					<pre><code class="language-sas">
+proc contents data=&lt;libname&gt;.&lt;table&gt;; run;
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Show Top 10</h2>
+				<p>
+					<pre><code class="language-sas">
+proc sql;
+	create table top_ten as
+	select
+		*
+	from &lt;libname&gt;.&lt;table&gt;(obs=10);
+quit;
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Define List</h2>
+				<p>
+					<pre><code class="language-sas">
+%let list_dates =
+"31DEC2022"d
+"31DEC2023"d;
+
+proc sql;
+	create table data as
+	select
+		*
+	from &lt;libname&gt;.&lt;table&gt;(where=(date in (&list_dates.)));
+quit;
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Capitalise Column Names</h2>
+				<p>
+					<pre><code class="language-sas">
+option validvarname=upcase label=0;
+					</code></pre>
+					<pre><code class="language-sas">
+%macro upcase_columns(data);
+	%let dsid=%sysfunc(open(&data.));
+	%let num=%sysfunc(attrn(&dsid, nvars));
+	%put &amp;num;
+	data &amp;data.;
+		set &data.(
+			rename=(
+				%do i = 1 %to &amp;num;
+					%let var&i=%sysfunc(varname(&dsid, &i));
+					&&var&i=%sysfunc(upcase(&&var&i))
+				%end;
+			)
+		);
+	%let close=%sysfunc(close(&dsid));
+	run;
+%mend upcase_columns;
+
+%upcase_columns(&lt;data&gt;);
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Macros</h2>
+				<p>
+					<pre><code class="language-sas">
+%include '/&lt;path&gt;/&lt;file_name&gt;.sas';
+%&lt;macro_name_from_above_to_be_executed&gt;;
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Duplicates</h2>
+				<h3>Overview</h3>
+				<p>
+					<pre><code class="language-sas">
+proc sql;
+	create table duplicates as
+	select
+		date,
+		id,
+		count(*) as cnt
+	from &lt;libname&gt;.&lt;table&gt;
+	group by
+		date,
+		id
+	having count(*) > 1;
+quit;
+					</code></pre>
+				</p>
+				<h3>Actual Duplicates</h3>
+				<p>
+					<pre><code class="language-sas">
+%let data = data;
+%let col = col;
+
+proc sql;
+	create table duplicates as
+	select
+		a.*,
+		b.cnt
+	from &data. as a
+	inner join (
+		select
+			&col.,
+			count(*) as cnt
+		from &data.
+		group by
+			&col.
+		having count(*) > 1
+	) as b
+		on b.&col. = a.&col.
+	where b.cnt ne .
+	order by
+		&col.;
+quit;
+					</code></pre>
+				</p>
+			</section>			
+			<section>
+				<h2>Order by Varchar Variable</h2>
+				<p>
+					<pre><code class="language-sas">
+order by input(&lt;varchar variable&gt;, best12.);
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Group Variable</h2>
+				<p>
+					<pre><code class="language-sas">
+data &lt;data&gt;;
+	length &lt;variable_name&gt; $ 50;
+	set &lt;data&gt;;
+	&lt;variable_name&gt; = 'other';
+	if &lt;variable_criteria&gt; in ('a', 'b') then do;
+		&lt;variable_name&gt; = 'group_1';
+	end;
+	if &lt;variable_criteria> in ('c', 'd') then do;
+		&lt;variable_name&gt; = 'group_2';
+	end;
+	if &lt;variable_criteria> in ('e', 'f') then do;
+		&lt;variable_name&gt; = 'group_3';
+	end;
+run;
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Transposing</h2>
+				<p>
+					<pre><code class="language-sas">
+proc sort data=&lt;data&gt; out=&lt;data&gt;;
+    by
+	&lt;id_1&gt;
+	&lt;id_2&gt;;
+run;
+
+proc transpose data=&lt;data&gt; out=&lt;data&gt;(drop=_name_);
+    by
+	&lt;id_1&gt;
+	&lt;id_2&gt;;
+    id &lt;variable_row&gt;;
+    var &lt;variable_column&gt;;
+run;
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Dynamic Variable Filtering</h2>
+				<p>
+					<pre><code class="language-sas">
+proc sql;
+	create table data as
+	select
+		date,
+		id
+	from &lt;libname&gt;.&lt;table&gt;(
+		where=(
+			&lt;variable&gt; like '%' || &lt;text&gt; || '%'
+		)
+	);
+quit;
+					</code></pre>
+				</p>
+			</section>
+			<section>
+				<h2>Create Snapshots</h2>
+				<p>
+					<pre><code class="language-sas">
+%macro create_snapshots(dates);
+	proc delete data=work.data_raw; run;
+	%local i date;
+	%do i = 1 %to %sysfunc(countw(&dates., %str( )));
+
+		%let date = %scan(&dates., &i, %str( ));
+		%let year_month = %sysfunc(year(&date.))_%sysfunc(putn(%sysfunc(month(&date.)), z2.));
+
+		proc sql;
+			create table data_&year_month. as
+			select distinct
+				&date. format=date9. as snapshot,
+				*
+			from &lt;libname&gt;.&lt;table&gt;(
+				where=(
+					&lt;valid_from&gt; <= &date.
+					and &lt;valid_to&gt; >= &date.
+				)
+			)
+			group by
+				id
+			having &lt;priority_variable&gt; = max(&lt;priority_variable&gt;);
+		quit;
+	
+		proc append base=data_raw data=data_&year_month. force;
+		run;
+	%end;
+%mend create_snapshots;
+
+%create_snapshots(&list_dates.);
+					</code></pre>
+				</p>
+			</section>
+			</section>
+				<h2>Data Import</h2>
+				<p>
+					<pre><code class="language-sas">
+proc import
+	file="/data/.../&lt;name&gt;.xlsx"
+	out=work.&lt;name&gt;
+	dbms=xlsx replace;
+run;
+					</code></pre>
+				</p>
+			</section>
+			</section>
+				<h2>Data Export</h2>
+				<h3>Copy to Libname</h3>
+				<p>
+					<pre><code class="language-sas">
+proc datasets nolist;
+	copy in=work out=&lt;libname_out&gt; memtype=data;
+	select
+		&lt;data_1&gt;
+		&lt;data_2&gt;;
+run;
+					</code></pre>
+				</p>
+				<h3>Copy and Compress to Libname</h3>
+				<p>
+					<pre><code class="language-sas">
+options compress=yes;
+proc copy in=work out=&lt;libname_out&gt; memtype=data noclone;
+	select &lt;data&gt;;
+run;
+					</code></pre>
+				</p>
+				<h3>Excel Single Worksheet</h3>
+				<p>
+					<pre><code class="language-sas">
+%macro export_xlsx(data);
+	proc export
+		data=&data.
+		dbms=xlsx
+		outfile="&path."
+		replace;
+	run;
+%mend export_xlsx;
+
+%export_xlsx(&lt;data&gt;);
+					</code></pre>
+				</p>
+				<h3>Excel Multiple Worksheets</h3>
+				<p>
+					<pre><code class="language-sas">
+%macro export_xlsx(data, worksheet);
+	proc export
+		data=&data.
+		outfile="&path."
+		dbms=xlsx replace;
+		sheet=&worksheet.;
+	run;
+%mend export_xlsx;
+
+%export_xlsx(&lt;data&gt;, "&lt;worksheet&gt;");
+					</code></pre>
+				</p>
+			</section>
+		</article>
+
+		<div id="footer"></div>
+
+	</body>
+
+</html>

@@ -1,61 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en-DE">
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $("head").load("/head.html");
+      });
+    </script>
+  </head>
 
-	<head>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		<script>
-			$(function(){$("head").load("/head.html")});
-		</script>
-	</head>
+  <body>
+    <header></header>
 
-	<body>
+    <div id="nav"></div>
 
-		<header></header>
+    <main>
+      <article class="section">
+        <h1>Home</h1>
+        <section>
+          <h2>RandomCollection</h2>
+          <p>
+            <strong>RandomCollection</strong> offers curated articles about
+            economics, finance, statistics, and coding.
+          </p>
+        </section>
+        <section>
+          <h2>Why?</h2>
+          <p>
+            The idea of creating <strong>RandomCollection</strong> emerged when
+            I was thinking about a way to <strong>collect</strong> and organise
+            small private coding projects. In addition, I was looking for a way
+            to centrally preserve <strong>random</strong> notes about various
+            topics that would otherwise get lost in the depth of my computer.
+            The requirement of having this
+            <strong>random collection</strong> available at all times,
+            device-independent, and without the need of any login, combined with
+            my general interest in building a website, lead to the creation of
+            <strong>RandomCollection</strong>.
+          </p>
+        </section>
+        <section>
+          <h2>Who?</h2>
+          <p>
+            I am an analytics and modelling risk manager with more than seven
+            years of experience in quantitative credit risk modelling working
+            for a Fortune Global 500 company in the financial services industry.
+            As a trained economist and econometrician with a strong quantitative
+            background, I have a passion for providing actionable insights of
+            the highest quality for a wide range of business problems within the
+            credit risk context. I utilise state-of-the-art analytics and
+            technology to enable sound data-driven decision making for senior
+            management and executives. It was only in my current role that I
+            really got my hands into coding, and I especially fell in love with
+            Python.
+            <br /><br /><img
+              src="/img/profile.jpg"
+              class="img_center"
+              alt="RandomCollection"
+              style="max-width: 10%"
+            />
+            <br />Above is a Travelling Salesperson Problem (TSP) rendered image
+            of myself. More information can be found via
+            <a
+              href="https://github.com/RandomCollection/Travelling-Salesperson-Problem-Art"
+              target="_blank"
+              >Travelling-Salesperson-Problem-Art</a
+            >.
+          </p>
+        </section>
+      </article>
+    </main>
 
-		<div id="nav"></div>
-
-		<article class="section">
-			<h1>Home</h1>
-			<section>
-				<h2>RandomCollection</h2>
-				<p>
-					<strong>RandomCollection</strong> offers curated articles about economics, finance, statistics, and
-					coding.
-				</p>
-			</section>
-			<section>
-				<h2>Why?</h2>
-				<p>
-					The idea of creating <strong>RandomCollection</strong> emerged when I was thinking about a way to
-					<strong>collect</strong> and organise small private coding projects. In addition, I was looking for
-					a way to centrally preserve <strong>random</strong> notes about various topics that would otherwise
-					get lost in the depth of my computer. The requirement of having this <strong>random
-					collection</strong> available at all times, device-independent, and without the need of any login,
-					combined with my general interest in building a website, lead to the creation of
-					<strong>RandomCollection</strong>. 
-				</p>
-			</section>
-			<section>
-				<h2>Who?</h2>
-				<p>
-					I am an analytics and modelling risk manager with more than six years of experience in quantitative
-					credit risk modelling working for a Fortune Global 500 company in the financial services industry.
-					As a trained economist and econometrician with a strong quantitative background, I have a passion
-					for providing actionable insights of the highest quality for a wide range of business problems
-					within the credit risk context. I utilise state-of-the-art analytics and technology to enable sound
-					data-driven decision making for senior management and executives. It was only in my current role
-					that I really got my hands into coding, and I especially fell in love with Python.
-					<br><br><img src="/img/profile.jpg" class="img_center" alt="RandomCollection" style="max-width:10%;">	  
-					<br>Above is a Travelling Salesperson Problem (TSP) rendered image of myself. More information can
-					be found via
-					<a href="https://github.com/RandomCollection/Travelling-Salesperson-Problem-Art" target="_blank">Travelling-Salesperson-Problem-Art</a>.
-				</p>
-			</section>	
-		</article>
-		
-		<div id="footer"></div>
-
-	</body>
-
+    <div id="footer"></div>
+  </body>
 </html>

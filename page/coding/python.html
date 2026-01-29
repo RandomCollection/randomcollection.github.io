@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en-DE">
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $("head").load("/head.html");
+      });
+    </script>
+  </head>
+
+  <body>
+    <header></header>
+
+    <div id="nav"></div>
+
+    <article class="section">
+      <h1><span>Python Cheatsheet</span></h1>
+      <iframe
+        style="
+          border: 1px solid #292c2f;
+          height: 60%;
+          position: absolute;
+          width: 95%;
+        "
+        src="python_cheatsheet.html"
+      ></iframe>
+    </article>
+
+    <div id="footer"></div>
+  </body>
+</html>

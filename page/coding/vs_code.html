@@ -1,0 +1,124 @@
+<!doctype html>
+
+<html lang="en-DE">
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $("head").load("/head.html");
+      });
+    </script>
+  </head>
+
+  <body>
+    <header></header>
+
+    <div id="nav"></div>
+
+    <article class="section">
+      <h1>Visual Studio (VS) Code</h1>
+      <section>
+        <p>
+          The <strong>Statistical Analysis System (SAS)</strong> is a
+          statistical software suite developed by the SAS Institute.
+        </p>
+      </section>
+      <section>
+        <h2>keybindings.json</h2>
+        <pre><code class="language-json">
+[
+  {
+    "key": "ctrl+numpad_divide",
+    "command": "editor.action.commentLine",
+  },
+  {
+    "key": "ctrl+d",
+    "command": "editor.action.copyLinesDownAction",
+  },
+  {
+    "key": "shift+alt+down",
+    "command": "editor.action.moveLinesDownAction",
+  },
+  {
+    "key": "shift+alt+up",
+    "command": "editor.action.moveLinesUpAction",
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "editor.action.transformToLowercase",
+  },
+  {
+    "key": "ctrl+shift+u",
+    "command": "editor.action.transformToUppercase",
+  },
+  {
+    "key": "alt+right",
+    "command": "workbench.action.nextEditor",
+  },
+  {
+    "key": "alt+left",
+    "command": "workbench.action.previousEditor",
+  },
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.runSelectedText",
+  },
+]
+
+		</code></pre>
+      </section>
+      <section>
+        <h2>settings.json</h2>
+        <pre><code class="language-json">
+{
+  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": false,
+  "editor.rulers": [120],
+  "editor.wordWrap": "off",
+  "explorer.compactFolders": false,
+  "files.autoSave": "onFocusChange",
+  // "files.exclude": {
+  //   "**/node_modules": true,
+  //   "**/node_modules/**": true,
+  //   "**/*.log": true
+  // },
+  "notebook.codeActionsOnSave": {
+    "notebook.source.organizeImports": "explicit",
+  },
+  "notebook.formatOnSave.enabled": true,
+  "window.title": "${activeEditorMedium}${separator}${rootName}${separator}${profileName}${separator}${activeRepositoryBranchName}",
+  "workbench.activityBar.location": "top",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+    },
+  },
+}
+		</code></pre>
+      </section>
+    </article>
+
+    <div id="footer"></div>
+  </body>
+</html>

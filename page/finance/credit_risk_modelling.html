@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="en-DE">
+
+	<head>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script>
+			$(function(){$("head").load("/head.html")});
+		</script>
+	</head>
+
+	<body>
+
+		<header></header>
+
+		<div id="nav"></div>
+
+		<article class="section">
+			<h1>Credit Risk Modelling</h1>
+			<section>
+				<h2>Risk Taxonomy <cite>[ECB-5]</cite></h2>
+				<p>
+					There are four risk types:
+
+					<ul>
+						<li><strong>Credit risk</strong></li>
+						<li><strong>Market risk</strong></li>
+						<li><strong>Operational risk</strong></li>
+						<li><strong>Counterparty Credit Risk (CCR)</strong> or <strong>Credit Valuation Adjustment (CVA)</strong> risk</li>
+					</ul>
+
+					with the following model types:
+
+					<ul>
+						<li><strong>Credit risk</strong></li>
+						<ul>
+							<li>Internal Assessment Approach (IAA) for securitisations</li>
+							<li>Internal models approach to equity exposures</li>
+							<li>Simple risk weight approach (equity)</li>
+							<li>Probability of Default (PD)</li>
+							<li>Loss Given Default (LGD)</li>
+							<li>Credit Conversion Factor (CCF) / Exposure at Default (EAD)</li>
+							<li>PD/LGD approach</li>
+							<li>Expected Loss (EL)</li>
+							<li>LGD for defaulted assets</li>
+							<li>Expected Loss Best Estimate (ELBE)</li>
+							<li>Slotting criteria</li>
+						</ul>
+						<li><strong>Market risk</strong></li>
+						<ul>
+							<li>Incremental Risk Charge (IRC)</li>
+							<li>Comprehensive Risk Measure (CRM)</li>
+							<li>Value at Risk (VaR)</li>
+							<li>Stressed Value at Risk (SVaR)</li>
+						</ul>
+					</ul>
+
+					and regulatory exposure classes:
+
+					<ul>
+						<li><strong>Credit risk</strong></li>
+						<ul>
+							<li>Securitisations</li>
+							<li>Equity</li>
+							<li>Retail - Secured by real estate SME</li>
+							<li>Retail - Secured by real estate non-SME</li>
+							<li>Retail - Qualifying revolving</li>
+							<li>Retail - Other SME</li>
+							<li>Retail - Other non-SME</li>
+							<li>Central banks and central governments</li>
+							<li>Financial institutions</li>
+							<li>Corporate - SME</li>
+							<li>Corporate - Specialised lending</li>
+							<li>Corporate - Other</li>
+						</ul>
+						<li><strong>Market risk</strong></li>
+						<ul>
+							<li>All IRC</li>
+							<li>All CRM</li>
+							<li>Equity - General risk</li>
+							<li>Equity - Specific risk</li>
+							<li>Debt instruments - General risk</li>
+							<li>Debt instruments - Specific risk</li>
+							<li>Forex risk</li>
+							<li>Commodities risk</li>
+						</ul>
+					</ul>
+
+				</p>
+			</section>
+			<section>
+				<h2>Governance</h2>
+				<p>
+					There are changes that are subject to approval and changes that are subject to notification
+					<cite>[EU-2]</cite>. "Regulation (EU) No 575/2013 differentiates between material extensions or
+					changes to the Internal Ratings Based Approach (IRB approach) and Advanced Measurement Approach
+					(AMA) that are subject to approval [<strong>pre-approval</strong>], and all other changes that are
+					subject to notification. [...] Thus, extensions and changes requiring notification should be further
+					split into extensions and changes requiring notification before their implementation
+					[<strong>pre-notification</strong>] and extensions and changes only requiring notification after
+					their implementation [<strong>post-notification</strong>]." See also <cite>[ECB-3]</cite> article
+					86. To facilitate the process for submitting the documentation package defined under article 8 of
+					Commission Delegated Regulation (EU) No 529/2014, on the ECB Banking Supervision website the ECB
+					has made available to institutions standardised templates for notifying ex ante and ex post
+					non-material changes/extensions and for submitting applications for material model
+					changes/extensions. Institutions are invited to use these templates to facilitate the process and to
+					ensure consistency and completeness.				
+				</p>
+			</section>
+
+
+
+
+
+
+
+			<section>
+				<h2>Regulation</h2>
+					<h3>Risk Data Aggregation and Risk Reporting (RDARR)</h3>
+					<p>
+						The term "risk data aggregation" means defining, gathering and processing risk data according to
+						the bank's risk reporting requirements to enable the bank to measure its performance against its
+						risk tolerance/appetite. This includes sorting, merging or breaking down sets of data. "Risk
+						appetite" is the level and type of risk a firm is able and willing to assume in its exposures and
+						business activities, given its business objectives and obligations to stakeholders. Effective
+						implementation of the principles is expected to enhance risk management and decision-making
+						processes at banks. Risk management data includes data that is critical to enabling the bank to
+						manage the risks it faces. Risk management reports should include exposure and position
+						information for all significant risk areas, for example, credit risk, market risk, liquidity risk,
+						and operational risk and all significant components of those risk areas, for example, single name,
+						country and industry sector for credit risk. Risk management reports should also cover
+						risk-related measures, for example, regulatory and economic capital. An aggregated risk report
+						should include, but not be limited to, the following information: capital adequacy, regulatory
+						capital, capital and liquidity ratio projections, credit risk, market risk, operational risk,
+						liquidity risk, stress testing results, inter- and intra-risk concentrations, and funding positions
+						and plans.
+
+						The Basel Committee on Banking Supervision (BCBS) Principles for Effective Risk Data
+						Aggregation and Risk Reporting cover four closely related sections:
+						<ol>
+							<li>Overarching governance and infrastructure</li>
+							<ul>
+								<li>Governance</li>
+								<li>Data architecture and IT infrastructure</li>
+							</ul>
+							<li>Risk data aggregation capabilities</li>
+							<ul>
+								<li>Accuracy and integrity</li>
+								<li>Completeness</li>
+								<li>Timeliness</li>
+								<li>Adaptability</li>
+							</ul>
+							<li>Risk reporting practices</li>
+							<ul>
+								<li>Accuracy</li>
+								<li>Comprehensiveness</li>
+								<li>Clarity and usefulness</li>
+								<li>Frequency</li>
+								<li>Distribution</li>
+							</ul>
+							<li>Supervisory review, tools, and cooperation</li>
+							<ul>
+								<li>Review</li>
+								<li>Remedial actions and supervisory measures</li>
+								<li>Home/host cooperation</li>
+							</ul>
+						</ol>
+					</p>
+						<h4>Sources</h4>
+						<ul>
+							<li><a href="https://www.bis.org/publ/bcbs239.pdf" target="_blank">Basel Committee on Banking Supervision (BCBS) - Principles for Effective Risk Data Aggregation and Risk Reporting, January 2013</a></li>
+							<li><a href="https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides240503_riskreporting.en.pdf" target="_blank">European Central Bank (ECB) - Guide on Effective Risk Data Aggregation and Risk Reporting, May 2024</a></li>
+						</ul>
+					<h3>Internal Models</h3>
+					<p>
+						In accordance with the requirements set out in Regulation (EU) No 575/20131 (Capital Requirements
+						Regulation (CRR)), credit institutions must ensure that their Pillar I internal models for credit,
+						market, counterparty credit, and operational risk are subject to a validation process with the
+						aim of verifying the overall adequacy, robustness, and reliability of the internal estimates
+						used to calculate own funds requirements. A sound validation function is crucial to ensuring
+						the reliability of internal models and their ability to accurately compute capital requirements.
+						"Rating system", as defined by Article 142(1) of the CRR, means "all of the methods, processes,
+						controls, data collection and IT systems that support the assessment of credit risk, the
+						assignment of exposures to rating grades or pools, and the quantification of default and loss
+						estimates that have been developed for a certain type of exposures". The aim of the validation
+						tools below is to monitor the performance of PD models in the following areas of investigation:
+						<ul>
+							<li>rating process</li>
+							<li>predictive ability (or calibration)</li>
+							<li>discriminatory power (or rank ordering performance)</li>
+							<li>stability</li>
+						</ul>
+					</p>
+						<h4>Sources</h4>
+							<ul>
+								<li><a href="https://www.bankingsupervision.europa.eu/activities/internal_models/shared/pdf/instructions_validation_reporting_credit_risk.en.pdf" target="_blank">European Central Bank (ECB) - Instructions for Reporting the Validation Results of Internal Models, February 2019</a></li>
+								<li><a href="https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides202402_internalmodels.en.pdf" target="_blank">European Central Bank (ECB) - ECB Guide to Internal Models, February 2024</a></li>
+							</ul>
+					<h3>Internal Capital Adequacy Assessment Process (ICAAP)</h3>
+					<p>
+						<h4>Sources</h4>
+						<ul>
+							<li><a href="https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.icaap_guide_201811.en.pdf" target="_blank">European Central Bank (ECB) - ECB Guide to the Internal Capital Adequacy Assessment Process (ICAAP), November 2018</a></li>
+						</ul>
+					</p>
+						
+			</section>
+			<section>
+				<h2>Appropriate Adjustment (AA) and Margin of Conservatism (MoC)</h2>
+				<p>
+					Section "4.4 Treatment of deficiencies and margin of conservatism" of <cite>[ECB-2]</cite> states
+					that "[i]nstitutions should identify all deficiencies related to the estimation of risk parameters
+					that lead to a bias in the quantification of those parameters or to an increased uncertainty that is
+					not fully captured by the general estimation error, and classify each deficiency into one of [three]
+					categories". The three categories are as follows:
+
+					<ul>
+						<li>A: Data and methodological deficiencies</li>
+						<li>B: Relevant changes to underwriting standards, risk appetite, collection and recovery policies and any other source of additional uncertainty</li>
+						<li>C: General estimation error</li>
+					</ul>
+
+					An Appropriate Adjustment (AA) is applied when a risk parameter (e.g. PD, LGD) cannot be reliably estimated using statistical models due to structural limitations, for example, insufficient data or lack of representativeness. AAs ensure that the risk estimates remain prudent and regulatory compliant, even when a full statistical estimation is not feasible. The Margin of Conservatism (MoC) is an explicit buffer added to a model parameter or output (e.g. PD, LGD) to compensate for identified uncertainties or deficiencies in data, methodology, or model performance. MoCs ensure capital adequacy in the presence of known or potential model weaknesses. AA is like saying "We can't even build a reliable model here, so we'll need an alternative and conservative estimate." MoC is like saying "Our model works, but we're not 100% confident, so let's be cautious." First AA then MoC.
+
+					- AA only apply for MoC A and B
+					- AA and MoCs are only applied at the end of the development, i.e. after calibration etc.
+					- potential deficiencies listed in EBA guideline (2017/16, Para 37)
+				</p>
+					<h3>Example Category A - Definition of Default (DoD)</h3>
+					<p>
+						An example of a category A deficiency is "missing or materially changed default triggers in historical observations, including changed criteria for recognition of materially past due credit obligations", see <cite>[ECB-2]</cite>. Imagine a calibration sample with an observed Long Run Average Default Rate (LRADR) of 50 basis points, i.e. 0.5%, that only considers Days Past Due (DPD), but no Unlikeliness to Pay (UtP) defaults. Since the DoD in the calibration is not regulatory compliant, an AA and MoC are necessary. An AA can be obtained by calculating a scaling factor $p$ representing the probability of a true default to be identified as such in the calibration sample, i.e.
+						$$p = \frac{\text{number of defaults}_\text{DPD}}{\text{number of defaults}_\text{DPD} + \text{number of defaults}_\text{UtP}} = \frac{70}{70 + 30} = 0.7$$
+						with an assumed number of 70 DPD and 30 UtP defaults. Hence, the AA, or Best Estimate (BE), LRADR is
+						$$\text{LRADR}_\text{AA} = \frac{\text{LRADR}_\text{observed}}{p} = \frac{0.5}{0.7} \approx 0.71.$$
+						In order to derive a MoC for this deficinecy, any uncertainty relating to $p$ needs to be measured. Assuming a binomial distribution for the event that an obligor from the imperfect calibration sample goes to default based on the additional UtP criterion, the variance of $p$ is
+						$$\sigma^2 = \frac{p (1 - p)}{n}$$
+						where $n$ is the number of observations. Deducting one standard deviation from $p$ yields
+						$$p - \sqrt{\frac{p (1 - p)}{n}}.$$
+						Hence, the MoC LRADR is
+						$$\text{LRADR}_\text{MOC} = \frac{\text{LRADR}_\text{observed}}{p - \sqrt{\frac{p (1 - p)}{n}}} = \frac{0.5}{0.7 - \sqrt{\frac{0.7 (1 - 0.7)}{100}}} \approx 0.76.$$
+						In summary,
+						$$\text{AA} = \frac{\text{LRADR}_\text{AA} - \text{LRADR}_\text{observed}}{\text{LRADR}_\text{observed}} = \frac{0.71 - 0.5}{0.5} \approx 0.42$$
+						and
+						$$\text{MoC} = \frac{\text{LRADR}_\text{MoC} - \text{LRADR}_\text{AA}}{\text{LRADR}_\text{AA}} = \frac{0.76 - 0.71}{0.71} \approx 0.07.$$
+						Another example of a category A deficiency would be missing values. An imputation based on a so-called Huber estimator would be an AA, whereas a MoC would be based on the inherent uncertainty of using such an estimator. 
+					</p>
+					<h3>Example Category C - LRADR</h3>
+					<p>
+						An example of a category C deficiency is the sensitivity of the observed LRADR. Imagine a calibration sample with an observed LRADR of 50 basis points, i.e. 0.5%. The observed LRADR is calculated as the equally weighted average of yearly default rates, i.e.
+						$$\text{LRADR} = \frac{1}{T} \sum_{i = 1}^T \text{DR}_i$$
+						where $\text{DR}_i$ is the default rate for year $i$ and $i = 1, 2, \ldots, T$ with non-overlapping windows to ensure appropriate independence of observations. Assuming a high default portfolio with sufficiently large numbers of overall counts and default events, the dispersion of the estimator will be dominated by the limited number of observed years. Hence,
+						$$\sigma(\text{LRADR}) = \frac{\sigma({\text{DR}})}{\sqrt{T}}$$
+						where $\sigma({\text{DR}})$ is the standard deviation of the oberseved yearly default rates with
+						$$\sigma(\text{DR}) = \sqrt{\frac{1}{T - 1} \sum_{i = 1}^T (\text{DR}_i - \text{LRADR})^2}.$$
+						Assuming 20 years of data and $\sigma({\text{DR}}) = 0.2$, the MoC would be
+						$$\sigma(\text{LRADR}) = \frac{\sigma({\text{DR}})}{\sqrt{T}} = \frac{0.2}{\sqrt{20}} = 0.04,$$
+						i.e.
+						$$\text{LRADR} + \text{MoC} = 0.5 + 0.04 = 0.54.$$
+						Another example of a category C deficiency would be the uncertainty of the parameter estimates of a logistic regression.
+					</p>
+			</section>
+			<section>
+				<h2>Credit Risk Modelling Python Package</h2>
+				<p>
+					<strong>Credit Risk Modelling</strong> is a Python library providing a curated selection of modules to perform
+					credit risk modelling analytics. The documentation can be assessed via
+					<a href="https://randomcollection.github.io/Credit-Risk-Modelling" target="_blank">Credit Risk Modelling</a>.
+				</p>
+			</section>
+			<section>
+				<h5>References</h5>
+				<p>
+					<ul>
+						<li>[BaFin-1] <a href="https://www.bafin.de/SharedDocs/Downloads/DE/Rundschreiben/dl_rs_06_2024_MaRisk_pdf_BA.pdf;jsessionid=CD3D5A78DAD3A7A14A8B47A3C10275FF.internet941?__blob=publicationFile&v=3" target="_blank">Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin) - Mindestanforderungen an das Risikomanagement (MaRisk), June 2024</a></li>
+						<li>[BCBS-1] <a href="https://www.bis.org/publ/bcbs239.pdf" target="_blank">Basel Committee on Banking Supervision (BCBS) - Principles for Effective Risk Data Aggregation and Risk Reporting, January 2013</a></li>
+						<li>[BfJ-1] <a href="https://www.gesetze-im-internet.de/kredwg/" target="_blank">Bundesamt für Justiz - Kreditwesengesetz (KWG), Dezember 2024</a></li>
+						<li>[EBA-1] <a href="https://www.eba.europa.eu/sites/default/files/documents/10180/1597103/004d3356-a9dc-49d1-aab1-3591f4d42cbb/Final%20Report%20on%20Guidelines%20on%20default%20definition%20%28EBA-GL-2016-07%29.pdf" target="_blank">European Banking Authority (EBA) - Guidelines on the Application of the Definition of Default under Article 178 of Regulation (EU) No 575/2013, EBA/GL/2016/07, September 2016</a></li>
+						<li>[EBA-2] <a href="https://www.eba.europa.eu/sites/default/files/documents/10180/2033363/6b062012-45d6-4655-af04-801d26493ed0/Guidelines%20on%20PD%20and%20LGD%20estimation%20%28EBA-GL-2017-16%29.pdf" target="_blank">European Banking Authority (EBA) - Guidelines on PD Estimation, LGD Estimation and the Treatment of Defaulted Exposures, EBA/GL/2017/16, November 2017</a></li>
+						<li>[EBA-3] <a href="https://www.eba.europa.eu/sites/default/files/documents/10180/1720738/0212ecde-426d-4e18-84f8-04b036dcce00/EBA%20Report%20on%20IRB%20modelling%20practices.pdf" target="_blank">European Banking Authority (EBA) - EBA Report on IBR Modelling Practices, November 2017</a></li>
+						<li>[EBA-4] <a href="https://www.eba.europa.eu/sites/default/files/2025-01/fb22982a-d69d-42cc-9d62-1023497ad58a/Final%20Guidelines%20on%20the%20management%20of%20ESG%20risks.pdf" target="_blank">European Banking Authority (EBA) - Guidelines on the Management of Environmental, Social and Governance (ESG) Risks, January 2025</a></li>
+						<li>[ECB-1] <a href="https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.icaap_guide_201811.en.pdf" target="_blank">European Central Bank (ECB) - ECB Guide to the Internal Capital Adequacy Assessment Process (ICAAP), November 2018</a></li>
+						<li>[ECB-2] <a href="https://www.bankingsupervision.europa.eu/activities/internal_models/shared/pdf/instructions_validation_reporting_credit_risk.en.pdf" target="_blank">European Central Bank (ECB) - Instructions for Reporting the Validation Results of Internal Models, February 2019</a></li>
+						<li>[ECB-3] <a href="https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides202402_internalmodels.en.pdf" target="_blank">European Central Bank (ECB) - ECB Guide to Internal Models (EGIM), February 2024</a></li>
+						<li>[ECB-4] <a href="https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides240503_riskreporting.en.pdf" target="_blank">European Central Bank (ECB) - Guide on Effective Risk Data Aggregation and Risk Reporting, May 2024</a></li>
+						<li>[ECB-5] <a href="https://www.bankingsupervision.europa.eu/activities/internal_models/shared/pdf/ssm.guidelines_on_forms.en.pdf" target="_blank">European Central Bank (ECB) - Guidelines on the Pre-Application and Application Forms</a></li>
+						<li>[EU-1] <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32013R0575" target="_blank">European Union (EU) - Regulation No 575/2013 Capital Requirements Regulation (CRR), June 2013</a></li>
+						<li>[EU-2] <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32014R0529" target="_blank">European Union (EU) - Regulation No 575/2013 Capital Requirements Regulation (CRR) No 529/2014, May 2014</a></li>
+						<li>[PRA-1] <a href="https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/publication/2020/ss1113update-jan-2022.pdf" target="_blank">Prudential Regulation Authority (PRA) - Internal Ratings Based (IRB) Approaches, October 2021</a></li>
+					</ul>
+				</p>
+			</section>
+		</article>
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+		<div id="footer"></div>
+
+	</body>
+
+</html>
