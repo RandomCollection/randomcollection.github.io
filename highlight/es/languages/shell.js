@@ -1,6 +1,5 @@
 /*! `shell` grammar compiled for Highlight.js 11.11.1 */
-  (function(){
-    var hljsGrammar = (function () {
+var hljsGrammar = (function () {
   'use strict';
 
   /*
@@ -38,6 +37,5 @@
   return shell;
 
 })();
-
-    hljs.registerLanguage('shell', hljsGrammar);
-  })();
+;
+export default hljsGrammar;
