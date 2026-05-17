@@ -1,0 +1,1 @@
+option validvarname=upcase label=0;

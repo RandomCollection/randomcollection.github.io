@@ -1,0 +1,292 @@
+{
+  "Coding": {
+    "Markdown": [
+      {
+        "name": "The Ultimate Markdown Guide (for Jupyter Notebook)",
+        "url": "https://medium.com/analytics-vidhya/the-ultimate-markdown-guide-for-jupyter-notebook-d5e5abf728fd"
+      }
+    ],
+    "pandas": [
+      {
+        "name": "pandas - DataFrame",
+        "url": "https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html"
+      },
+      {
+        "name": "pandas - Extending pandas",
+        "url": "https://pandas.pydata.org/docs/development/extending.html"
+      },
+      {
+        "name": "pandas - General Functions",
+        "url": "https://pandas.pydata.org/pandas-docs/stable/reference/general_functions.html"
+      },
+      {
+        "name": "pandas - pandas Illustrated: The Definitive Visual Guide to pandas",
+        "url": "https://betterprogramming.pub/pandas-illustrated-the-definitive-visual-guide-to-pandas-c31fa921a43"
+      }
+    ],
+    "Python": [
+      {
+        "name": "Python - Application Layouts: A Reference",
+        "url": "https://realpython.com/python-application-layouts/"
+      },
+      {
+        "name": "Python - Data Structures and Algorithms",
+        "url": "https://github.com/prabhupant/python-ds"
+      },
+      {
+        "name": "Python - Documentation",
+        "url": "https://docs.python.org/3/"
+      },
+      {
+        "name": "Python - Packages",
+        "url": "https://py-pkgs.org/"
+      },
+      {
+        "name": "Python - The Hitchhiker's Guide to Python",
+        "url": "https://docs.python-guide.org/"
+      }
+    ],
+    "SQL": [
+      {
+        "name": "Most Popular Window Functions",
+        "url": "https://mode.com/blog/most-popular-window-functions-and-how-to-use-them/"
+      },
+      {
+        "name": "SQLBolt",
+        "url": "https://sqlbolt.com/"
+      },
+      {
+        "name": "SQL Server Tutorial",
+        "url": "https://www.sqlservertutorial.net/"
+      }
+    ],
+    "VBA": [
+      {
+        "name": "Microsoft Access With VBA",
+        "url": "https://www.functionx.com/vbaccess/index.htm"
+      }
+    ],
+    "Other": [
+      {
+        "name": "LaTeX in Python",
+        "url": "https://codesolid.com/using-latex-in-python/"
+      },
+      {
+        "name": "MathJax Basic Tutorial",
+        "url": "https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference"
+      },
+      {
+        "name": "W3Schools",
+        "url": "https://www.w3schools.com/"
+      }
+    ]
+  },
+  "Data Science": [
+    {
+      "name": "Applied Data Science and Machine Learning",
+      "url": "https://github.com/eugeneyan/applied-ml"
+    },
+    {
+      "name": "Applied Machine Learning - Cornell University",
+      "url": "https://kuleshov-group.github.io/aml-website/"
+    },
+    {
+      "name": "Becoming an Analytics Engineer in 2023",
+      "url": "https://medium.com/@baluramachandra90/becoming-an-analytics-engineer-in-2023-a-data-analyst-guide-1faf6d1cc89c"
+    },
+    {
+      "name": "Data Science Handbook",
+      "url": "https://github.com/andresvourakis/data-scientist-handbook"
+    },
+    {
+      "name": "Data Science Learning Resources",
+      "url": "https://github.com/bradleyboehmke/data-science-learning-resources"
+    },
+    {
+      "name": "Illustrated Machine Learning",
+      "url": "https://illustrated-machine-learning.github.io/"
+    },
+    {
+      "name": "Machine Learning University",
+      "url": "https://mlu-explain.github.io/"
+    },
+    {
+      "name": "Python Data Science Handbook",
+      "url": "https://jakevdp.github.io/PythonDataScienceHandbook/"
+    },
+    {
+      "name": "The Beginners Guide to Database",
+      "url": "https://read.technically.dev/p/the-beginners-guide-to-databases"
+    },
+    {
+      "name": "The Graphic Continuum",
+      "url": "https://www.informationisbeautifulawards.com/showcase/611-the-graphic-continuum"
+    },
+    {
+      "name": "Towards Data Science",
+      "url": "https://towardsdatascience.com/"
+    },
+    {
+      "name": "Why Business Data Science Irritates",
+      "url": "https://shakoist.substack.com/p/why-business-data-science-irritates"
+    }
+  ],
+  "Data Visualisation": [
+    {
+      "name": "Data Visualisation Guide",
+      "url": "https://data.europa.eu/apps/data-visualisation-guide/the-grid"
+    },
+    {
+      "name": "eagereyes",
+      "url": "https://eagereyes.org/"
+    },
+    {
+      "name": "Fonts for Data Visualisation",
+      "url": "https://blog.datawrapper.de/fonts-for-data-visualization/"
+    },
+    {
+      "name": "Junk Charts",
+      "url": "https://junkcharts.typepad.com/"
+    },
+    {
+      "name": "LovelyPlots",
+      "url": "https://github.com/killiansheriff/LovelyPlots/"
+    },
+    {
+      "name": "Storytelling With Data",
+      "url": "https://www.storytellingwithdata.com/"
+    },
+    {
+      "name": "Text in Data Visualisations",
+      "url": "https://blog.datawrapper.de/text-in-data-visualizations/"
+    },
+    {
+      "name": "The Functional Art",
+      "url": "http://www.thefunctionalart.com/"
+    },
+    {
+      "name": "The Magic of Matplotlib Stylesheets",
+      "url": "https://www.datafantic.com/the-magic-of-matplotlib-stylesheets/"
+    },
+    {
+      "name": "Python Data Visualisation",
+      "url": "https://courses.spatialthoughts.com/python-dataviz.html/"
+    },
+    {
+      "name": "Visualising Data",
+      "url": "https://www.visualisingdata.com/"
+    },
+    {
+      "name": "WTF Visualisations",
+      "url": "https://viz.wtf/"
+    }
+  ],
+  "Interview": [
+    {
+      "name": "20 Python Interview Questions",
+      "url": "https://towardsdatascience.com/20-python-interview-questions-to-challenge-your-knowledge-cddc842297c5"
+    },
+    {
+      "name": "Ace Python Interviews",
+      "url": "https://store.lerner.co.il/ace-python-interviews"
+    },
+    {
+      "name": "Data Science Interview Book",
+      "url": "https://dipranjan.github.io/dsinterviewqns/intro.html/"
+    },
+    {
+      "name": "Data Science Interview Questions-Answers",
+      "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers"
+    },
+    {
+      "name": "Data Science Interview Resources",
+      "url": "https://www.conordewey.com/blog/the-big-list-of-data-science-interview-resources/"
+    },
+    {
+      "name": "Interview Query",
+      "url": "https://www.interviewquery.com/"
+    },
+    {
+      "name": "Red Flags",
+      "url": "https://eugeneyan.com/writing/red-flags/"
+    },
+    {
+      "name": "Red Flags to Watch Out in Data Analyst Job Interviews",
+      "url": "https://medium.com/learning-data/red-flags-to-watch-out-for-in-data-analyst-job-interviews-66addea5d3d2"
+    },
+    {
+      "name": "What We Look For in a Candidate",
+      "url": "https://huyenchip.com/2023/01/24/what-we-look-for-in-a-candidate.html"
+    }
+  ],
+  "Regulation": [
+    {
+      "name": "Lexparency",
+      "url": "https://lexparency.org/"
+    }
+  ],
+  "Web Design": [
+    {
+      "name": "Canva",
+      "url": "https://www.canva.com/"
+    },
+    {
+      "name": "CodePen",
+      "url": "https://codepen.io/"
+    },
+    {
+      "name": "Figma",
+      "url": "https://www.figma.com/"
+    },
+    {
+      "name": "MDN Web Docs",
+      "url": "https://developer.mozilla.org/"
+    },
+    {
+      "name": "Typescale",
+      "url": "https://typescale.com/"
+    },
+    {
+      "name": "Unsplash",
+      "url": "https://unsplash.com/"
+    }
+  ],
+  "Other": [
+    {
+      "name": "chartr",
+      "url": "https://www.instagram.com/chartrdaily/?hl=de"
+    },
+    {
+      "name": "DataIsBeautiful",
+      "url": "https://www.reddit.com/r/dataisbeautiful/"
+    },
+    {
+      "name": "FiveThirtyEight",
+      "url": "https://fivethirtyeight.com/"
+    },
+    {
+      "name": "i want hue",
+      "url": "https://medialab.github.io/iwanthue/"
+    },
+    {
+      "name": "Kaggle",
+      "url": "https://www.kaggle.com"
+    },
+    {
+      "name": "Our World in Data",
+      "url": "https://ourworldindata.org/"
+    },
+    {
+      "name": "Shane Lynn",
+      "url": "https://www.shanelynn.ie"
+    },
+    {
+      "name": "Soul Machines",
+      "url": "https://www.soulmachines.com/"
+    },
+    {
+      "name": "The Pudding",
+      "url": "https://pudding.cool/"
+    }
+  ]
+}

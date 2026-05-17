@@ -1,0 +1,1 @@
+order by input(<varchar_variable>, best12.);

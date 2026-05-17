@@ -1,0 +1,46 @@
+[
+  {
+    "key": "alt+left",
+    "command": "workbench.action.previousEditor",
+  },
+  {
+    "key": "alt+right",
+    "command": "workbench.action.nextEditor",
+  },
+  {
+    "key": "ctrl+d",
+    "command": "editor.action.copyLinesDownAction",
+  },
+  {
+    "key": "ctrl+numpad_divide",
+    "command": "editor.action.commentLine",
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "editor.action.transformToLowercase",
+  },
+  {
+    "key": "ctrl+shift+u",
+    "command": "editor.action.transformToUppercase",
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.action.navigateBack",
+  },
+  {
+    "key": "ctrl+2",
+    "command": "workbench.action.navigateForward",
+  },
+  {
+    "key": "shift+alt+down",
+    "command": "editor.action.moveLinesDownAction",
+  },
+  {
+    "key": "shift+alt+up",
+    "command": "editor.action.moveLinesUpAction",
+  },
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.runSelectedText",
+  },
+]

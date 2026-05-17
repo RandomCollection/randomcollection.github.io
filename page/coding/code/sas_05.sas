@@ -1,0 +1,1 @@
+proc contents data=<libname>.<table>; run;

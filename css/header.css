@@ -1,0 +1,24 @@
+.header {
+  align-items: center;
+  background: var(--color-1);
+  background-position: center;
+  background-size: contain;
+  display: grid;
+  font-size: var(--fs-h3);
+  grid-template-columns: 1fr auto 1fr;
+  height: 7rem;
+}
+.logo-word-left {
+  justify-self: end;
+  text-align: right;
+}
+.img-logo {
+  color: var(--color-3);
+  display: block;
+  height: 6rem;
+  width: 7rem;
+}
+.logo-word-right {
+  justify-self: start;
+  text-align: left;
+}

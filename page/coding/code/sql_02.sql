@@ -1,0 +1,7 @@
+SELECT [DISTINCT]
+	column_name[s] [[AS] column_alias[es]]
+FROM database.schema.table [[AS] table_alias]
+[WHERE restriction[s]]
+[GROUP BY column_name[s]]
+[HAVING restriction[s]]
+[ORDER BY column_name[s] [ASC|DESC]]

@@ -1,0 +1,14 @@
+data <data>;
+	length <variable_name> $ 50;
+	set <data>;
+	<variable_name> = 'other';
+	if <variable_criteria> in ('a', 'b') then do;
+		<variable_name> = 'group_1';
+	end;
+	if <variable_criteria> in ('c', 'd') then do;
+		<variable_name> = 'group_2';
+	end;
+	if <variable_criteria> in ('e', 'f') then do;
+		<variable_name> = 'group_3';
+	end;
+run;

@@ -1,0 +1,83 @@
+pre {
+  border-radius: 1rem;
+}
+
+.code {
+  position: relative;
+}
+
+.code pre[class*="language-"] {
+  background: var(--color-2);
+  padding-top: 2rem;
+}
+
+.code-label {
+  color: var(--color-3);
+  font-size: var(--fs-small);
+  left: 0.75rem;
+  position: absolute;
+  top: 0.75rem;
+  z-index: 2;
+}
+
+.code-copy {
+  align-items: center;
+  background: var(--color-1);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--color-3);
+  cursor: pointer;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  position: absolute;
+  right: 0.75rem;
+  transition:
+    background 0.5s ease,
+    color 0.5s ease;
+  top: 0.75rem;
+  width: 2rem;
+  z-index: 2;
+}
+
+.code-copy:hover {
+  background: var(--color-4);
+  color: var(--color-2);
+}
+
+.code-copy svg {
+  height: 1rem;
+  position: absolute;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+  width: 1rem;
+}
+
+.icon-check {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.code-copy.copied .icon-copy {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.code-copy.copied .icon-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.python {
+  border: 0.2rem solid var(--color-2);
+  border-radius: 1rem;
+  height: 70vh;
+  width: 100%;
+}
+
+li code[class*="language-"] {
+  background: var(--color-2) !important;
+  border-radius: 0.25rem;
+  padding: 0.1em 0.4rem !important;
+}

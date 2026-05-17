@@ -1,0 +1,243 @@
+{
+  "language": "DE",
+  "language_toast": "Hinweis: Die Seite wurde mit <a href='https://www.deepl.com/' target='_blank' rel='noopener noreferrer'>DeepL</a> übersetzt und kann fehlerhaft sein.",
+  "nav_home": "Startseite",
+  "nav_economics": "Wirtschaft",
+  "nav_finance": "Finanzen",
+  "nav_finance_credit_risk_modelling": "Kreditrisikomodellierung",
+  "nav_statistics": "Statistik",
+  "nav_coding": "Programmierung",
+  "nav_coding_git": "Git",
+  "nav_coding_html": "HTML",
+  "nav_coding_python": "Python",
+  "nav_coding_sas": "SAS",
+  "nav_coding_sql": "SQL",
+  "nav_coding_vs_code": "VS Code",
+  "nav_resource": "Ressourcen",
+  "footer": "&copy; 2022-2026. Alle Rechte vorbehalten.<br/>Erstellt mit <span class='heart'>♥</span> von <a href='mailto:violine.clef@gmail.com'>RandomCollection</a>",
+  "index_title": "Startseite",
+  "index_randomcollection_title": "RandomCollection",
+  "index_randomcollection_text": "<strong>RandomCollection</strong> bietet kuratierte Artikel zu den Themen Wirtschaft, Finanzen, Statistik und Programmierung.",
+  "index_why_title": "Warum?",
+  "index_why_text": "Die Idee zur Gründung von <strong>RandomCollection</strong> entstand, als ich über eine Möglichkeit nachdachte, kleine private Programmierprojekte zu <strong>sammeln</strong> und zu organisieren. Außerdem suchte ich nach einer Möglichkeit, <strong>zufällige</strong> Notizen zu verschiedenen Themen zentral zu speichern, die sonst in den Tiefen meines Computers verloren gegangen wären. Die Anforderung, diese <strong>zufällige Sammlung</strong> jederzeit verfügbar zu haben, geräteunabhängig und ohne die Notwendigkeit einer Anmeldung, führte in Kombination mit meinem allgemeinen Interesse am Aufbau einer Website zur Gründung von <strong>RandomCollection</strong>.",
+  "index_who_title": "Wer?",
+  "index_who_text": "Ich bin Risikomanager im Bereich Analytik und Modellierung und verfüge über mehr als sieben Jahre Erfahrung in der quantitativen Kreditrisikomodellierung bei einem Fortune-Global-500-Unternehmen der Finanzdienstleistungsbranche. Als ausgebildeter Ökonom und Ökonometriker mit ausgeprägten quantitativen Fähigkeiten ist es mir ein großes Anliegen, umsetzbare Erkenntnisse von höchster Qualität für ein breites Spektrum an geschäftlichen Problemen im Zusammenhang mit Kreditrisiken zu liefern. Ich nutze modernste Analysen und Technologien, um fundierte, datengestützte Entscheidungsfindung für das oberste Management und Führungskräfte zu ermöglichen. Erst in meiner aktuellen Position habe ich mich wirklich mit dem Programmieren beschäftigt und mich besonders in Python verliebt.",
+  "index_tsp_text": "Oben sehen Sie eine am Travelling-Salesperson-Problem (TSP) orientierte Darstellung meiner Person. Weitere Informationen finden Sie unter <a href='https://github.com/RandomCollection/Travelling-Salesperson-Problem-Art' target='_blank' rel='noopener noreferrer'>Travelling-Salesperson-Problem-Art</a>.",
+  "credit_risk_modelling_title": "Kreditrisikomodellierung",
+  "credit_risk_modelling_text": "<a href='https://github.com/RandomCollection/Credit-Risk-Modelling' target='_blank' rel='noopener noreferrer'>Credit Risk Modelling</a> ist eine Python-Bibliothek, die eine sorgfältig zusammengestellte Auswahl an Modulen für die Analyse von Kreditrisikomodellen bietet.",
+  "economics_title": "Wirtschaft",
+  "economics_text": "<em>Res tantum valet quantum vendi potest</em>.<sup>1</sup>",
+  "economics_footnote": "Fußnoten",
+  "economics_footnote_1": "<sup>1</sup> Eine Sache ist nur so viel wert, wie jemand anderes dafür zu zahlen bereit ist.",
+  "statistics_title": "Statistik",
+  "statistics_text": "Hier gibt es noch nichts zu sehen.",
+  "coding_git_title": "Git",
+  "coding_git_text": "<strong>Git</strong> ist eine Software. Genauer gesagt ist Git ein quelloffenes, verteiltes Versionskontrollsystem. Im Gegensatz dazu ist <strong>GitHub</strong> ein Dienst. Genauer gesagt ist GitHub eine zentralisierte Plattform zum Hosten von Quellcode für die Zusammenarbeit an Git-Repositorys.",
+  "coding_git_code_title": "Befehle",
+  "coding_git_code": {
+    "items": [
+      {
+        "text": "<code class='language-git'>git add &lt;file&gt;</code>: &lt;file&gt; in den Staging-Bereich aufnehmen"
+      },
+      {
+        "text": "<code class='language-git'>git add .</code>: alle Dateien in den Staging-Bereich aufnehmen"
+      },
+      {
+        "text": "<code class='language-git'>git add -all</code>: alle Änderungen in den Staging-Bereich aufnehmen, einschließlich beispielsweise des Löschens von Dateien"
+      },
+      {
+        "text": "<code class='language-git'>git branch</code>: lokale Zweige anzeigen"
+      },
+      {
+        "text": "<code class='language-git'>git branch new &lt;branch&gt;</code>: einen neuen Zweig &lt;branch&gt; erstellen"
+      },
+      {
+        "text": "<code class='language-git'>git branch -a</code>: alle lokalen Zweige anzeigen"
+      },
+      {
+        "text": "<code class='language-git'>git branch -D &lt;branch&gt;</code>: Zweig &lt;branch&gt; löschen"
+      },
+      {
+        "text": "<code class='language-git'>git branch -m &lt;name_old&gt; &lt;name_new&gt;</code>: den Namen des Zweigs &lt;name_old&gt; von &lt;name_old&gt; in &lt;name_new&gt; ändern"
+      },
+      {
+        "text": "<code class='language-git'>git branch -r</code>: Remote-Zweige anzeigen"
+      },
+      {
+        "text": "<code class='language-git'>git checkout &lt;branch&gt;</code>: zum Zweig &lt;branch&gt; wechseln"
+      },
+      {
+        "text": "<code class='language-git'>git checkout &lt;file&gt;</code>: Änderungen an der nicht in den Staging-Bereich aufgenommenen Datei &lt;file&gt; rückgängig machen, d.h. die Datei &lt;file&gt; zurück in den Staging-Bereich holen"
+      },
+      {
+        "text": "<code class='language-git'>git checkout .</code>: Änderungen an allen nicht in den Staging-Bereich aufgenommenen Dateien rückgängig machen"
+      },
+      {
+        "text": "<code class='language-git'>git checkout -b &lt;branch&gt;</code>: einen neuen Zweig &lt;branch&gt; erstellen"
+      },
+      {
+        "text": "<code class='language-git'>git clone &lt;name_of_GitHub_repository&gt;.git</code>: Verzeichnis auf den lokalen Rechner klonen"
+      },
+      {
+        "text": "<code class='language-git'>git commit -m '&lt;message&gt;'</code>: Änderungen mit der Meldung '&lt;message&gt;' festschreiben"
+      },
+      {
+        "text": "<code class='language-git'>git config --global user.email 'johndoe@google.com'</code>: Benutzer-E-Mail festlegen"
+      },
+      {
+        "text": "<code class='language-git'>git config --global user.name 'John Doe'</code>: Benutzernamen festlegen"
+      },
+      {
+        "text": "<code class='language-git'>git init</code>: Git initialisieren (erstellt eine versteckte '.git'-Datei)"
+      },
+      {
+        "text": "<code class='language-git'>git log</code>: Protokoll anzeigen (zum Beenden 'q' eingeben)"
+      },
+      {
+        "text": "<code class='language-git'>git merge &lt;branch&gt;</code>: aktuellen Zweig mit Zweig &lt;branch&gt; zusammenführen"
+      },
+      {
+        "text": "<code class='language-git'>git merge &lt;source&gt; &lt;destination&gt;</code>: von &lt;source&gt; nach &lt;destination&gt; zusammenführen"
+      },
+      {
+        "text": "<code class='language-git'>git mv &lt;name_file&gt; &lt;name_folder&gt;</code>: Datei &lt;name_file&gt; nach &lt;name_folder&gt; verschieben"
+      },
+      {
+        "text": "<code class='language-git'>git mv &lt;name_old&gt; &lt;name_new&gt;</code>: Ordner &lt;name_old&gt; von &lt;name_old&gt; in &lt;name_new&gt; umbenennen"
+      },
+      {
+        "text": "<code class='language-git'>git rm -r &lt;folder&gt;</code>: Ordner &lt;folder&gt; löschen"
+      },
+      {
+        "text": "<code class='language-git'>git stash</code>: Dateien vorübergehend speichern, z.B. um von einem Zweig in einen anderen zu wechseln"
+      },
+      {
+        "text": "<code class='language-git'>git status</code>: Status anzeigen"
+      },
+      {
+        "text": "<code class='language-git'>git --version</code>: Git-Version anzeigen"
+      }
+    ]
+  },
+  "coding_git_other_title": "Sonstiges",
+  "coding_git_other_text": "Eine <strong>.gitignore</strong>-Datei legt fest, welche Dateien bewusst nicht nachverfolgt und von Git ignoriert werden sollen.",
+  "coding_git_resource_title": "Ressourcen",
+  "coding_html_title": "HTML",
+  "coding_html_text_1": "<strong>RandomCollection</strong> wird über <strong>GitHub Pages</strong> gehostet. Das entsprechende GitHub-Repository finden Sie <a href='https://github.com/RandomCollection/randomcollection.github.io' target='_blank' rel='noopener noreferrer'>hier</a>. Im Allgemeinen stützt sich modernes Webdesign auf drei Bausteine:",
+  "coding_html_list": {
+    "items": [
+      {
+        "text": "<strong>Structure:</strong> Hypertext Markup Language (HTML)"
+      },
+      { "text": "<strong>Style:</strong> Cascading Style Sheets (CSS)" },
+      { "text": "<strong>Interactivity:</strong> JavaScript" }
+    ]
+  },
+  "coding_html_text_2": "Die Verwendung von JavaScript für <strong>RandomCollection</strong> ist sehr begrenzt, da die Website statischer Natur ist. Auch der Einsatz von responsivem Webdesign ist begrenzt, und eine korrekte Darstellung der Website auf verschiedenen Geräten kann nicht garantiert werden.",
+  "coding_python_title": "Python Spickzettel",
+  "coding_sas_title": "SAS",
+  "coding_sas_text": "Das <strong>Statistical Analysis System (SAS)</strong> ist eine vom SAS Institute entwickelte Statistik-Software-Suite.",
+  "coding_sas_template_title": "Vorlage",
+  "coding_sas_path_title": "Pfad",
+  "coding_sas_show_table_title": "Alle Tabellen in Libname anzeigen",
+  "coding_sas_show_table_title_sub_1": "Option 1",
+  "coding_sas_show_table_title_sub_2": "Option 2",
+  "coding_sas_show_column_title": "Alle Spalten in der Tabelle anzeigen",
+  "coding_sas_show_top_title": "Top 10 anzeigen",
+  "coding_sas_list_title": "Liste definieren",
+  "coding_sas_capitalise_title": "Spaltennamen groß schreiben",
+  "coding_sas_capitalise_title_sub_1": "Option 1",
+  "coding_sas_capitalise_title_sub_2": "Option 2",
+  "coding_sas_macro_title": "Makros",
+  "coding_sas_duplicate_title": "Duplikate",
+  "coding_sas_duplicate_title_sub_1": "Übersicht",
+  "coding_sas_duplicate_title_sub_2": "Tatsächliche Duplikate",
+  "coding_sas_order_title": "Nach Varchar-Variable sortieren",
+  "coding_sas_group_title": "Variable gruppieren",
+  "coding_sas_transpose_title": "Transponieren",
+  "coding_sas_filter_title": "Dynamische Variablenfilterung",
+  "coding_sas_snapshot_title": "Snapshots erstellen",
+  "coding_sas_import_title": "Datenimport",
+  "coding_sas_export_title": "Datenexport",
+  "coding_sas_export_title_sub_1": "In Libname kopieren",
+  "coding_sas_export_title_sub_2": "In Libname kopieren und komprimieren",
+  "coding_sas_export_title_sub_3": "Excel-Einzelarbeitsblatt",
+  "coding_sas_export_title_sub_4": "Excel-Mehrfacharbeitsblätter",
+  "coding_sql_title": "SQL",
+  "coding_sql_text": "Die <strong>Structured Query Language (SQL)</strong> ist die zugrunde liegende Programmiersprache für <strong>relationale Datenbankmanagementsysteme (RDBMS)</strong> wie IBM Db2, Microsoft SQL Server, MySQL, PostgreSQL und SQLite. In der Regel verfügt jedes RDBMS über einen eigenen, leicht abweichenden <strong>SQL-Dialekt</strong>. Transact-SQL oder T-SQL ist beispielsweise der SQL-Dialekt für Microsoft SQL Server, während PL/Pg SQL der von PostgreSQL verwendete SQL-Dialekt ist. Im Folgenden finden Sie eine zufällige Sammlung von Themen rund um SQL.",
+  "coding_sql_select_title": "Auswählen",
+  "coding_sql_select_text_1": "wählt alle Spalten (<strong>*</strong>) aus der Tabelle <strong>database.schema.table</strong> aus. Eine generische Abfrage hat typischerweise folgende Form:",
+  "coding_sql_select_text_2": "Die allgemeine Ausführungsreihenfolge ist:",
+  "coding_sql_select_text_2_list": {
+    "items": [
+      {
+        "text": "<strong>FROM</strong> und <strong>JOIN</strong>"
+      },
+      {
+        "text": "<strong>WHERE</strong> (auf Aliase im <strong>SELECT</strong>-Teil der Abfrage kann nicht zugegriffen werden)",
+        "subitems": [
+          "<strong>=</strong>, <strong>!=</strong>, <strong><</strong>, <strong><=</strong>, <strong>></strong> und <strong>>=</strong>",
+          "<strong>BETWEEN ... AND ...</strong> und <strong>NOT BETWEEN ... AND ...</strong>",
+          "<strong>IN (...)</strong> und <strong>NOT IN (...)</strong>",
+          "<strong>LIKE ...</strong> und <strong>NOT LIKE ...</strong>",
+          "<strong>_</strong> wird an beliebiger Stelle in einer Zeichenfolge verwendet, um ein einzelnes Zeichen zu finden",
+          "<strong>%</strong> wird an beliebiger Stelle in einer Zeichenkette verwendet, um eine Folge von null oder mehr Zeichen zu finden"
+        ]
+      },
+      { "text": "<strong>GROUP BY</strong>" },
+      {
+        "text": "<strong>HAVING</strong> (auf Aliase im <strong>SELECT</strong>-Teil der Abfrage kann nicht zugegriffen werden)"
+      },
+      { "text": "<strong>SELECT</strong>" },
+      { "text": "<strong>DISTINCT</strong>" },
+      {
+        "text": "<strong>ORDER BY</strong> (auf Aliase im <strong>SELECT</strong>-Teil der Abfrage kann zugegriffen werden)"
+      }
+    ]
+  },
+  "coding_sql_select_text_3": "Die Anzahl der zurückzugebenden Datensätze kann limitiert werden durch",
+  "coding_sql_select_text_4": "für den Microsoft SQL Server und",
+  "coding_sql_select_text_5": "bei MySQL.",
+  "coding_sql_create_title": "Erstellen",
+  "coding_sql_insert_title": "Einfügen",
+  "coding_sql_update_title": "Aktualisieren",
+  "coding_sql_delete_title": "Löschen",
+  "coding_sql_alter_title": "Ändern",
+  "coding_sql_join_title": "Verbinden",
+  "coding_sql_union_title": "Vereinigen",
+  "coding_sql_union_text": "wobei <strong>UNION</strong> doppelte Zeilen zwischen den Tabellen entfernt und <strong>UNION ALL</strong> doppelte Zeilen zwischen den Tabellen nicht entfernt.",
+  "coding_sql_cte_title": "CTE",
+  "coding_sql_cte_text": "Ein <strong>Common Table Expression (CTE)</strong> ist ein leistungsstarkes Konstrukt in SQL, das zur Vereinfachung einer Abfrage beiträgt. Diese Reduzierung der Komplexität wird erreicht, indem normalerweise komplexe Abfragen in einfache Blöcke zerlegt werden, die bei der Neufassung der Abfrage verwendet und bei Bedarf wiederverwendet werden können. Ähnlich wie bei einer abgeleiteten Tabelle wird das Ergebnis eines CTE nicht gespeichert und existiert nur für die Dauer der Abfrage.",
+  "coding_sql_other_title": "Sonstiges",
+  "coding_sql_other_duplicate_title": "Duplikate",
+  "coding_sql_other_pivot_title": "Pivot",
+  "coding_sql_other_max_title": "Zeile mit Maximalwert",
+  "coding_sql_other_max_text": "Ermitteln Sie die gesamten Daten für die Zeile mit einem bestimmten Maximalwert in einer Spalte pro Gruppenbezeichner:",
+  "coding_sql_other_schema_title": "Schema-Routinen",
+  "coding_sql_other_search_title": "Suchzeichenfolge",
+  "coding_sql_other_column_title": "Tabellenspalten",
+  "coding_sql_other_overview_title": "Tabellenübersicht",
+  "coding_sql_other_overview_text_1": "Microsoft SQL Server:",
+  "coding_sql_other_overview_text_2": "IBM Db2:",
+  "coding_sql_housekeeping_title": "Wartung",
+  "coding_sql_housekeeping_text_1": "Temporäre Tabellen löschen:",
+  "coding_sql_housekeeping_text_2": "Tabelle löschen:",
+  "coding_vs_code_title": "VS Code",
+  "coding_vs_code_text": "Anbei meine bevorzugte Tastaturbelegung und Einstellungen für Visual Studio (VS) Code.",
+  "coding_vs_code_keybindings": "keybindings.json",
+  "coding_vs_code_settings": "settings.json",
+  "resource_title": "Ressourcen",
+  "resource_coding": "Programmierung",
+  "resource_coding_markdown": "Markdown",
+  "resource_coding_python": "Python",
+  "resource_coding_pandas": "pandas",
+  "resource_coding_sql": "SQL",
+  "resource_coding_vba": "VBA",
+  "resource_coding_other": "Sonstiges",
+  "resource_data_science": "Datenwissenschaft",
+  "resource_data_visualisation": "Datenvisualisierung",
+  "resource_interview": "Vorstellungsgespräch",
+  "resource_regulation": "Regulierung",
+  "resource_web_design": "Webgestaltung",
+  "resource_other": "Sonstiges"
+}

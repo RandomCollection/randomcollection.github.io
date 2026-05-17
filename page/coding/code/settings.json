@@ -1,0 +1,45 @@
+{
+  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": false,
+  "editor.rulers": [79],
+  "editor.wordWrap": "off",
+  "explorer.compactFolders": false,
+  "files.autoSave": "onFocusChange",
+  // "files.exclude": {
+  //   "**/node_modules": true,
+  //   "**/node_modules/**": true,
+  //   "**/*.log": true
+  // },
+  "notebook.codeActionsOnSave": {
+    "notebook.source.fixAll": "explicit",
+    "notebook.source.organizeImports": "explicit",
+  },
+  "notebook.formatOnSave.enabled": true,
+  "window.title": "${activeEditorMedium}${separator}${rootName}${separator}${profileName}${separator}${activeRepositoryBranchName}",
+  "workbench.activityBar.location": "top",
+  "workbench.colorTheme": "Dark 2026",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.singleAttributePerLine": true,
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
+    },
+  },
+}

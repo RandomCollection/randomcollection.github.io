@@ -1,0 +1,243 @@
+{
+  "language": "EN",
+  "language_toast": "",
+  "nav_home": "Home",
+  "nav_economics": "Economics",
+  "nav_finance": "Finance",
+  "nav_finance_credit_risk_modelling": "Credit Risk Modelling",
+  "nav_statistics": "Statistics",
+  "nav_coding": "Coding",
+  "nav_coding_git": "Git",
+  "nav_coding_html": "HTML",
+  "nav_coding_python": "Python",
+  "nav_coding_sas": "SAS",
+  "nav_coding_sql": "SQL",
+  "nav_coding_vs_code": "VS Code",
+  "nav_resource": "Resources",
+  "footer": "&copy; 2022-2026. All rights reserved.<br/>Made with <span class='heart'>♥</span> by <a href='mailto:violine.clef@gmail.com'>RandomCollection</a>",
+  "index_title": "Home",
+  "index_randomcollection_title": "RandomCollection",
+  "index_randomcollection_text": "<strong>RandomCollection</strong> offers curated articles about economics, finance, statistics, and coding.",
+  "index_why_title": "Why?",
+  "index_why_text": "The idea of creating <strong>RandomCollection</strong> emerged when I was thinking about a way to <strong>collect</strong> and organise small private coding projects. In addition, I was looking for a way to centrally preserve <strong>random</strong> notes about various topics that would otherwise get lost in the depth of my computer. The requirement of having this <strong>random collection</strong> available at all times, device-independent, and without the need of any login, combined with my general interest in building a website, lead to the creation of <strong>RandomCollection</strong>.",
+  "index_who_title": "Who?",
+  "index_who_text": "I am an analytics and modelling risk manager with more than seven years of experience in quantitative credit risk modelling working for a Fortune Global 500 company in the financial services industry. As a trained economist and econometrician with a strong quantitative background, I have a passion for providing actionable insights of the highest quality for a wide range of business problems within the credit risk context. I utilise state-of-the-art analytics and technology to enable sound data-driven decision making for senior management and executives. It was only in my current role that I really got my hands into coding, and I especially fell in love with Python.",
+  "index_tsp_text": "Above is a Travelling Salesperson Problem (TSP) rendered image of myself. More information can be found via <a href='https://github.com/RandomCollection/Travelling-Salesperson-Problem-Art' target='_blank' rel='noopener noreferrer'>Travelling-Salesperson-Problem-Art</a>.",
+  "economics_title": "Economics",
+  "economics_text": "<em>Res tantum valet quantum vendi potest</em>.<sup>1</sup>",
+  "economics_footnote": "Footnotes",
+  "economics_footnote_1": "<sup>1</sup> A thing is worth only what someone else will pay for it.",
+  "credit_risk_modelling_title": "Credit Risk Modelling",
+  "credit_risk_modelling_text": "<a href='https://github.com/RandomCollection/Credit-Risk-Modelling' target='_blank' rel='noopener noreferrer'>Credit Risk Modelling</a> is a Python library providing a curated selection of modules to perform credit risk modelling analytics.",
+  "statistics_title": "Statistics",
+  "statistics_text": "There is nothing to see here yet.",
+  "coding_git_title": "Git",
+  "coding_git_text": "<strong>Git</strong> is a software. In particular, Git is an open source, distributed version control system. In contrast, <strong>GitHub</strong> is a service. In particular, GitHub is a centralised source code hosting platform for collaborating on Git repositories.",
+  "coding_git_code_title": "Commands",
+  "coding_git_code": {
+    "items": [
+      {
+        "text": "<code class='language-git'>git add &lt;file&gt;</code>: add &lt;file&gt; to the staging area"
+      },
+      {
+        "text": "<code class='language-git'>git add .</code>: add all files to the staging area"
+      },
+      {
+        "text": "<code class='language-git'>git add -all</code>: add all changes to the staging area including, for example, the deletion of files"
+      },
+      {
+        "text": "<code class='language-git'>git branch</code>: show local branches"
+      },
+      {
+        "text": "<code class='language-git'>git branch new &lt;branch&gt;</code>: create a new branch &lt;branch&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git branch -a</code>: show all local branches"
+      },
+      {
+        "text": "<code class='language-git'>git branch -D &lt;branch&gt;</code>: delete branch &lt;branch&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git branch -m &lt;name_old&gt; &lt;name_new&gt;</code>: change the name of branch &lt;name_old&gt; from &lt;name_old&gt; to &lt;name_new&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git branch -r</code>: show remote branches"
+      },
+      {
+        "text": "<code class='language-git'>git checkout &lt;branch&gt;</code>: switch to branch &lt;branch&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git checkout &lt;file&gt;</code>: undo changes to the unstaged file &lt;file&gt;, i.e. pull the file &lt;file&gt; back to the staging area"
+      },
+      {
+        "text": "<code class='language-git'>git checkout .</code>: undo changes to all unstaged files"
+      },
+      {
+        "text": "<code class='language-git'>git checkout -b &lt;branch&gt;</code>: create a new branch &lt;branch&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git clone &lt;name_of_GitHub_repository&gt;.git</code>: clone repository to the local machine"
+      },
+      {
+        "text": "<code class='language-git'>git commit -m '&lt;message&gt;'</code>: commit changes with message '&lt;message&gt;'"
+      },
+      {
+        "text": "<code class='language-git'>git config --global user.email 'johndoe@google.com'</code>: set user mail"
+      },
+      {
+        "text": "<code class='language-git'>git config --global user.name 'John Doe'</code>: set user name"
+      },
+      {
+        "text": "<code class='language-git'>git init</code>: initialise Git (creates a hidden '.git' file)"
+      },
+      {
+        "text": "<code class='language-git'>git log</code>: show the log (enter 'q' to quit)"
+      },
+      {
+        "text": "<code class='language-git'>git merge &lt;branch&gt;</code>: merge current branch with branch &lt;branch&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git merge &lt;source&gt; &lt;destination&gt;</code>: merge from &lt;source&gt; to &lt;destination&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git mv &lt;name_file&gt; &lt;name_folder&gt;</code>: move file &lt;name_file&gt; to &lt;name_folder&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git mv &lt;name_old&gt; &lt;name_new&gt;</code>: rename folder &lt;name_old&gt; from &lt;name_old&gt; to &lt;name_new&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git rm -r &lt;folder&gt;</code>: delete folder &lt;folder&gt;"
+      },
+      {
+        "text": "<code class='language-git'>git stash</code>: temporarily save files, for example, to move from one branch to another"
+      },
+      {
+        "text": "<code class='language-git'>git status</code>: show the status"
+      },
+      {
+        "text": "<code class='language-git'>git --version</code>: show the Git version"
+      }
+    ]
+  },
+  "coding_git_other_title": "Other",
+  "coding_git_other_text": "A <strong>.gitignore</strong> file specifies intentionally untracked files that Git should ignore.",
+  "coding_git_resource_title": "Resources",
+  "coding_html_title": "HTML",
+  "coding_html_text_1": "<strong>RandomCollection</strong> is hosted via <strong>GitHub Pages</strong>. The corresponding GithHub repository can be found <a href='https://github.com/RandomCollection/randomcollection.github.io' target='_blank' rel='noopener noreferrer'>here</a>. In general, modern web design relies on three building blocks:",
+  "coding_html_list": {
+    "items": [
+      {
+        "text": "<strong>Structure:</strong> Hypertext Markup Language (HTML)"
+      },
+      { "text": "<strong>Style:</strong> Cascading Style Sheets (CSS)" },
+      { "text": "<strong>Interactivity:</strong> JavaScript" }
+    ]
+  },
+  "coding_html_text_2": "The usage of JavaScript for <strong>RandomCollection</strong> is very limited for the website is static in nature. The usage of responsive web design is limited as well and a correct appearance of the website across different devices cannot be guaranteed.",
+  "coding_python_title": "Python Cheatsheet",
+  "coding_sas_title": "SAS",
+  "coding_sas_text": "The <strong>Statistical Analysis System (SAS)</strong> is a statistical software suite developed by the SAS Institute.",
+  "coding_sas_template_title": "Template",
+  "coding_sas_path_title": "Path",
+  "coding_sas_show_table_title": "Show All Tables in Libname",
+  "coding_sas_show_table_title_sub_1": "Option 1",
+  "coding_sas_show_table_title_sub_2": "Option 2",
+  "coding_sas_show_column_title": "Show All Columns in Table",
+  "coding_sas_show_top_title": "Show Top 10",
+  "coding_sas_list_title": "Define List",
+  "coding_sas_capitalise_title": "Capitalise Column Names",
+  "coding_sas_capitalise_title_sub_1": "Option 1",
+  "coding_sas_capitalise_title_sub_2": "Option 2",
+  "coding_sas_macro_title": "Macros",
+  "coding_sas_duplicate_title": "Duplicates",
+  "coding_sas_duplicate_title_sub_1": "Overview",
+  "coding_sas_duplicate_title_sub_2": "Actual Duplicates",
+  "coding_sas_order_title": "Order by Varchar Variable",
+  "coding_sas_group_title": "Group Variable",
+  "coding_sas_transpose_title": "Transposing",
+  "coding_sas_filter_title": "Dynamic Variable Filtering",
+  "coding_sas_snapshot_title": "Create Snapshots",
+  "coding_sas_import_title": "Data Import",
+  "coding_sas_export_title": "Data Export",
+  "coding_sas_export_title_sub_1": "Copy to Libname",
+  "coding_sas_export_title_sub_2": "Copy and Compress to Libname",
+  "coding_sas_export_title_sub_3": "Excel Single Worksheet",
+  "coding_sas_export_title_sub_4": "Excel Multiple Worksheets",
+  "coding_sql_title": "SQL",
+  "coding_sql_text": "The <strong>Structured Query Language (SQL)</strong> is the underlying programming language for <strong>Relational Database Management Systems (RDBMS)</strong> such as IBM Db2, Microsoft SQL Server, MySQL, PostgreSQL, and SQLite. Typically, every RDBMS has its own slightly different <strong>SQL dialect</strong>. Transact-SQL or T-SQL, for example, is the SQL dialect in case of the Microsoft SQL Server, while PL/Pg SQL is the SQL dialect used by PostgreSQL. The following is a random collection of SQL related topics.",
+  "coding_sql_select_title": "Select",
+  "coding_sql_select_text_1": "selects all columns (<strong>*</strong>) from the table <strong>database.schema.table</strong>. A generic query typically takes the following form:",
+  "coding_sql_select_text_2": "The general order of execution is:",
+  "coding_sql_select_text_2_list": {
+    "items": [
+      {
+        "text": "<strong>FROM</strong> and <strong>JOIN</strong>"
+      },
+      {
+        "text": "<strong>WHERE</strong> (aliases in the <strong>SELECT</strong> part of the query are not accessible)",
+        "subitems": [
+          "<strong>=</strong>, <strong>!=</strong>, <strong><</strong>, <strong><=</strong>, <strong>></strong>, and <strong>>=</strong>",
+          "<strong>BETWEEN ... AND ...</strong> and <strong>NOT BETWEEN ... AND ...</strong>",
+          "<strong>IN (...)</strong> and <strong>NOT IN (...)</strong>",
+          "<strong>LIKE ...</strong> and <strong>NOT LIKE ...</strong>",
+          "<strong>_</strong> is used anywhere in a string to match a single character",
+          "<strong>%</strong> is used anywhere in a string to match a sequence of zero or more characters"
+        ]
+      },
+      { "text": "<strong>GROUP BY</strong>" },
+      {
+        "text": "<strong>HAVING</strong> (aliases in the <strong>SELECT</strong> part of the query are not accessible)"
+      },
+      { "text": "<strong>SELECT</strong>" },
+      { "text": "<strong>DISTINCT</strong>" },
+      {
+        "text": "<strong>ORDER BY</strong> (aliases in the <strong>SELECT</strong> part of the query are accessible)"
+      }
+    ]
+  },
+  "coding_sql_select_text_3": "The number of records to be returned can be restricted via",
+  "coding_sql_select_text_4": "in case of the Microsoft SQL Server and via",
+  "coding_sql_select_text_5": "in case of MySQL.",
+  "coding_sql_create_title": "Create",
+  "coding_sql_insert_title": "Insert",
+  "coding_sql_update_title": "Update",
+  "coding_sql_delete_title": "Delete",
+  "coding_sql_alter_title": "Alter",
+  "coding_sql_join_title": "Join",
+  "coding_sql_union_title": "Union",
+  "coding_sql_union_text": "where <strong>UNION</strong> removes duplicate rows between the tables and <strong>UNION ALL</strong> will not remove duplicate rows between the tables.",
+  "coding_sql_cte_title": "CTE",
+  "coding_sql_cte_text": "A <strong>Common Table Expression (CTE)</strong> is a powerful construct in SQL that helps simplify a query. This reduction in complexity is achieved by deconstructing ordinarily complex queries into simple blocks to be used, and reused if necessary, in rewriting the query. Much like a derived table, the result of a CTE is not stored and exists only for the duration of the query.",
+  "coding_sql_other_title": "Other",
+  "coding_sql_other_duplicate_title": "Duplicates",
+  "coding_sql_other_pivot_title": "Pivot",
+  "coding_sql_other_max_title": "Row With Maximum Value",
+  "coding_sql_other_max_text": "Find the whole data for the row with some maximum value in a column per some group identifier:",
+  "coding_sql_other_schema_title": "Schema Routines",
+  "coding_sql_other_search_title": "Search String",
+  "coding_sql_other_column_title": "Table Columns",
+  "coding_sql_other_overview_title": "Tables Overview",
+  "coding_sql_other_overview_text_1": "Microsoft SQL Server:",
+  "coding_sql_other_overview_text_2": "IBM Db2:",
+  "coding_sql_housekeeping_title": "Housekeeping",
+  "coding_sql_housekeeping_text_1": "Delete temporary tables:",
+  "coding_sql_housekeeping_text_2": "Delete table:",
+  "coding_vs_code_title": "VS Code",
+  "coding_vs_code_text": "Below are my preferred keybindings and settings for Visual Studio (VS) Code.",
+  "coding_vs_code_keybindings": "keybindings.json",
+  "coding_vs_code_settings": "settings.json",
+  "resource_title": "Resources",
+  "resource_coding": "Coding",
+  "resource_coding_markdown": "Markdown",
+  "resource_coding_python": "Python",
+  "resource_coding_pandas": "pandas",
+  "resource_coding_sql": "SQL",
+  "resource_coding_vba": "VBA",
+  "resource_coding_other": "Other",
+  "resource_data_science": "Data Science",
+  "resource_data_visualisation": "Data Visualisation",
+  "resource_interview": "Interview",
+  "resource_regulation": "Regulation",
+  "resource_web_design": "Web Design",
+  "resource_other": "Other"
+}
