@@ -2,6 +2,8 @@
 
 window.currentLangData = {};
 
+const DE_TOAST_SHOWN_KEY = "deToastShown";
+
 // Fetch language data
 async function fetchLanguageData(lang) {
   const response = await fetch(`/language/${lang}.json`);
@@ -53,8 +55,12 @@ async function changeLanguage(lang) {
   updateButtonText(lang);
   highlightSelectedLanguage(lang);
 
-  if (lang === "de") {
+  if (lang === "de" && !sessionStorage.getItem(DE_TOAST_SHOWN_KEY)) {
     showToast(langData.language_toast);
+    sessionStorage.setItem(DE_TOAST_SHOWN_KEY, "true");
+  }
+  if (lang !== "de") {
+    sessionStorage.removeItem(DE_TOAST_SHOWN_KEY);
   }
 }
 

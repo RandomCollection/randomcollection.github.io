@@ -9,6 +9,7 @@
   "nav_coding": "Coding",
   "nav_coding_git": "Git",
   "nav_coding_html": "HTML",
+  "nav_coding_linux": "Linux",
   "nav_coding_python": "Python",
   "nav_coding_sas": "SAS",
   "nav_coding_sql": "SQL",
@@ -134,6 +135,67 @@
     ]
   },
   "coding_html_text_2": "The usage of JavaScript for <strong>RandomCollection</strong> is very limited for the website is static in nature. The usage of responsive web design is limited as well and a correct appearance of the website across different devices cannot be guaranteed.",
+  "coding_linux_title": "Linux",
+  "coding_linux_code_title": "Commands",
+  "coding_linux_code": {
+    "items": [
+      {
+        "text": "<code class='language-powershell'>cd &lt;directory&gt;</code>: change the current directory to &lt;directory&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>cd ~</code>: change to home directory"
+      },
+      {
+        "text": "<code class='language-powershell'>cd /</code>: change to root directory"
+      },
+      {
+        "text": "<code class='language-powershell'>cd ..</code>: change to parent directory"
+      },
+      {
+        "text": "<code class='language-powershell'>clear</code>: clear the terminal screen"
+      },
+      {
+        "text": "<code class='language-powershell'>cp &lt;from&gt; &lt;to&gt;</code>: copy files or directories from &lt;from&gt; to &lt;to&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>echo '&lt;text&gt;'</code>: display &lt;text&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>head &lt;file&gt;</code>: display the first few lines of &lt;file&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>kill &lt;id&gt;</code>: terminate a process by its ID &lt;id&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>ls</code>: list files and directories"
+      },
+      { "text": "<code class='language-powershell'>ls -a</code>: list all" },
+      {
+        "text": "<code class='language-powershell'>ls -l</code>: list in long format showing permissions"
+      },
+      {
+        "text": "<code class='language-powershell'>ls -l</code>: list in long format including hidden files"
+      },
+      {
+        "text": "<code class='language-powershell'>mkdir &lt;directory&gt;</code>: create a new directory &lt;directory&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>mv &lt;from&gt; &lt;to&gt;</code>: move or rename files and directories from &lt;from&gt; to &lt;to&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>ps</code>: display the list of running processes"
+      },
+      {
+        "text": "<code class='language-powershell'>pwd</code>: display the current directory path"
+      },
+      {
+        "text": "<code class='language-powershell'>rm &lt;file/directory&gt;</code>: remove file &lt;file&gt; or directory &lt;directory&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>rm -r &lt;file/directory&gt;</code>: recursively remove file &lt;file&gt; or directory &lt;directory&gt;"
+      }
+    ]
+  },
   "coding_python_title": "Python Cheatsheet",
   "coding_sas_title": "SAS",
   "coding_sas_text": "The <strong>Statistical Analysis System (SAS)</strong> is a statistical software suite developed by the SAS Institute.",

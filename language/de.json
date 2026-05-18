@@ -9,6 +9,7 @@
   "nav_coding": "Programmierung",
   "nav_coding_git": "Git",
   "nav_coding_html": "HTML",
+  "nav_coding_linux": "Linux",
   "nav_coding_python": "Python",
   "nav_coding_sas": "SAS",
   "nav_coding_sql": "SQL",
@@ -134,6 +135,69 @@
     ]
   },
   "coding_html_text_2": "Die Verwendung von JavaScript für <strong>RandomCollection</strong> ist sehr begrenzt, da die Website statischer Natur ist. Auch der Einsatz von responsivem Webdesign ist begrenzt, und eine korrekte Darstellung der Website auf verschiedenen Geräten kann nicht garantiert werden.",
+  "coding_linux_title": "Linux",
+  "coding_linux_code_title": "Befehle",
+  "coding_linux_code": {
+    "items": [
+      {
+        "text": "<code class='language-powershell'>cd &lt;directory&gt;</code>: wechsle in das aktuelle Verzeichnis &lt;directory&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>cd ~</code>: wechsle in das Heimverzeichnis"
+      },
+      {
+        "text": "<code class='language-powershell'>cd /</code>: wechsle in das Stammverzeichnis"
+      },
+      {
+        "text": "<code class='language-powershell'>cd ..</code>: wechsle in das übergeordnete Verzeichnis"
+      },
+      {
+        "text": "<code class='language-powershell'>clear</code>: leere den Bildschirm"
+      },
+      {
+        "text": "<code class='language-powershell'>cp &lt;from&gt; &lt;to&gt;</code>: kopiere Dateien oder Verzeichnisse von &lt;from&gt; nach &lt;to&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>echo '&lt;text&gt;'</code>: zeige den Text &lt;text&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>head &lt;file&gt;</code>: zeige die ersten Zeilen von &lt;file&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>kill &lt;id&gt;</code>: beende den Prozess mit ID &lt;id&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>ls</code>: liste Dateien und Verzeichnisse auf"
+      },
+      {
+        "text": "<code class='language-powershell'>ls -a</code>: liste alles auf"
+      },
+      {
+        "text": "<code class='language-powershell'>ls -l</code>: liste Dateien und Verzeichnisse im Langformat mit Berechtigungen auf"
+      },
+      {
+        "text": "<code class='language-powershell'>ls -l</code>: liste Dateien und Verzeichnisse im Langformat einschließlich versteckter Dateien auf"
+      },
+      {
+        "text": "<code class='language-powershell'>mkdir &lt;directory&gt;</code>: erstelle ein neues Verzeichnis &lt;directory&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>mv &lt;from&gt; &lt;to&gt;</code>: verschiebe Verzeichnisse von &lt;from&gt; nach &lt;to&gt; oder benenne Dateien um"
+      },
+      {
+        "text": "<code class='language-powershell'>ps</code>: liste die laufenden Prozesse auf"
+      },
+      {
+        "text": "<code class='language-powershell'>pwd</code>: zeige den aktuellen Verzeichnispfad an"
+      },
+      {
+        "text": "<code class='language-powershell'>rm &lt;file/directory&gt;</code>: lösche Datei &lt;Datei&gt; oder Verzeichnis &lt;Verzeichnis&gt;"
+      },
+      {
+        "text": "<code class='language-powershell'>rm -r &lt;file/directory&gt;</code>: lösche Datei &lt;Datei&gt; oder Verzeichnis &lt;Verzeichnis&gt; rekursiv"
+      }
+    ]
+  },
   "coding_python_title": "Python Spickzettel",
   "coding_sas_title": "SAS",
   "coding_sas_text": "Das <strong>Statistical Analysis System (SAS)</strong> ist eine vom SAS Institute entwickelte Statistik-Software-Suite.",
