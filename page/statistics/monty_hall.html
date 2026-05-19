@@ -1,0 +1,322 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-8CWDH2E27X"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-8CWDH2E27X");
+    </script>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="RandomCollection offers curated articles about economics, finance, statistics, and coding."
+    />
+    <title>RandomCollection</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/img/icon.svg"
+    />
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="/js/head.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="/css/footer.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/header.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/language.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/nav.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/theme.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/monty_hall.css"
+    />
+  </head>
+
+  <body>
+    <div id="header"></div>
+    <div id="nav"></div>
+    <div id="language"></div>
+    <div id="theme"></div>
+
+    <main>
+      <article class="section">
+        <h1 data-i18n="">Monty Hall</h1>
+        <section>
+          <p data-i18n="">
+            The <strong>Monty Hall</strong> or colloquially "goat" problem is a
+            probability puzzle named after Monty Hall and his TV-show
+            <strong>"Let's Make a Deal"</strong>. The Monty Hall problem is
+            intellectually intriguing for its
+            <strong>counterintuitive underlying probabilities</strong>. The
+            problem can be described as follows:<br /><br />
+            <em
+              >Suppose you are on a game show, and you are given the choice of
+              three doors: Behind one door is a car. Behind the others are
+              goats. You pick a door, say door 1, and the host, who knows what
+              is behind the doors, opens another door, say door 3, which has a
+              goat. He then says to you, "Do you want to pick door 2?" Is it to
+              your advantage to switch your choice?</em
+            >
+          </p>
+        </section>
+
+        <p id="game-message"></p>
+
+        <div class="doors">
+          <div
+            class="door"
+            id="door0"
+          >
+            Door 1
+          </div>
+          <div
+            class="door"
+            id="door1"
+          >
+            Door 2
+          </div>
+          <div
+            class="door"
+            id="door2"
+          >
+            Door 3
+          </div>
+        </div>
+
+        <div class="controls">
+          <button onclick="resolveGame(true)">Stay</button>
+          <button onclick="resolveGame(false)">Switch</button>
+          <button onclick="startGame()">Reset Game</button>
+        </div>
+
+        <!-- <div class="controls">
+          <button onclick="runSimulation(100)">Run 100 simulations</button>
+          <button onclick="runSimulation(1000)">Run 1000 simulations</button>
+        </div> -->
+
+        <!-- <div id="plot"></div> -->
+
+        <script>
+          let prizeDoor = null;
+          let playerChoice = null;
+          let revealedDoor = null;
+
+          let stayWins = 0;
+          let switchWins = 0;
+          let totalRuns = 0;
+
+          function startGame() {
+            prizeDoor = Math.floor(Math.random() * 3);
+            playerChoice = null;
+            revealedDoor = null;
+
+            document.querySelectorAll(".door").forEach((d) => {
+              d.classList.remove(
+                "open",
+                "selected",
+                "switch-choice",
+                "reveal-highlight",
+              );
+              d.textContent =
+                d.id === "door0"
+                  ? "Door 1"
+                  : d.id === "door1"
+                    ? "Door 2"
+                    : "Door 3";
+            });
+            document.getElementById("game-message").textContent =
+              "Please try the game yourself and play along. First, pick a door. Then decide whether to stay or switch.";
+          }
+
+          function pickDoor(i) {
+            if (playerChoice !== null) return;
+
+            playerChoice = i;
+
+            // highlight selected door
+            document.getElementById("door" + i).classList.add("selected");
+
+            // host reveals a goat door that is not chosen or prize
+            let options = [0, 1, 2].filter((d) => d !== i && d !== prizeDoor);
+            revealedDoor = options[Math.floor(Math.random() * options.length)];
+
+            const message = document.getElementById("game-message");
+
+            // first message
+            message.textContent =
+              "You selected a door. The host will now reveal a goat door.";
+
+            // reveal after delay
+            setTimeout(() => {
+              const revealed = document.getElementById("door" + revealedDoor);
+
+              revealed.classList.add("open");
+              revealed.textContent = "🐐";
+
+              revealed.classList.add("reveal-highlight");
+
+              // fade back automatically
+              setTimeout(() => {
+                revealed.classList.remove("reveal-highlight");
+              }, 1000);
+
+              // second message
+              setTimeout(() => {
+                message.textContent =
+                  "Do you want to stay with your choice or switch? Please click a button accordingly.";
+              }, 1000);
+            }, 3000);
+          }
+
+          function resolveGame(stay) {
+            if (playerChoice === null) return;
+
+            let finalChoice = playerChoice;
+
+            const message = document.getElementById("game-message");
+
+            // handle switching
+            if (!stay) {
+              finalChoice = [0, 1, 2].find(
+                (d) => d !== playerChoice && d !== revealedDoor,
+              );
+
+              // remove old highlight + add switch highlight
+              document
+                .getElementById("door" + playerChoice)
+                .classList.remove("selected");
+
+              document
+                .getElementById("door" + finalChoice)
+                .classList.add("switch-choice");
+            }
+
+            // small pause before revealing final door
+            message.textContent = "Final choice locked in ... revealing door.";
+
+            setTimeout(() => {
+              const finalDoorEl = document.getElementById("door" + finalChoice);
+
+              // reveal prize/goat
+              if (finalChoice === prizeDoor) {
+                finalDoorEl.textContent = "🚗";
+                message.textContent = "🎉 You won the car! 🎉";
+              } else {
+                finalDoorEl.textContent = "🐐";
+                message.textContent = "🐐 You got a goat! 🐐";
+              }
+
+              finalDoorEl.classList.add("open");
+
+              // update stats AFTER reveal
+              const win = finalChoice === prizeDoor;
+
+              if (stay) {
+                stayWins += win ? 1 : 0;
+              } else {
+                switchWins += win ? 1 : 0;
+              }
+
+              totalRuns++;
+              updatePlot();
+
+              // reset after delay so user can see result
+              setTimeout(() => {
+                startGame();
+              }, 2000);
+            }, 1200);
+          }
+
+          // function runSimulation(n) {
+          //   for (let i = 0; i < n; i++) {
+          //     let prize = Math.floor(Math.random() * 3);
+          //     let pick = Math.floor(Math.random() * 3);
+
+          //     let revealOptions = [0, 1, 2].filter(
+          //       (d) => d !== pick && d !== prize,
+          //     );
+          //     let reveal =
+          //       revealOptions[Math.floor(Math.random() * revealOptions.length)];
+
+          //     let switchChoice = [0, 1, 2].find(
+          //       (d) => d !== pick && d !== reveal,
+          //     );
+
+          //     if (pick === prize) stayWins++;
+          //     if (switchChoice === prize) switchWins++;
+
+          //     totalRuns++;
+          //   }
+
+          //   updatePlot();
+          // }
+
+          // function updatePlot() {
+          //   Plotly.newPlot(
+          //     "plot",
+          //     [
+          //       {
+          //         x: ["Stay", "Switch"],
+          //         y: [stayWins / totalRuns || 0, switchWins / totalRuns || 0],
+          //         type: "bar",
+          //       },
+          //     ],
+          //     {
+          //       title: "Win Rate: Stay vs Switch",
+          //       yaxis: { title: "Probability" },
+          //     },
+          //   );
+          // }
+
+          // attach click handlers
+          document.getElementById("door0").onclick = () => pickDoor(0);
+          document.getElementById("door1").onclick = () => pickDoor(1);
+          document.getElementById("door2").onclick = () => pickDoor(2);
+
+          // initialize
+          startGame();
+          // updatePlot();
+        </script>
+      </article>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/language.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/element.js"></script>
+  </body>
+</html>
