@@ -82,44 +82,47 @@
             <strong>counterintuitive underlying probabilities</strong>. The
             problem can be described as follows:<br /><br />
             <em
-              >Suppose you are on a game show, and you are given the choice of
-              three doors: Behind one door is a car. Behind the others are
-              goats. You pick a door, say door 1, and the host, who knows what
-              is behind the doors, opens another door, say door 3, which has a
-              goat. He then says to you, "Do you want to pick door 2?" Is it to
-              your advantage to switch your choice?</em
+              >Suppose you are on the game show "Let's Make a Deal" and you are
+              given the choice of three doors: Behind one door is a car, the
+              prize. Behind the other two doors are goats, the blanks. You pick
+              a door, say door 1, and Monty, who knows what is behind each door,
+              opens another door, say door 3, which has a goat. Monty then asks
+              you whether you want to stay with your selected door or switch to
+              the other one. Is it to your advantage to switch your choice?</em
             >
           </p>
+          <br />
         </section>
+        <section>
+          <p id="game-message"></p>
 
-        <p id="game-message"></p>
+          <div class="doors">
+            <div
+              class="door"
+              id="door0"
+            >
+              Door 1
+            </div>
+            <div
+              class="door"
+              id="door1"
+            >
+              Door 2
+            </div>
+            <div
+              class="door"
+              id="door2"
+            >
+              Door 3
+            </div>
+          </div>
 
-        <div class="doors">
-          <div
-            class="door"
-            id="door0"
-          >
-            Door 1
+          <div class="controls">
+            <button onclick="resolveGame(true)">Stay</button>
+            <button onclick="resolveGame(false)">Switch</button>
+            <button onclick="startGame()">Reset Game</button>
           </div>
-          <div
-            class="door"
-            id="door1"
-          >
-            Door 2
-          </div>
-          <div
-            class="door"
-            id="door2"
-          >
-            Door 3
-          </div>
-        </div>
-
-        <div class="controls">
-          <button onclick="resolveGame(true)">Stay</button>
-          <button onclick="resolveGame(false)">Switch</button>
-          <button onclick="startGame()">Reset Game</button>
-        </div>
+        </section>
 
         <!-- <div class="controls">
           <button onclick="runSimulation(100)">Run 100 simulations</button>
@@ -136,6 +139,43 @@
           let stayWins = 0;
           let switchWins = 0;
           let totalRuns = 0;
+
+          const messages = {
+            intro:
+              "Try the game yourself and play along. First, pick a door. Then decide whether to stay or switch.",
+
+            selected:
+              "You have selected a door. Monty will now reveal a goat door.",
+
+            switchPrompt:
+              "Do you want to stay or switch? Click a button accordingly.",
+
+            revealing: "Okay, you have choosen ...",
+
+            win: "🎉 You won the car! 🎉",
+
+            lose: "🐐 Oh no, you got a goat! 🐐",
+
+            pickedDoor: "You picked Door {door}.",
+          };
+
+          function updateMessage(key, vars = {}) {
+            const message = document.getElementById("game-message");
+
+            let text = messages[key];
+
+            Object.keys(vars).forEach((k) => {
+              text = text.replace(`{${k}}`, vars[k]);
+            });
+
+            message.textContent = text;
+
+            message.classList.add("highlight");
+
+            setTimeout(() => {
+              message.classList.remove("highlight");
+            }, 1000);
+          }
 
           function startGame() {
             prizeDoor = Math.floor(Math.random() * 3);
@@ -156,8 +196,7 @@
                     ? "Door 2"
                     : "Door 3";
             });
-            document.getElementById("game-message").textContent =
-              "Please try the game yourself and play along. First, pick a door. Then decide whether to stay or switch.";
+            updateMessage("intro");
           }
 
           function pickDoor(i) {
@@ -175,8 +214,7 @@
             const message = document.getElementById("game-message");
 
             // first message
-            message.textContent =
-              "You selected a door. The host will now reveal a goat door.";
+            updateMessage("selected");
 
             // reveal after delay
             setTimeout(() => {
@@ -194,8 +232,7 @@
 
               // second message
               setTimeout(() => {
-                message.textContent =
-                  "Do you want to stay with your choice or switch? Please click a button accordingly.";
+                updateMessage("switchPrompt");
               }, 1000);
             }, 3000);
           }
@@ -224,24 +261,36 @@
             }
 
             // small pause before revealing final door
-            message.textContent = "Final choice locked in ... revealing door.";
+            updateMessage("revealing");
 
             setTimeout(() => {
               const finalDoorEl = document.getElementById("door" + finalChoice);
 
-              // reveal prize/goat
-              if (finalChoice === prizeDoor) {
+              finalDoorEl.classList.add("open", "reveal-highlight");
+
+              setTimeout(() => {
+                finalDoorEl.classList.remove("reveal-highlight");
+              }, 1000);
+
+              const win = finalChoice === prizeDoor;
+
+              if (win) {
                 finalDoorEl.textContent = "🚗";
-                message.textContent = "🎉 You won the car! 🎉";
+                updateMessage("win");
+
+                // 🚗 CAR SHOWER
+                for (let i = 0; i < 20; i++) {
+                  setTimeout(() => spawnEffect("🚗", "win"), i * 60);
+                }
               } else {
                 finalDoorEl.textContent = "🐐";
-                message.textContent = "🐐 You got a goat! 🐐";
+                updateMessage("lose");
+
+                // 🐐 GOAT RAIN
+                for (let i = 0; i < 20; i++) {
+                  setTimeout(() => spawnEffect("🐐", "lose"), i * 60);
+                }
               }
-
-              finalDoorEl.classList.add("open");
-
-              // update stats AFTER reveal
-              const win = finalChoice === prizeDoor;
 
               if (stay) {
                 stayWins += win ? 1 : 0;
@@ -256,7 +305,7 @@
               setTimeout(() => {
                 startGame();
               }, 2000);
-            }, 1200);
+            }, 2000);
           }
 
           // function runSimulation(n) {
@@ -308,9 +357,53 @@
           // initialize
           startGame();
           // updatePlot();
+
+          function spawnEffect(symbol, type) {
+            const el = document.createElement("div");
+            el.className = "effect-icon";
+            el.textContent = symbol;
+
+            const x = Math.random() * window.innerWidth;
+            el.style.left = x + "px";
+
+            const duration = 3000 + Math.random() * 3000;
+
+            const layer = document.getElementById("effect-layer");
+            layer.appendChild(el);
+
+            if (type === "win") {
+              // car rises bottom → top
+              el.style.top = "auto";
+              el.style.bottom = "-40px";
+
+              el.animate(
+                [
+                  { transform: "translateY(0)", opacity: 1 },
+                  { transform: "translateY(-120vh)", opacity: 0 },
+                ],
+                { duration, easing: "linear" },
+              );
+            } else {
+              // goat falls top → bottom
+              el.style.top = "-40px";
+              el.style.bottom = "auto";
+
+              el.animate(
+                [
+                  { transform: "translateY(0)", opacity: 1 },
+                  { transform: "translateY(120vh)", opacity: 0 },
+                ],
+                { duration, easing: "linear" },
+              );
+            }
+
+            setTimeout(() => el.remove(), duration);
+          }
         </script>
       </article>
     </main>
+
+    <div id="effect-layer"></div>
 
     <div id="footer"></div>
 

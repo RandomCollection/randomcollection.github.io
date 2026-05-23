@@ -61,6 +61,11 @@
   max-width: 12rem;
   padding: 0.6rem 1rem;
   text-align: center;
+  transition: transform 0.5s;
+}
+
+button:hover {
+  transform: scale(1.05);
 }
 
 #plot {
@@ -71,11 +76,32 @@
 #game-message {
   align-items: center;
   background: var(--color-4);
+  border: 0.2rem solid transparent;
   border-radius: 0.5rem;
-  /* color: var(--color-2); */
+  box-sizing: border-box;
   display: flex;
-  height: 3rem;
+  height: 4rem;
   justify-content: center;
-  min-height: 2rem;
+  min-height: 4rem;
+  padding: 0.1rem;
   text-align: center;
+  transition: border-color 1s ease;
+}
+
+#game-message.highlight {
+  border-color: var(--color-2);
+}
+
+#effect-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.effect-icon {
+  position: absolute;
+  font-size: 28px;
+  opacity: 1;
 }
