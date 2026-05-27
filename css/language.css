@@ -19,6 +19,9 @@
   justify-content: center;
   width: 3.5rem;
 }
+[theme-settings="dark"] .language-button {
+  background: var(--color-1);
+}
 
 .language-button:hover {
   opacity: 0.5;
@@ -70,17 +73,28 @@
   margin: 0.1rem 0rem;
   width: 3.5rem;
 }
+[theme-settings="dark"] .language-dropdown li {
+  background: var(--color-2);
+  border: 0.1rem solid var(--color-3);
+}
 
 .language-dropdown li:hover {
   background: var(--color-2);
   color: var(--color-3);
   font-weight: bold;
 }
+[theme-settings="dark"] .language-dropdown li:hover {
+  background: var(--color-1);
+}
 
 .language-dropdown li.active {
   background: var(--color-3);
   color: var(--color-2);
   font-weight: bold;
+}
+[theme-settings="dark"] .language-dropdown li.active {
+  background: var(--color-4);
+  color: var(--color-3);
 }
 
 .language-toast {
@@ -99,6 +113,9 @@
     transform 0.5s ease;
   top: 2rem;
   z-index: 100;
+}
+[theme-settings="dark"] .language-toast {
+  box-shadow: 0 0.5rem 0.5rem 0.2rem var(--color-4);
 }
 
 .language-toast.show {

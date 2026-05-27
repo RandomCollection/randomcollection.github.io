@@ -8,16 +8,22 @@
   grid-template-columns: 1fr auto 1fr;
   height: 7rem;
 }
+[theme-settings="dark"] .header {
+  background: var(--color-2);
+}
+
 .logo-word-left {
   justify-self: end;
   text-align: right;
 }
+
 .img-logo {
   color: var(--color-3);
   display: block;
   height: 6rem;
   width: 7rem;
 }
+
 .logo-word-right {
   justify-self: start;
   text-align: left;

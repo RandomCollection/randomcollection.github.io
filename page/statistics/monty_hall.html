@@ -31,7 +31,7 @@
       href="/img/icon.svg"
     />
 
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-3.5.1.min.js"></script>
     <script src="/js/head.js"></script>
 
     <link
@@ -72,334 +72,72 @@
 
     <main>
       <article class="section">
-        <h1 data-i18n="">Monty Hall</h1>
+        <h1 data-i18n="statistics_monty_hall_title"></h1>
         <section>
-          <p data-i18n="">
-            The <strong>Monty Hall</strong> or colloquially "goat" problem is a
-            probability puzzle named after Monty Hall and his TV-show
-            <strong>"Let's Make a Deal"</strong>. The Monty Hall problem is
-            intellectually intriguing for its
-            <strong>counterintuitive underlying probabilities</strong>. The
-            problem can be described as follows:<br /><br />
-            <em
-              >Suppose you are on the game show "Let's Make a Deal" and you are
-              given the choice of three doors: Behind one door is a car, the
-              prize. Behind the other two doors are goats, the blanks. You pick
-              a door, say door 1, and Monty, who knows what is behind each door,
-              opens another door, say door 3, which has a goat. Monty then asks
-              you whether you want to stay with your selected door or switch to
-              the other one. Is it to your advantage to switch your choice?</em
-            >
-          </p>
-          <br />
+          <p data-i18n="statistics_monty_hall_intro"></p>
+          <p><em data-i18n="statistics_monty_hall_manual"></em></p>
         </section>
         <section>
           <p id="game-message"></p>
-
           <div class="doors">
             <div
               class="door"
               id="door0"
-            >
-              Door 1
-            </div>
+              data-i18n="statistics_monty_hall_button_door_1"
+            ></div>
             <div
               class="door"
               id="door1"
-            >
-              Door 2
-            </div>
+              data-i18n="statistics_monty_hall_button_door_2"
+            ></div>
             <div
               class="door"
               id="door2"
-            >
-              Door 3
-            </div>
+              data-i18n="statistics_monty_hall_button_door_3"
+            ></div>
           </div>
-
           <div class="controls">
-            <button onclick="resolveGame(true)">Stay</button>
-            <button onclick="resolveGame(false)">Switch</button>
-            <button onclick="startGame()">Reset Game</button>
+            <button
+              onclick="resolveGame(true)"
+              data-i18n="statistics_monty_hall_button_stay"
+            ></button>
+            <button
+              onclick="resolveGame(false)"
+              data-i18n="statistics_monty_hall_button_switch"
+            ></button>
+            <button
+              onclick="startGame()"
+              data-i18n="statistics_monty_hall_button_reset"
+            ></button>
           </div>
         </section>
-
-        <!-- <div class="controls">
-          <button onclick="runSimulation(100)">Run 100 simulations</button>
-          <button onclick="runSimulation(1000)">Run 1000 simulations</button>
-        </div> -->
-
-        <!-- <div id="plot"></div> -->
-
-        <script>
-          let prizeDoor = null;
-          let playerChoice = null;
-          let revealedDoor = null;
-
-          let stayWins = 0;
-          let switchWins = 0;
-          let totalRuns = 0;
-
-          const messages = {
-            intro:
-              "Try the game yourself and play along. First, pick a door. Then decide whether to stay or switch.",
-
-            selected:
-              "You have selected a door. Monty will now reveal a goat door.",
-
-            switchPrompt:
-              "Do you want to stay or switch? Click a button accordingly.",
-
-            revealing: "Okay, you have choosen ...",
-
-            win: "🎉 You won the car! 🎉",
-
-            lose: "🐐 Oh no, you got a goat! 🐐",
-
-            pickedDoor: "You picked Door {door}.",
-          };
-
-          function updateMessage(key, vars = {}) {
-            const message = document.getElementById("game-message");
-
-            let text = messages[key];
-
-            Object.keys(vars).forEach((k) => {
-              text = text.replace(`{${k}}`, vars[k]);
-            });
-
-            message.textContent = text;
-
-            message.classList.add("highlight");
-
-            setTimeout(() => {
-              message.classList.remove("highlight");
-            }, 1000);
-          }
-
-          function startGame() {
-            prizeDoor = Math.floor(Math.random() * 3);
-            playerChoice = null;
-            revealedDoor = null;
-
-            document.querySelectorAll(".door").forEach((d) => {
-              d.classList.remove(
-                "open",
-                "selected",
-                "switch-choice",
-                "reveal-highlight",
-              );
-              d.textContent =
-                d.id === "door0"
-                  ? "Door 1"
-                  : d.id === "door1"
-                    ? "Door 2"
-                    : "Door 3";
-            });
-            updateMessage("intro");
-          }
-
-          function pickDoor(i) {
-            if (playerChoice !== null) return;
-
-            playerChoice = i;
-
-            // highlight selected door
-            document.getElementById("door" + i).classList.add("selected");
-
-            // host reveals a goat door that is not chosen or prize
-            let options = [0, 1, 2].filter((d) => d !== i && d !== prizeDoor);
-            revealedDoor = options[Math.floor(Math.random() * options.length)];
-
-            const message = document.getElementById("game-message");
-
-            // first message
-            updateMessage("selected");
-
-            // reveal after delay
-            setTimeout(() => {
-              const revealed = document.getElementById("door" + revealedDoor);
-
-              revealed.classList.add("open");
-              revealed.textContent = "🐐";
-
-              revealed.classList.add("reveal-highlight");
-
-              // fade back automatically
-              setTimeout(() => {
-                revealed.classList.remove("reveal-highlight");
-              }, 1000);
-
-              // second message
-              setTimeout(() => {
-                updateMessage("switchPrompt");
-              }, 1000);
-            }, 3000);
-          }
-
-          function resolveGame(stay) {
-            if (playerChoice === null) return;
-
-            let finalChoice = playerChoice;
-
-            const message = document.getElementById("game-message");
-
-            // handle switching
-            if (!stay) {
-              finalChoice = [0, 1, 2].find(
-                (d) => d !== playerChoice && d !== revealedDoor,
-              );
-
-              // remove old highlight + add switch highlight
-              document
-                .getElementById("door" + playerChoice)
-                .classList.remove("selected");
-
-              document
-                .getElementById("door" + finalChoice)
-                .classList.add("switch-choice");
-            }
-
-            // small pause before revealing final door
-            updateMessage("revealing");
-
-            setTimeout(() => {
-              const finalDoorEl = document.getElementById("door" + finalChoice);
-
-              finalDoorEl.classList.add("open", "reveal-highlight");
-
-              setTimeout(() => {
-                finalDoorEl.classList.remove("reveal-highlight");
-              }, 1000);
-
-              const win = finalChoice === prizeDoor;
-
-              if (win) {
-                finalDoorEl.textContent = "🚗";
-                updateMessage("win");
-
-                // 🚗 CAR SHOWER
-                for (let i = 0; i < 20; i++) {
-                  setTimeout(() => spawnEffect("🚗", "win"), i * 60);
-                }
-              } else {
-                finalDoorEl.textContent = "🐐";
-                updateMessage("lose");
-
-                // 🐐 GOAT RAIN
-                for (let i = 0; i < 20; i++) {
-                  setTimeout(() => spawnEffect("🐐", "lose"), i * 60);
-                }
-              }
-
-              if (stay) {
-                stayWins += win ? 1 : 0;
-              } else {
-                switchWins += win ? 1 : 0;
-              }
-
-              totalRuns++;
-              updatePlot();
-
-              // reset after delay so user can see result
-              setTimeout(() => {
-                startGame();
-              }, 2000);
-            }, 2000);
-          }
-
-          // function runSimulation(n) {
-          //   for (let i = 0; i < n; i++) {
-          //     let prize = Math.floor(Math.random() * 3);
-          //     let pick = Math.floor(Math.random() * 3);
-
-          //     let revealOptions = [0, 1, 2].filter(
-          //       (d) => d !== pick && d !== prize,
-          //     );
-          //     let reveal =
-          //       revealOptions[Math.floor(Math.random() * revealOptions.length)];
-
-          //     let switchChoice = [0, 1, 2].find(
-          //       (d) => d !== pick && d !== reveal,
-          //     );
-
-          //     if (pick === prize) stayWins++;
-          //     if (switchChoice === prize) switchWins++;
-
-          //     totalRuns++;
-          //   }
-
-          //   updatePlot();
-          // }
-
-          // function updatePlot() {
-          //   Plotly.newPlot(
-          //     "plot",
-          //     [
-          //       {
-          //         x: ["Stay", "Switch"],
-          //         y: [stayWins / totalRuns || 0, switchWins / totalRuns || 0],
-          //         type: "bar",
-          //       },
-          //     ],
-          //     {
-          //       title: "Win Rate: Stay vs Switch",
-          //       yaxis: { title: "Probability" },
-          //     },
-          //   );
-          // }
-
-          // attach click handlers
-          document.getElementById("door0").onclick = () => pickDoor(0);
-          document.getElementById("door1").onclick = () => pickDoor(1);
-          document.getElementById("door2").onclick = () => pickDoor(2);
-
-          // initialize
-          startGame();
-          // updatePlot();
-
-          function spawnEffect(symbol, type) {
-            const el = document.createElement("div");
-            el.className = "effect-icon";
-            el.textContent = symbol;
-
-            const x = Math.random() * window.innerWidth;
-            el.style.left = x + "px";
-
-            const duration = 3000 + Math.random() * 3000;
-
-            const layer = document.getElementById("effect-layer");
-            layer.appendChild(el);
-
-            if (type === "win") {
-              // car rises bottom → top
-              el.style.top = "auto";
-              el.style.bottom = "-40px";
-
-              el.animate(
-                [
-                  { transform: "translateY(0)", opacity: 1 },
-                  { transform: "translateY(-120vh)", opacity: 0 },
-                ],
-                { duration, easing: "linear" },
-              );
-            } else {
-              // goat falls top → bottom
-              el.style.top = "-40px";
-              el.style.bottom = "auto";
-
-              el.animate(
-                [
-                  { transform: "translateY(0)", opacity: 1 },
-                  { transform: "translateY(120vh)", opacity: 0 },
-                ],
-                { duration, easing: "linear" },
-              );
-            }
-
-            setTimeout(() => el.remove(), duration);
-          }
-        </script>
+        <section>
+          <p data-i18n="statistics_monty_hall_simulation"></p>
+        </section>
+        <section>
+          <div class="controls">
+            <button
+              onclick="runSimulation(100)"
+              data-i18n="statistics_monty_hall_button_simulation_100"
+            ></button>
+            <button
+              onclick="runSimulation(1000)"
+              data-i18n="statistics_monty_hall_button_simulation_1000"
+            ></button>
+          </div>
+          <div id="plot"></div>
+        </section>
+        <section>
+          <p data-i18n="statistics_monty_hall_explanation"></p>
+        </section>
+        <section>
+          <figure class="quote">
+            <blockquote data-i18n="statistics_monty_hall_quote"></blockquote>
+            <figcaption
+              data-i18n="statistics_monty_hall_quote_author"
+            ></figcaption>
+          </figure>
+        </section>
       </article>
     </main>
 
@@ -411,5 +149,6 @@
     <script src="/js/language.js"></script>
     <script src="/js/theme.js"></script>
     <script src="/js/element.js"></script>
+    <script src="/js/monty_hall.js"></script>
   </body>
 </html>

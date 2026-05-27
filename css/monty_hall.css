@@ -1,9 +1,31 @@
+#game-message {
+  align-items: center;
+  background: var(--color-4);
+  border: 0.2rem solid transparent;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+  min-height: 4rem;
+  padding: 0.1rem;
+  text-align: center;
+  transition: border-color 1s ease;
+}
+
+#game-message.highlight {
+  border-color: var(--color-2);
+}
+[theme-settings="dark"] #game-message.highlight {
+  border-color: var(--color-3);
+}
+
 .doors {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  margin-top: 2rem;
   padding-bottom: 2rem;
-  /* margin-top: 2rem; */
 }
 
 .door {
@@ -21,6 +43,9 @@
   user-select: none;
   width: 8rem;
 }
+[theme-settings="dark"] .door {
+  border-color: var(--color-3);
+}
 
 .door:hover {
   transform: scale(1.05);
@@ -29,6 +54,9 @@
 .door.selected {
   border: 0.3rem solid var(--color-2);
   transform: scale(1.05);
+}
+[theme-settings="dark"] .door {
+  border-color: var(--color-3);
 }
 
 .door.open {
@@ -55,7 +83,6 @@
   background: var(--color-4);
   border: 0.1rem solid var(--color-2);
   border-radius: 1rem;
-  /* color: var(--color-2); */
   cursor: pointer;
   flex: 1;
   max-width: 12rem;
@@ -63,33 +90,16 @@
   text-align: center;
   transition: transform 0.5s;
 }
+[theme-settings="dark"] .controls button {
+  border-color: var(--color-3);
+}
 
-button:hover {
+.controls button:hover {
   transform: scale(1.05);
 }
 
 #plot {
-  /* width: 600px; */
-  /* margin: 300px auto; */
-}
-
-#game-message {
-  align-items: center;
-  background: var(--color-4);
-  border: 0.2rem solid transparent;
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-  display: flex;
-  height: 4rem;
-  justify-content: center;
-  min-height: 4rem;
-  padding: 0.1rem;
-  text-align: center;
-  transition: border-color 1s ease;
-}
-
-#game-message.highlight {
-  border-color: var(--color-2);
+  margin-top: 1rem;
 }
 
 #effect-layer {

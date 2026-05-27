@@ -8,12 +8,17 @@
   padding: 0.5rem var(--space);
   width: 100%;
 }
+[theme-settings="dark"] .footer {
+  background: var(--color-2);
+  border-top: 0.3rem solid var(--color-3);
+}
 
 .footer-left {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
+
 .footer-left-bottom {
   font-size: var(--fs-small);
   color: var(--color-4);
@@ -24,12 +29,14 @@
   display: flex;
   gap: 1rem;
 }
+
 .footer-right .img-social {
   color: var(--color-3);
   display: block;
   height: 2rem;
   width: 2rem;
 }
+
 .footer-right .img-social:hover {
   opacity: 0.5;
 }

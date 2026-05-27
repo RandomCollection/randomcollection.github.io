@@ -17,10 +17,18 @@
   text-decoration: none;
   transition: all 0.5s ease;
 }
+[theme-settings="dark"] .resource-list a {
+  background: var(--color-2);
+  border-left: 0.3rem solid var(--color-3);
+}
 
 .resource-list a:hover {
   background: var(--color-1);
   color: var(--color-3);
   font-weight: bold;
   transform: translateX(0.5rem);
+}
+[theme-settings="dark"] .resource-list a:hover {
+  background: var(--color-4);
+  color: var(--color-2);
 }
