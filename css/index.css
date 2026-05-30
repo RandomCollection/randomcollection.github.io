@@ -29,6 +29,10 @@
   --color-link: #1a73e8;
   --color-link-hover: #1558b0;
   --color-link-visited: #681da8;
+  --color-plot-bg: #e1b382;
+  --color-plot-other: #12343b;
+  --color-plot-1: #2d545e;
+  --color-plot-2: #c89666;
   --space: 25px;
 }
 [theme-settings="dark"] {
@@ -36,6 +40,10 @@
   --color-2: #0d0d0d;
   --color-3: #f7f7f7;
   --color-4: #8f9296;
+  --color-plot-bg: #292c2f;
+  --color-plot-other: #f7f7f7;
+  --color-plot-1: #f7f7f7;
+  --color-plot-2: #8f9296;
 }
 
 @media (min-width: 600px) {

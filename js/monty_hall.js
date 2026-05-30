@@ -1,269 +1,281 @@
 "use strict";
 
-let prizeDoor = null;
-let playerChoice = null;
-let revealedDoor = null;
+const DOORS = [0, 1, 2];
 
-let stayWins = 0;
-let switchWins = 0;
-let totalRuns = 0;
-
-const messages = {
-  intro:
-    "Try the game yourself and play along. First, pick a door. Then decide whether to stay or switch.",
-
-  selected: "You have selected a door. Monty will now reveal a goat door.",
-
-  switchPrompt: "Do you want to stay or switch? Click a button accordingly.",
-
-  revealing: "Okay, you have choosen ...",
-
-  win: "🎉 You won the car! 🎉",
-
-  lose: "🐐 Oh no, you got a goat! 🐐",
-
-  pickedDoor: "You picked Door {door}.",
+const TIMING = {
+  revealDelay: 3000,
+  highlightDuration: 1000,
+  resultDelay: 2000,
+  effectInterval: 60,
 };
 
-function updateMessage(key, vars = {}) {
-  const message = document.getElementById("game-message");
+const PHASES = {
+  PICKING: "picking",
+  REVEALING: "revealing",
+  DECISION: "decision",
+  FINISHED: "finished",
+};
 
-  let text = messages[key];
+const state = {
+  prizeDoor: null,
+  playerChoice: null,
+  revealedDoor: null,
 
-  Object.keys(vars).forEach((k) => {
-    text = text.replace(`{${k}}`, vars[k]);
-  });
+  stayWins: 0,
+  switchWins: 0,
+  totalRuns: 0,
 
-  message.textContent = text;
+  phase: PHASES.PICKING,
+};
 
-  message.classList.add("highlight");
+const messageEl = document.getElementById("game-message");
+const effectLayer = document.getElementById("effect-layer");
+const doorEls = [...document.querySelectorAll(".door")];
+
+function t(key) {
+  return window.currentLangData[key] || key;
+}
+
+function randomDoor() {
+  return Math.floor(Math.random() * DOORS.length);
+}
+
+function getRevealDoor(playerChoice, prizeDoor) {
+  const options = DOORS.filter((d) => d !== playerChoice && d !== prizeDoor);
+
+  return options[Math.floor(Math.random() * options.length)];
+}
+
+function getSwitchDoor(playerChoice, revealedDoor) {
+  return DOORS.find((d) => d !== playerChoice && d !== revealedDoor);
+}
+
+function flashHighlight(el) {
+  el.classList.add("highlight");
 
   setTimeout(() => {
-    message.classList.remove("highlight");
-  }, 1000);
+    el.classList.remove("highlight");
+  }, TIMING.highlightDuration);
+}
+
+function updateMessage(key, vars = {}) {
+  let text = t(key);
+
+  for (const [k, v] of Object.entries(vars)) {
+    text = text.replace(`{${k}}`, v);
+  }
+
+  messageEl.textContent = text;
+
+  flashHighlight(messageEl);
+}
+
+function spawnEffects(symbol, type, count = 20) {
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => spawnEffect(symbol, type), i * TIMING.effectInterval);
+  }
 }
 
 function startGame() {
-  prizeDoor = Math.floor(Math.random() * 3);
-  playerChoice = null;
-  revealedDoor = null;
+  state.prizeDoor = randomDoor();
+  state.playerChoice = null;
+  state.revealedDoor = null;
+  state.phase = PHASES.PICKING;
 
-  document.querySelectorAll(".door").forEach((d) => {
-    d.classList.remove("open", "selected", "switch-choice", "reveal-highlight");
-    d.textContent =
-      d.id === "door0" ? "Door 1" : d.id === "door1" ? "Door 2" : "Door 3";
+  doorEls.forEach((door, index) => {
+    door.classList.remove(
+      "open",
+      "selected",
+      "switch-choice",
+      "reveal-highlight",
+    );
+
+    door.textContent = `Door ${index + 1}`;
   });
-  updateMessage("intro");
+
+  updateMessage("statistics_monty_hall_message_intro");
 }
 
-function pickDoor(i) {
-  if (playerChoice !== null) return;
+function pickDoor(index) {
+  if (state.phase !== PHASES.PICKING) return;
 
-  playerChoice = i;
+  state.playerChoice = index;
+  state.phase = PHASES.REVEALING;
 
-  // highlight selected door
-  document.getElementById("door" + i).classList.add("selected");
+  doorEls[index].classList.add("selected");
 
-  // host reveals a goat door that is not chosen or prize
-  let options = [0, 1, 2].filter((d) => d !== i && d !== prizeDoor);
-  revealedDoor = options[Math.floor(Math.random() * options.length)];
+  state.revealedDoor = getRevealDoor(state.playerChoice, state.prizeDoor);
 
-  const message = document.getElementById("game-message");
+  updateMessage("statistics_monty_hall_message_selected", {
+    door: index + 1,
+  });
 
-  // first message
-  updateMessage("selected");
-
-  // reveal after delay
   setTimeout(() => {
-    const revealed = document.getElementById("door" + revealedDoor);
+    const revealedDoorEl = doorEls[state.revealedDoor];
 
-    revealed.classList.add("open");
-    revealed.textContent = "🐐";
+    revealedDoorEl.classList.add("open", "reveal-highlight");
 
-    revealed.classList.add("reveal-highlight");
+    revealedDoorEl.textContent = "🐐";
 
-    // fade back automatically
     setTimeout(() => {
-      revealed.classList.remove("reveal-highlight");
-    }, 1000);
+      revealedDoorEl.classList.remove("reveal-highlight");
+    }, TIMING.highlightDuration);
 
-    // second message
     setTimeout(() => {
-      updateMessage("switchPrompt");
-    }, 1000);
-  }, 3000);
+      state.phase = PHASES.DECISION;
+      updateMessage("statistics_monty_hall_message_switch");
+    }, TIMING.highlightDuration);
+  }, TIMING.revealDelay);
 }
 
 function resolveGame(stay) {
-  if (playerChoice === null) return;
+  if (state.phase !== PHASES.DECISION) return;
 
-  let finalChoice = playerChoice;
+  state.phase = PHASES.FINISHED;
 
-  const message = document.getElementById("game-message");
+  let finalChoice = state.playerChoice;
 
-  // handle switching
   if (!stay) {
-    finalChoice = [0, 1, 2].find(
-      (d) => d !== playerChoice && d !== revealedDoor,
-    );
+    finalChoice = getSwitchDoor(state.playerChoice, state.revealedDoor);
 
-    // remove old highlight + add switch highlight
-    document.getElementById("door" + playerChoice).classList.remove("selected");
+    doorEls[state.playerChoice].classList.remove("selected");
 
-    document
-      .getElementById("door" + finalChoice)
-      .classList.add("switch-choice");
+    doorEls[finalChoice].classList.add("switch-choice");
   }
 
-  // small pause before revealing final door
-  updateMessage("revealing");
+  updateMessage("statistics_monty_hall_message_revealing", {
+    door: finalChoice + 1,
+  });
 
   setTimeout(() => {
-    const finalDoorEl = document.getElementById("door" + finalChoice);
+    const finalDoorEl = doorEls[finalChoice];
 
     finalDoorEl.classList.add("open", "reveal-highlight");
 
     setTimeout(() => {
       finalDoorEl.classList.remove("reveal-highlight");
-    }, 1000);
+    }, TIMING.highlightDuration);
 
-    const win = finalChoice === prizeDoor;
+    const win = finalChoice === state.prizeDoor;
 
     if (win) {
       finalDoorEl.textContent = "🚗";
-      updateMessage("win");
+      updateMessage("statistics_monty_hall_message_win");
 
-      // 🚗 CAR SHOWER
-      for (let i = 0; i < 20; i++) {
-        setTimeout(() => spawnEffect("🚗", "win"), i * 60);
-      }
+      spawnEffects("🚗", "win");
     } else {
       finalDoorEl.textContent = "🐐";
-      updateMessage("lose");
+      updateMessage("statistics_monty_hall_message_loss");
 
-      // 🐐 GOAT RAIN
-      for (let i = 0; i < 20; i++) {
-        setTimeout(() => spawnEffect("🐐", "lose"), i * 60);
-      }
+      spawnEffects("🐐", "lose");
     }
 
-    if (stay) {
-      stayWins += win ? 1 : 0;
-    } else {
-      switchWins += win ? 1 : 0;
+    if (win) {
+      stay ? state.stayWins++ : state.switchWins++;
     }
 
-    totalRuns++;
-    updatePlot();
+    state.totalRuns++;
 
-    // reset after delay so user can see result
+    if (typeof updatePlot === "function") {
+      updatePlot();
+    }
+
     setTimeout(() => {
       startGame();
-    }, 2000);
-  }, 2000);
+    }, TIMING.resultDelay);
+  }, TIMING.resultDelay);
 }
-
-// attach click handlers
-document.getElementById("door0").onclick = () => pickDoor(0);
-document.getElementById("door1").onclick = () => pickDoor(1);
-document.getElementById("door2").onclick = () => pickDoor(2);
-
-// initialize
-startGame();
-// updatePlot();
 
 function spawnEffect(symbol, type) {
   const el = document.createElement("div");
+
   el.className = "effect-icon";
   el.textContent = symbol;
 
-  const x = Math.random() * window.innerWidth;
-  el.style.left = x + "px";
+  el.style.left = `${Math.random() * window.innerWidth}px`;
 
   const duration = 3000 + Math.random() * 3000;
 
-  const layer = document.getElementById("effect-layer");
-  layer.appendChild(el);
+  effectLayer.appendChild(el);
 
   if (type === "win") {
-    // car rises bottom → top
-    el.style.top = "auto";
     el.style.bottom = "-40px";
+    el.style.top = "auto";
 
     el.animate(
       [
-        { transform: "translateY(0)", opacity: 1 },
-        { transform: "translateY(-120vh)", opacity: 0 },
+        {
+          transform: "translateY(0)",
+          opacity: 1,
+        },
+        {
+          transform: "translateY(-120vh)",
+          opacity: 0,
+        },
       ],
-      { duration, easing: "linear" },
+      {
+        duration,
+        easing: "linear",
+      },
     );
   } else {
-    // goat falls top → bottom
     el.style.top = "-40px";
     el.style.bottom = "auto";
 
     el.animate(
       [
-        { transform: "translateY(0)", opacity: 1 },
-        { transform: "translateY(120vh)", opacity: 0 },
+        {
+          transform: "translateY(0)",
+          opacity: 1,
+        },
+        {
+          transform: "translateY(120vh)",
+          opacity: 0,
+        },
       ],
-      { duration, easing: "linear" },
+      {
+        duration,
+        easing: "linear",
+      },
     );
   }
 
-  setTimeout(() => el.remove(), duration);
+  setTimeout(() => {
+    el.remove();
+  }, duration);
 }
 
 function runSingleSimulation() {
-  const prize = Math.floor(Math.random() * 3);
-  const pick = Math.floor(Math.random() * 3);
+  const prize = randomDoor();
+  const pick = randomDoor();
 
-  // Monty reveals a goat that is not picked or prize
-  const revealOptions = [0, 1, 2].filter((d) => d !== pick && d !== prize);
+  const reveal = getRevealDoor(pick, prize);
 
-  const reveal =
-    revealOptions[Math.floor(Math.random() * revealOptions.length)];
+  const switchChoice = getSwitchDoor(pick, reveal);
 
-  const switchChoice = [0, 1, 2].find((d) => d !== pick && d !== reveal);
-
-  const stayWin = pick === prize;
-  const switchWin = switchChoice === prize;
-
-  return { stayWin, switchWin };
+  return {
+    stayWin: pick === prize,
+    switchWin: switchChoice === prize,
+  };
 }
 
 function runSimulation(n) {
   const styles = getComputedStyle(document.documentElement);
-  const titleFontSize = parseFloat(styles.getPropertyValue("--fs-p").trim());
+  const fsP = parseFloat(styles.getPropertyValue("--fs-p"));
+  const colorBg = styles.getPropertyValue("--color-plot-bg").trim();
+  const colorOther = styles.getPropertyValue("--color-plot-other").trim();
+  const colorStay = styles.getPropertyValue("--color-plot-2").trim();
+  const colorSwitch = styles.getPropertyValue("--color-plot-1").trim();
 
-  // console.log("h6 raw:", styles.getPropertyValue("--fs-h6"));
-
-  const stayColor = styles.getPropertyValue("--color-1").trim();
-  const switchColor = styles.getPropertyValue("--color-4").trim();
-  const bgColor = styles.getPropertyValue("--color-3").trim();
   let stayWinsLocal = 0;
   let switchWinsLocal = 0;
 
-  let stayHistory = [];
-  let switchHistory = [];
+  const x = [];
+  const stayHistory = [];
+  const switchHistory = [];
 
-  // const maxX = n;
-
-  // const magnitude = Math.pow(10, Math.floor(Math.log10(maxX)));
-  // const dtick = magnitude / 10;
-
-  // function getNiceTick(max) {
-  //   const magnitude = Math.pow(10, Math.floor(Math.log10(max)));
-  //   const normalized = max / magnitude;
-
-  //   if (normalized < 2) return magnitude / 5;
-  //   if (normalized < 5) return magnitude / 2;
-  //   return magnitude;
-  // }
-
-  // const dtick = getNiceTick(n);
-
-  // console.log(dtick);
+  // Keep graph responsive for large n
+  const step = Math.max(1, Math.floor(n / 5000));
 
   for (let i = 1; i <= n; i++) {
     const result = runSingleSimulation();
@@ -271,13 +283,16 @@ function runSimulation(n) {
     if (result.stayWin) stayWinsLocal++;
     if (result.switchWin) switchWinsLocal++;
 
-    stayHistory.push(stayWinsLocal / i);
-    switchHistory.push(switchWinsLocal / i);
+    if (i % step === 0 || i === n) {
+      x.push(i);
+
+      stayHistory.push(stayWinsLocal / i);
+
+      switchHistory.push(switchWinsLocal / i);
+    }
   }
 
-  const horizontalLines = [0.33, 0.67];
-
-  const shapes = horizontalLines.map((y) => ({
+  const shapes = [0.33, 0.67].map((y) => ({
     type: "line",
     xref: "paper",
     x0: 0,
@@ -285,90 +300,101 @@ function runSimulation(n) {
     yref: "y",
     y0: y,
     y1: y,
+    layer: "below",
     line: {
-      // color: "#999",
-      width: 1,
+      color: colorSwitch,
       dash: "dash",
+      width: 2,
     },
   }));
 
-  const graphDiv = "plot";
-
-  const data = [
+  Plotly.newPlot(
+    "plot",
+    [
+      {
+        x,
+        y: switchHistory,
+        type: "scatter",
+        mode: "lines",
+        name: "Switch",
+        line: {
+          color: colorSwitch,
+        },
+      },
+      {
+        x,
+        y: stayHistory,
+        type: "scatter",
+        mode: "lines",
+        name: "Stay",
+        line: {
+          color: colorStay,
+        },
+      },
+    ],
     {
-      x: Array.from({ length: n }, (_, i) => i + 1),
-      y: stayHistory,
-      type: "scatter",
-      mode: "lines",
-      name: "Stay",
-      line: { color: stayColor },
+      title: {
+        text: `Monty Hall Simulation (${n.toLocaleString()} rounds)`,
+        font: {
+          color: colorOther,
+          size: fsP,
+        },
+      },
+
+      shapes,
+
+      xaxis: {
+        gridcolor: colorStay,
+        linecolor: colorOther,
+        showline: true,
+        tickfont: { color: colorOther },
+        tickformat: ",d",
+        title: {
+          font: { color: colorOther },
+          text: "Rounds",
+        },
+      },
+
+      yaxis: {
+        dtick: 0.1,
+        gridcolor: colorStay,
+        linecolor: colorOther,
+        range: [0, 1],
+        showline: true,
+        tickfont: { color: colorOther },
+        tickformat: ".0%",
+        title: {
+          font: { color: colorOther },
+          text: "Win Rate",
+        },
+      },
+
+      plot_bgcolor: colorBg,
+      paper_bgcolor: colorBg,
+
+      legend: {
+        x: 0.95,
+        y: 0.05,
+        xanchor: "right",
+        yanchor: "bottom",
+        font: {
+          color: colorOther,
+        },
+      },
     },
     {
-      x: Array.from({ length: n }, (_, i) => i + 1),
-      y: switchHistory,
-      type: "scatter",
-      mode: "lines",
-      name: "Switch",
-      line: { color: switchColor },
+      responsive: true,
+      displaylogo: false,
     },
-  ];
-
-  const layout = {
-    title: {
-      text: `Monty Hall Simulation (${n.toLocaleString()} rounds)`,
-      font: { size: titleFontSize },
-    },
-    margin: { t: 30 },
-    shapes,
-    xaxis: {
-      // color: "#ffffff",
-      // dtick: 10,
-      gridcolor: switchColor,
-      // linecolor: "#888",
-      // linewidth: 2,
-      // range: [0, 100],
-      showline: true,
-      // tickfont: {
-      // color: "#ffffff",
-      // size: 12,
-      // },
-      tickformat: ",d",
-      title: { text: "Rounds" },
-      // zeroline: false,
-    },
-    yaxis: {
-      // color: "#ffffff",
-      dtick: 0.1,
-      gridcolor: switchColor,
-      // linecolor: "#888",
-      // linewidth: 2,
-      range: [0, 1],
-      showline: true,
-      // tickfont: {
-      // color: "#ffffff",
-      // size: 12,
-      // },
-      tickformat: ".0%",
-      title: { text: "Win Rate" },
-      // zeroline: false,
-    },
-    plot_bgcolor: bgColor,
-    paper_bgcolor: bgColor,
-    legend: {
-      x: 0.95,
-      y: 0.05,
-      xanchor: "right",
-      yanchor: "bottom",
-      bgcolor: switchColor,
-      // bordercolor: "#555",
-      // borderwidth: 1,
-    },
-  };
-
-  const config = {
-    responsive: true,
-    displaylogo: false,
-  };
-
-  Plotly.newPlot(graphDiv, data, layout, config);
+  );
 }
+
+doorEls.forEach((door, index) => {
+  door.addEventListener("click", () => {
+    pickDoor(index);
+  });
+});
+
+document.addEventListener("languageLoaded", () => {
+  startGame();
+});

@@ -20,14 +20,14 @@ function updateContent(langData) {
   // Text content
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
-    if (langData[key]) {
+    if (key in langData) {
       element.innerHTML = langData[key];
     }
   });
   // Placeholders
   document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
     const key = element.getAttribute("data-i18n-placeholder");
-    if (langData[key]) {
+    if (key in langData) {
       element.placeholder = langData[key];
     }
   });
@@ -54,6 +54,8 @@ async function changeLanguage(lang) {
   updateContent(langData);
   updateButtonText(lang);
   highlightSelectedLanguage(lang);
+
+  document.dispatchEvent(new CustomEvent("languageLoaded"));
 
   if (lang === "de" && !sessionStorage.getItem(DE_TOAST_SHOWN_KEY)) {
     showToast(langData.language_toast);
