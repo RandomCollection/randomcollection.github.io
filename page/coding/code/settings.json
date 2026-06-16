@@ -6,14 +6,15 @@
   "editor.guides.bracketPairs": true,
   "editor.minimap.enabled": false,
   "editor.rulers": [79],
-  "editor.wordWrap": "off",
+  "editor.wordWrap": "bounded",
   "explorer.compactFolders": false,
   "files.autoSave": "onFocusChange",
   // "files.exclude": {
-  //   "**/node_modules": true,
-  //   "**/node_modules/**": true,
-  //   "**/*.log": true
-  // },
+    //   "**/node_modules": true,
+    //   "**/node_modules/**": true,
+    //   "**/*.log": true
+    // },
+  "latex-workshop.formatting.latex": "latexindent",
   "notebook.codeActionsOnSave": {
     "notebook.source.fixAll": "explicit",
     "notebook.source.organizeImports": "explicit",
